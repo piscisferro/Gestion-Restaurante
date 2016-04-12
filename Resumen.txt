@@ -1,15 +1,15 @@
-Funcional pedidos.
+Pedidos.
 
 - Cada usuario al loguearse podra hacer un pedido.
 
 - El pedido estara abierto hasta que se cierre y se pague. Asi se podra administrar mejor que pedidos estan abiertos y cuales pagados.
 
-- Cuando se hace el pedido, a cocina llegara la parte del pedido que sea comida, en detalle de pedido habra un campo para se�alar si el pedido
+- Cuando se hace el pedido, a cocina llegara la parte del pedido que sea comida, en detalle de pedido habra un campo para señalar si el pedido
   esta servido o no. Si no esta servido, aparecera en la cocina, ordenador por fecha y usuario.
 
 ----------------------------------------
 
-Funcional administracion.
+Administracion.
 
 - En administradocion tendremos una pagina basada en listas desplegables donde podremos administrar categorias, productos y tipos.
   
@@ -20,7 +20,7 @@ Funcional administracion.
 
 - El administrador tambien tendra un buscador. 
 
-- El dise�o de desplegables sera el siguiente: 
+- El diseño de desplegables sera el siguiente: 
 
 	-------------------------------------------------------------------
 	- Categoria 1	-  tipo					   editar -
@@ -41,4 +41,25 @@ Funcional administracion.
 	-  --------------							   -
 	----------------------------------------------------------------------------
 
+------------------------------------
 
+Usuarios
+
+- Para la vista de usuario se vera todas las categorias en modo mosaico. Asi tambien se vera en modo mosaico los productos una vez
+  estemos dentro de la categoria.
+  
+- Diseño: 
+
+   ----------------------
+   ----------------------
+   --		       --
+   --	     IMG       --
+   --		       --
+   ----------------------
+   ----------------------
+   -  Titulo            -
+   -  Añadir            -
+   ----------------------
+  
+- Al pinchar sobre la imagen del producto saldra una ventana modal donde saldra toda la informacion del producto (Nombre, categoria,
+ingredientes) y el boton añadir a pedido.
