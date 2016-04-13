@@ -1,1 +1,0 @@
-<!-- Aqui vendran listados los pedidos abiertos en modo fila -->
