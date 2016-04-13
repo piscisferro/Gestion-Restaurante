@@ -23,7 +23,7 @@ Administracion.
 - El diseño de desplegables sera el siguiente: 
 
 	-------------------------------------------------------------------
-	- Categoria 1	-  tipo					   editar -
+	- Categoria 1					   editar -
 	-------------------------------------------------------------------
           ----------------------------------------------------------------
  	  -  Producto_nombre 1                    precio          editar -
