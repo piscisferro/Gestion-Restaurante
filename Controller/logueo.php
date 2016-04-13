@@ -3,21 +3,22 @@ haremos una consulta en la base de datos para ver si el usuario existe, si exist
 recogeremos su categoria (admin, usuario o cocina), dependiendo de la categoria
 ira a una pagina u otra. Si no existe se le devolvera a la pantalla de logueo con
 un error-->
-
 <?php
-
-// Si por algun casual el usuario llega aqui sin haber pasado por la pantalla
-// de login, volvera a la pantalla de logueo.
-if (!isset($_SESSION["logado"])) {
-    header ("Location: ../index.php");
-}
+session_start();
+require_once "../Model/usuario.php";
 
 // Si nos llega a través del formulario.
 if (isset($_POST["submitLogIn"])) {
+    var_dump($_POST["usuario"], $_POST["password"]);
+    $usuario = Usuario::getUsuario($_POST["usuario"], $_POST["password"]); 
+    var_dump($usuario);
     
-    $usuario = new Usuario($_POST["usuario"], $_POST["password"]);
-    
+    if (!$usuario) {
+        header("Location: ../index.php?error=1");
+    } else {
+        $_SESSION["logado"] = true;
+        $_SESSION["tipo_usuario"] = $usuario->getTipo(); 
+        header("Location: ../Controller/views.php");
+    }
+ 
 } 
-
-
-
