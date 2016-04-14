@@ -140,7 +140,27 @@ class Usuario {
             return false;
         }
     }
-
+    
+    ///////////////////////////////////////
+    //    Método Consulta all Usuarios
+    //////////////////////////////////////
+    public static function getAllUsuarios() {
+        
+        $conexion = restDB::connectDB();
+        
+        $seleccion = "SELECT id_usuario, nombre_usuario, tipo_usuario FROM usuario";
+        
+        $consulta = $conexion->query($seleccion);
+        
+        $resultado = [];
+        
+        while ($registro = $consulta->fetchObject()) {
+            $resultado[] = new Usuario($registro->nombre_usuario, $registro->password_usuario, $registro->tipo_usuario, $registro->id_usuario);
+        }
+        
+        return $resultado;
+    }
+    
     
     
 }

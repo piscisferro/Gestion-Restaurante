@@ -1,1 +1,26 @@
 <!-- Desde aqui se gestionara el restaurante, productos, usuarios, etc... -->
+{% extends common/common.html %}
+{% block contenido %}
+<navbar>
+    <ul>
+        <li><a>Productos</a></li>
+        <li><a>Usuarios</a></li>
+    </ul>
+</navbar>
+
+<!-- Tools, en esta seccion mostrara las herramientas para ordenar y buscar  -->
+<section>
+    <div></div>
+</section>
+
+
+<!-- -->
+<section>
+{% if target == usuarios %}
+    {% include ("listadoUsuario.html.twig") %}
+{% elseif target == productos %}
+    {% include ("listadoproductos.html.twig") %}
+{% endif %}
+</section>
+
+{% endblock %}
