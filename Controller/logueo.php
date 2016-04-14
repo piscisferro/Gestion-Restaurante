@@ -9,9 +9,8 @@ require_once "../Model/usuario.php";
 
 // Si nos llega a través del formulario.
 if (isset($_POST["submitLogIn"])) {
-    var_dump($_POST["usuario"], $_POST["password"]);
+   
     $usuario = Usuario::getUsuario($_POST["usuario"], $_POST["password"]); 
-    var_dump($usuario);
     
     if (!$usuario) {
         header("Location: ../index.php?error=1");
