@@ -21,11 +21,11 @@ switch ($_SESSION["tipo_usuario"]){
         break;
     // Si es usuario se le mandara a la pagina de la app
     case "usuario": 
-        header("Location: app.php");
+        header("Location: App/app.php");
         break;
     // Si es cocina, se le mandara a la pagina de cocina
     case "cocina";
-        header("Location: cocina.php");
+        header("Location: Cocina/cocina.php");
         break;
     // Si no es ninguno de los anteriores se le deslogueara y volvera a la pagina de logueo
     default :
