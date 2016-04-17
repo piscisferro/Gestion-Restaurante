@@ -1,10 +1,9 @@
-<!-- Desde aqui se gestionara el restaurante, productos, usuarios, etc... -->
-{% extends common/common.html %}
+{% extends "Common/common.html.twig" %}
 {% block contenido %}
 <navbar>
     <ul>
-        <li><a>Productos</a></li>
-        <li><a>Usuarios</a></li>
+        <li><a href="../../Controller/Gestion/gestionApp.php">Productos</a></li>
+        <li><a href="../../Controller/Gestion/gestionUsuarios.php">Usuarios</a></li>
     </ul>
 </navbar>
 
@@ -16,10 +15,11 @@
 
 <!-- -->
 <section>
-{% if target == usuarios %}
-    {% include ("listadoUsuario.html.twig") %}
-{% elseif target == productos %}
-    {% include ("listadoproductos.html.twig") %}
+    
+{% if target == "usuarios" %}
+    {% include ('Gestion/listadousuarios.html.twig') %}
+{% elseif target == "productos" %}
+    {% include ('Gestion/listadoproductos.html.twig') %}
 {% endif %}
 </section>
 

@@ -1,15 +1,45 @@
-<div>
-   <form>
-        <input type="text" name="newusuario" placeholder="usuario" required autofocus>
-        <input type="password" name="newpassword" required>
-        <select name="newtipo">
-            <option value="usuario" selected>Usuario</option>
-            <option value="cocina">Cocina</option>
-            <option value="administrador">Administrador</option>
-        </select>
-        <input type="submit" name="newusuario">
-    </form>
-</div>
 <ul>
-    <li></li>
+   <li>
+        <div><img class="icon" src="../../Views/img/añadir.png"> Añadir</div>
+        <form>
+            <input type="text" name="newusuario" placeholder="usuario" required autofocus>
+            <input type="password" name="newpassword" required>
+            <select name="newtipo">
+                <option value="usuario" selected>Usuario</option>
+                <option value="cocina">Cocina</option>
+                <option value="administrador">Administrador</option>
+            </select>
+            <input type="submit" name="newusuario" value="Añadir">
+            <button>Cancelar</button>
+        </form>
+   </li>
+    {% for usuario in usuarios %}
+    <li id="usuario{{usuario.id}}">
+        <div>
+            <span>{{usuario.nombre}}</span> <span><a href="">edit password</a></span> <span>{{usuario.tipo}}</span> <img class="icon" src="../../Views/img/editar.png"><img class="icon" src="../../Views/img/borrar.ico">
+        </div>
+        <div>
+            <form>
+                <input type="text" name="usuarioEdit" placeholder="{{ usuario.nombre }}" autofocus>
+                <select name="tipoEdit">
+                    <option value="usuario" selected>Usuario</option>
+                    <option value="cocina">Cocina</option>
+                    <option value="administrador">Administrador</option>
+                </select>
+                <input type="submit" name="editusuario" value="Editar">
+                <input type="hidden" name="idEdit" value="{{usuario.id}}">
+                <button>Cancelar</button>
+            </form>
+        </div>
+        <div>
+            <form>
+                {{ usuario.nombre}}
+                <input type="text" name="passwordEdit" placeholder="Nueva Contraseña" autofocus>
+                <input type="text" name="passwordConfirm" placeholder="Repetir Contraseña" autofocus>
+                <input type="submit" name="editusuario" value="Editar">
+                <button>Cancelar</button>
+            </form>
+        </div>
+    </li>
+    {% endfor %}
 </ul>

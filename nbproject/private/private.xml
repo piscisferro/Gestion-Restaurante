@@ -3,9 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Controller/logueo.php</file>
-            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Model/usuarios.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Model/usuario.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Views/Gestion/gestionApp.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Controller/Views/views.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Views/adminview.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Views/Gestion/listadousuarios.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Model/categoria.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Controller/Gestion/gestionApp.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Views/Common/common.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Views/Gestion/listadoproductos.html.twig</file>
             <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/index.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Model/producto.php</file>
+            <file>file:/C:/xampp/htdocs/Proyecto-Integrado-Rework/Controller/Gestion/gestionUsuarios.php</file>
         </group>
     </open-files>
 </project-private>

@@ -30,17 +30,11 @@ require_once "Model/usuario.php";
         <title>Log-In</title>
         <meta name="Author" content="Juan Jose Fernandez Romero"/>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <script type="text/javascript" src="js/javscript.js"></script>
+        <link rel="stylesheet" type="text/css" href="Views/css/style.css">
+        <script type="text/javascript" src="Views/js/javscript.js"></script>
     </head>
     <body>
         <div class="container">
-            <?php 
-            if($_GET["error"]==1) {
-                echo 'ERRRRROOOOOOOOOOOOR'; 
-            }
-                ?>
-            
             <div class="video"></div>
             <div class="login">
                 <h3>Log In</h3>

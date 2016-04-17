@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<title>Restaurant App</title>
-		<meta name="Author" content="Juan Jose Fernandez Romero"/>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
-		<script type="text/javascript" src="../js/javscript.js"></script>
-	</head>
-	<body>
-	    <div class="container">
-	        <header>
-	            <h2 class="tituloHeader">Gestion Restaurante</h2>
-	            <div><a href="../../Controller/logout.php">Log-out</a></div>
-	        </header>
-	        
+    <head>
+        <title>Restaurant App</title>
+        <meta name="Author" content="Juan Jose Fernandez Romero"/>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="../../Views/css/style.css">
+        <script type="text/javascript" src="../../Views/js/javscript.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h2 class="tituloHeader">Gestion Restaurante</h2>
+                <div><a href="../../Controller/logout.php">Log-out</a></div>
+            </header>
+                
+            {% block contenido %}
+            {% endblock %}
+                
             <footer>
                 <p class="autor">Pagina creada por: <em>Juan Jose Fernandez Romero</em></p>    
-	        </footer>
-	    </div>
-	</body>
+            </footer>
+        </div>
+    </body>
 </html>

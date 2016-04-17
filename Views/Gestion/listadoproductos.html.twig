@@ -1,0 +1,79 @@
+<ul>
+    <li>
+        <div><img class="icon" src="../../Views/img/añadir.png"> Añadir Categoria</div>
+        <form>
+            <input type="text" name="newCatNombre" placeholder="Nombre" required autofocus>
+            <input type="file" name="newCatImg">
+            <input type="submit" name="newCategoria" value="Añadir">
+            <button>Cancelar</button>
+        </form>
+    </li>
+    
+    {% for categoria in categorias %}
+    <li>
+       <div>
+           {{ categoria.nombre }} <img class="icon" src="../../Views/img/editar.png"><img class="icon" src="../../Views/img/borrar.ico">
+       </div>
+       <form>
+            <input type="text" name="editCatNombre" placeholder="Nombre" required autofocus>
+            <input type="file" name="editCatImg">
+            <input type="submit" name="newCategoria" value="Editar">
+            <button>Cancelar</button>
+        </form>
+        <ul>
+            <li>
+                <img class="icon" src="../../Views/img/añadir.png"> Añadir Producto
+                <form>
+                    <input type="text" name="newProNombre" placeholder="Nombre" required autofocus>
+                    <input type="number" name="newProPrecio" placeholder="Precio" required>
+                    <input type="file" name="newProImg">
+                    <input type="textarea" name="newProDesc" placeholder="Descripcion">
+                    <input type="hidden" name="newProCat" value="{{categoria.id}}">
+                    Tipo: <select name="newProTipo">
+                        <option value="comida" selected>Comida</option>
+                        <option value="bebida">Bebida</option>
+                        <option value="postre">Postre</option>
+                    </select>
+                    <input type="submit" name="newProducto" value="añadir">
+                </form>
+            </li>
+            {% for producto in productos %}
+            {% if producto.categoria == categoria.id %}
+            <li>
+                <div>{{producto.nombre}} {{producto.precio}}€</div>
+                <div>
+                    <img src="../../Views/img/{{producto.imgDir}}">
+                    Descripcion: {{producto.descripcion}}
+                </div>
+                <form>
+                    <input type="text" name="editProNombre" placeholder="{{ producto.nombre}}" required autofocus>
+                    <input type="number" name="editProPrecio" placeholder="{{ producto.precio}}" required>
+                    <input type="file" name="editProImg">
+                    <input type="textarea" name="editProDesc" placeholder="{{producto.descripcion}}">
+                    Categoria: <select name="editProCat">
+                       {% for categoria in categorias %}
+                       <option value="categoria.id">{{ categoria.nombre}}</option>
+                       {% endfor %}
+                    </select>
+                    Tipo: <select name="editProTipo">
+                        <option value="comida" selected>Comida</option>
+                        <option value="bebida">Bebida</option>
+                        <option value="postre">Postre</option>
+                    </select>
+                    <input type="submit" name="newProducto" value="Editar">
+                </form>
+            </li>   
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </li> 
+    {% endfor %}
+    
+    
+    
+    
+    
+    
+    
+    
+</ul>

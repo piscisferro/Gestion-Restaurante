@@ -1,7 +1,7 @@
 <?php
 /**
- * Clase Comida, en este clase tendremos todo lo relacionado con la carga y
- * obtencion de datos de los comida del post en la base de datos.
+ * Clase Usuario, en esta clase tendremos todo lo relacionado con la carga y
+ * obtencion de datos de los usuarios en la base de datos.
  *
  * @author Juan Jose Fernandez Romero
  */
@@ -13,12 +13,14 @@ class Usuario {
     private $password;
     private $tipo;
     private $fecha;
+    private $id;
     
     // Constructor donde se construye el objeto y se le asignan los atributos
     public function __construct($nombre, $password, $tipo, $id=null) {
         $this->nombre = $nombre;
         $this->password = $password;
         $this->tipo = $tipo;
+        $this->id = $id;
         $this->fecha = date('d-m-Y');
     }
     
@@ -40,7 +42,11 @@ class Usuario {
         return $this->fecha;
     }
 
-    
+    public function getId() {
+        return $this->id;
+    }
+
+        
     /////////////////////////////
     // Métodos setter
     /////////////////////////////
@@ -60,7 +66,11 @@ class Usuario {
         $this->fecha = $fecha;
     }
     
+    public function setId($id) {
+        $this->id = $id;
+    }
 
+    
     ///////////////////////////////////
     //    Método Insert 
     //////////////////////////////////
@@ -89,7 +99,7 @@ class Usuario {
         $conexion = restDB::connectDB();
         
         // Sentencia para borrar el objeto
-        $borrado = "DELETE FROM usuario WHERE id='$this->id'";
+        $borrado = "DELETE FROM usuario WHERE id_usuario='$this->id'";
         
         // Ejecutamos la sentencia y guardamos la respuesta de la BD
         $resultado = $conexion->query($borrado);
@@ -111,7 +121,7 @@ class Usuario {
         // Convertimos en objeto la fila recibida
         $registro = $consulta->fetchObject();
         // Guardamos al objeto usuario en la variable
-        $usuario = new Usuario($registro->nombre_usuario, $registro->password_usuario, $registro->tipo_usuario, $registro->id_usuario);
+        $usuario = new Usuario($registro->nombre_usuario, null, $registro->tipo_usuario, $registro->id_usuario);
         // Devolvemos la variable usuario
         return $usuario;   
     }
@@ -145,23 +155,23 @@ class Usuario {
     //    Método Consulta all Usuarios
     //////////////////////////////////////
     public static function getAllUsuarios() {
-        
+        // Conectamos a la BD
         $conexion = restDB::connectDB();
-        
+        // Sentencia SELECT
         $seleccion = "SELECT id_usuario, nombre_usuario, tipo_usuario FROM usuario";
-        
+        // Ejecutamos la consulta
         $consulta = $conexion->query($seleccion);
         
+        // Inicializamos el array que contendra el resultado de la consulta
         $resultado = [];
         
+        // Guardamos todos los resultados en el array resultado
         while ($registro = $consulta->fetchObject()) {
-            $resultado[] = new Usuario($registro->nombre_usuario, $registro->password_usuario, $registro->tipo_usuario, $registro->id_usuario);
+            $resultado[] = new Usuario($registro->nombre_usuario, null, $registro->tipo_usuario, $registro->id_usuario);
         }
         
+        // Devolvemos resultado
         return $resultado;
-    }
-    
-    
-    
+    } 
 }
     

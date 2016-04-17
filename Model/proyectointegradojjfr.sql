@@ -2,10 +2,10 @@
 -- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 13, 2016 at 06:10 PM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 5.6.19
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 17-04-2016 a las 21:17:33
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,15 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `proyectointegradojjfr`
+-- Base de datos: `proyectointegradojjfr`
 --
+CREATE DATABASE IF NOT EXISTS `proyectointegradojjfr` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `proyectointegradojjfr`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categoria`
+-- Estructura de tabla para la tabla `categoria`
 --
 
 CREATE TABLE `categoria` (
@@ -32,10 +34,18 @@ CREATE TABLE `categoria` (
   `img_categoria` text COLLATE utf8_bin
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `img_categoria`) VALUES
+(1, 'Sin Categoria', NULL),
+(2, 'prueba', NULL);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detpedido`
+-- Estructura de tabla para la tabla `detpedido`
 --
 
 CREATE TABLE `detpedido` (
@@ -49,7 +59,7 @@ CREATE TABLE `detpedido` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pedido`
+-- Estructura de tabla para la tabla `pedido`
 --
 
 CREATE TABLE `pedido` (
@@ -62,24 +72,32 @@ CREATE TABLE `pedido` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `producto`
+-- Estructura de tabla para la tabla `producto`
 --
 
 CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
   `nombre_producto` varchar(50) COLLATE utf8_bin NOT NULL,
   `tipo_producto` int(11) NOT NULL,
-  `categoria_producto` int(11) NOT NULL,
+  `categoria_producto` int(11) DEFAULT NULL,
   `desc_producto` text COLLATE utf8_bin,
-  `precio_prodcuto` int(11) NOT NULL,
+  `precio_producto` int(11) NOT NULL,
   `img_producto` text COLLATE utf8_bin,
   `fecha_producto` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id_producto`, `nombre_producto`, `tipo_producto`, `categoria_producto`, `desc_producto`, `precio_producto`, `img_producto`, `fecha_producto`) VALUES
+(1, 'comida', 1, 1, NULL, 1, NULL, '0000-00-00 00:00:00'),
+(2, 'bebida', 2, 2, NULL, 2, NULL, '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipoproducto`
+-- Estructura de tabla para la tabla `tipoproducto`
 --
 
 CREATE TABLE `tipoproducto` (
@@ -87,10 +105,19 @@ CREATE TABLE `tipoproducto` (
   `nombre_tipo` varchar(50) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Volcado de datos para la tabla `tipoproducto`
+--
+
+INSERT INTO `tipoproducto` (`id_tipo`, `nombre_tipo`) VALUES
+(2, 'bebida'),
+(1, 'comida'),
+(3, 'postre');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -102,7 +129,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `password_usuario`, `tipo_usuario`, `fecha_usuario`) VALUES
@@ -111,74 +138,74 @@ INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `password_usuario`, `tipo
 (3, 'cocina', 'cocina', 'cocina', '0000-00-00');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `categoria`
+-- Indices de la tabla `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id_categoria`),
   ADD UNIQUE KEY `nombre_categoria` (`nombre_categoria`);
 
 --
--- Indexes for table `detpedido`
+-- Indices de la tabla `detpedido`
 --
 ALTER TABLE `detpedido`
   ADD PRIMARY KEY (`id_detpedido`);
 
 --
--- Indexes for table `pedido`
+-- Indices de la tabla `pedido`
 --
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`id_pedido`);
 
 --
--- Indexes for table `producto`
+-- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_producto`);
 
 --
--- Indexes for table `tipoproducto`
+-- Indices de la tabla `tipoproducto`
 --
 ALTER TABLE `tipoproducto`
   ADD PRIMARY KEY (`id_tipo`),
   ADD UNIQUE KEY `nombre_tipo` (`nombre_tipo`);
 
 --
--- Indexes for table `usuario`
+-- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `nombre_usuario` (`nombre_usuario`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `categoria`
+-- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `detpedido`
+-- AUTO_INCREMENT de la tabla `detpedido`
 --
 ALTER TABLE `detpedido`
   MODIFY `id_detpedido` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `pedido`
+-- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
   MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `producto`
+-- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;

@@ -1,6 +1,7 @@
 <?php
+session_start();
 
 $_SESSION["logado"] = false;
 unset($_SESSION["tipo_usuario"]);
 
-header("Location: ../index.php?error=1");
+header("Location: ../index.php");

@@ -1,8 +1,7 @@
 <?php
 session_start();
 
-require_once '../../Model/categoria.php';
-require_once '../../Model/producto.php';
+require_once '../../Model/usuario.php';
 require_once '../Twig/lib/Twig/Autoloader.php';
 
 // Inicializamos Twig
@@ -15,8 +14,8 @@ if(!$_SESSION["logado"] || !$_SESSION["tipo_usuario"] == "administrador") {
    header("Location: logout.php");
 }
 
-$data["target"] = "productos";
-$data["categorias"] = Categoria::getAllCategorias();
-$data["productos"] = Producto::getAllProductos();
+$data["target"] = "usuarios";
+$data["usuarios"] = Usuario::getAllUsuarios();
+
 
 echo $twig->render('Gestion/gestionApp.html.twig', $data);
