@@ -16,12 +16,16 @@ class Usuario {
     private $id;
     
     // Constructor donde se construye el objeto y se le asignan los atributos
-    public function __construct($nombre, $password, $tipo, $id=null) {
+    public function __construct($nombre, $password, $tipo, $id=null, $fecha=false) {
         $this->nombre = $nombre;
         $this->password = $password;
         $this->tipo = $tipo;
         $this->id = $id;
-        $this->fecha = date('d-m-Y');
+        if (!$fecha) {
+            $this->fecha = date('d-m-Y');
+        } else {
+            $this->fecha = $fecha;
+        }
     }
     
     /////////////////////////////
@@ -80,7 +84,7 @@ class Usuario {
         $conexion = restDB::connectDB();
         
         // Sentencia Insert
-        $insert = "INSERT INTO usuario (nombre_usuario, password_usuario, tipo_usuario) VALUES ('$this->nombre', "
+        $insert = "INSERT INTO usuario (nombre_usuario, password_usuario, tipo_usuario, fecha_usuario) VALUES ('$this->nombre', "
                 . "'$this->password', '$this->tipo', STR_TO_DATE(\"$this->fecha\", '%d-%m-%Y'))";
         
         // Ejecutamos la sentencia y guardamos la respuesta de la BD
@@ -108,6 +112,44 @@ class Usuario {
         return $resultado;
     }
     
+    
+    //////////////////////////////////
+    //  Método Update
+    /////////////////////////////////
+    public function update() {
+        // Establecemos conexion con la BD
+        $conexion = restDB::connectDB();
+        
+        // Sentencia para borrar el objeto
+        $update = "UPDATE usuario SET nombre_usuario='$this->nombre', tipo_usuario='$this->tipo' WHERE id_usuario='$this->id'";
+        
+        // Ejecutamos la sentencia y guardamos la respuesta de la BD
+        $resultado = $conexion->query($update);
+        
+        // Devolvemos la respuesta de la BD
+        return $resultado;
+    }
+    
+    //////////////////////////////////
+    //  Método Update Password
+    /////////////////////////////////
+    public function updatePassword() {
+        // Establecemos conexion con la BD
+        $conexion = restDB::connectDB();
+        
+        // Sentencia para borrar el objeto
+        $update = "UPDATE usuario SET password_usuario='$this->password' WHERE id_usuario='$this->id'";
+        
+        // Ejecutamos la sentencia y guardamos la respuesta de la BD
+        $resultado = $conexion->query($update);
+        
+        // Devolvemos la respuesta de la BD
+        return $resultado;
+    }
+    
+    
+    
+    
     ///////////////////////////////////////
     //    Método getById
     //////////////////////////////////////
@@ -121,7 +163,7 @@ class Usuario {
         // Convertimos en objeto la fila recibida
         $registro = $consulta->fetchObject();
         // Guardamos al objeto usuario en la variable
-        $usuario = new Usuario($registro->nombre_usuario, null, $registro->tipo_usuario, $registro->id_usuario);
+        $usuario = new Usuario($registro->nombre_usuario, null, $registro->tipo_usuario, $registro->id_usuario, $registro->fecha_usuario);
         // Devolvemos la variable usuario
         return $usuario;   
     }
@@ -144,7 +186,7 @@ class Usuario {
         // Si la consulta llega informacion
         if ($resultado) {
             // Creamos un objeto usuario con el resultado de la consulta
-            $usuario = new Usuario($resultado->nombre_usuario, $resultado->password_usuario, $resultado->tipo_usuario);
+            $usuario = new Usuario($resultado->nombre_usuario, $resultado->password_usuario, $resultado->tipo_usuario, $registro->fecha_usuario);
             return $usuario; 
         } else {
             return false;
@@ -158,7 +200,7 @@ class Usuario {
         // Conectamos a la BD
         $conexion = restDB::connectDB();
         // Sentencia SELECT
-        $seleccion = "SELECT id_usuario, nombre_usuario, tipo_usuario FROM usuario";
+        $seleccion = "SELECT * FROM usuario";
         // Ejecutamos la consulta
         $consulta = $conexion->query($seleccion);
         
@@ -167,7 +209,7 @@ class Usuario {
         
         // Guardamos todos los resultados en el array resultado
         while ($registro = $consulta->fetchObject()) {
-            $resultado[] = new Usuario($registro->nombre_usuario, null, $registro->tipo_usuario, $registro->id_usuario);
+            $resultado[] = new Usuario($registro->nombre_usuario, null, $registro->tipo_usuario, $registro->id_usuario, $registro->fecha_usuario);
         }
         
         // Devolvemos resultado

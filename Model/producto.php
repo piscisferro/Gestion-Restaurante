@@ -20,7 +20,7 @@ class Producto {
     
     
     // Constructor donde se construye el objeto y se le asignan los atributos
-    public function __construct($nombre, $tipo, $descripcion, $precio, $imgDir = false, $categoria=1, $id=null) {
+    public function __construct($nombre, $tipo, $descripcion, $precio, $imgDir = false, $categoria=1, $fecha=false, $id=null) {
         $this->nombre = $nombre;
         $this->tipo = $tipo;
         $this->descripcion = $descripcion;
@@ -28,7 +28,12 @@ class Producto {
         $this->imgDir = $imgDir;
         $this->categoria = $categoria;
         $this->id = $id;
-        $this->fecha = date('d-m-Y');
+        
+        if (!$fecha) {
+            $this->fecha = date('d-m-Y');
+        } else {
+            $this->fecha = $fecha;
+        }
     }
     
     /////////////////////////////
@@ -141,6 +146,23 @@ class Producto {
         return $resultado;
     }
     
+    //////////////////////////////////
+    //  Método Update
+    /////////////////////////////////
+    public function update() {
+        // Establecemos conexion con la BD
+        $conexion = restDB::connectDB();
+        
+        // Sentencia para borrar el objeto
+        $update = "UPDATE producto SET nombre_producto='$this->nombre', tipo_producto='$this->tipo', categoria_producto='$this->categoria', desc_producto='$this->descripcion', precio_producto='$this->precio', img_producto='$this->imgDir' WHERE id_producto='$this->id'";
+        
+        // Ejecutamos la sentencia y guardamos la respuesta de la BD
+        $resultado = $conexion->query($update);
+        
+        // Devolvemos la respuesta de la BD
+        return $resultado;
+    }
+    
     ///////////////////////////////////////
     //    Método getById
     //////////////////////////////////////
@@ -153,9 +175,9 @@ class Producto {
         $consulta = $conexion->query($seleccion);
         // Convertimos en objeto la fila recibida
         $registro = $consulta->fetchObject();
-        // Guardamos al objeto usuario en la variable
-        $resultado = new Producto($registro->nombre_producto, $registro->tipo_producto, $registro->desc_producto, $registro->precio_producto, $registro->img_producto, $registro->categoria_producto, $registro->id_producto);
-        // Devolvemos la variable usuario
+        // Guardamos el objeto producto en la variable
+        $resultado = new Producto($registro->nombre_producto, $registro->tipo_producto, $registro->desc_producto, $registro->precio_producto, $registro->img_producto, $registro->categoria_producto, $registro->fecha_producto, $registro->id_producto);
+        // Devolvemos la variable resultado
         return $resultado;   
     }
     
@@ -166,7 +188,7 @@ class Producto {
         // Conectamos a la BD
         $conexion = restDB::connectDB();
         // Sentencia SELECT
-        $seleccion = "SELECT * FROM producto";
+        $seleccion = "SELECT * FROM producto JOIN tipoproducto WHERE tipo_producto = id_tipo";
         // Ejecutamos la consulta
         $consulta = $conexion->query($seleccion);
         
@@ -175,7 +197,7 @@ class Producto {
         
         // Guardamos todos los resultados en el array resultado
         while ($registro = $consulta->fetchObject()) {
-            $resultado[] = new Producto($registro->nombre_producto, $registro->tipo_producto, $registro->desc_producto, $registro->precio_producto, $registro->img_producto, $registro->categoria_producto, $registro->id_producto);
+            $resultado[] = new Producto($registro->nombre_producto, $registro->nombre_tipo, $registro->desc_producto, $registro->precio_producto, $registro->img_producto, $registro->categoria_producto, $registro->fecha_producto, $registro->id_producto);
         }
         
         // Devolvemos resultado

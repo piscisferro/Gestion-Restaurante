@@ -7,6 +7,11 @@
     </ul>
 </navbar>
 
+<div id="success">La consulta ha sido un éxito.</div>
+<div id="error">Error al insertar en base de datos.</div>
+<div id="error1">Error al enviar el formulario.</div>
+<div id="error2">Error desconocido.</div>
+
 <!-- Tools, en esta seccion mostrara las herramientas para ordenar y buscar  -->
 <section>
     <div></div>
@@ -14,8 +19,7 @@
 
 
 <!-- -->
-<section>
-    
+<section id="listado">
 {% if target == "usuarios" %}
     {% include ('Gestion/listadousuarios.html.twig') %}
 {% elseif target == "productos" %}

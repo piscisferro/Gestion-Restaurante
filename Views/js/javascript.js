@@ -18,3 +18,48 @@ $("#search-criteria").on("keyup", function() {
         }
     });
 });
+
+$(document).ready(iniciar);
+
+
+function iniciar(){
+    $("#success").hide();
+    $("#error").hide();
+    $("#error1").hide();
+    $("#error2").hide();
+    
+    $(".hidden").hide();
+    
+    $(".editar").click(toggleEdit);
+    $(".cancelar").click(toggleCancelar);
+    $(".despliegaCat").click(toggleDesplegarCategoria);
+    $(".despliegaPro").click(toggleDesplegarProducto);
+    
+    iniciarUsuarios();
+    iniciarCategorias();
+    iniciarProductos();
+}
+
+function toggleEdit() {
+    
+    $(this).closest("li").children(".toggle").toggle(200);
+    
+}
+
+function toggleCancelar(e) {
+    e.preventDefault();
+    
+    $(this).closest("li").children(".toggle").toggle(200);
+    
+}
+
+function toggleDesplegarCategoria() {
+    
+    $(this).closest("li").find(".unhideCat").toggle(200);
+    
+}
+
+function toggleDesplegarProducto() {
+    $(this).closest("li").find(".unhidePro").toggle(200);
+    
+}

@@ -2,7 +2,7 @@
 session_start();
 
 // Importamos Autoloader de Twig
-require_once 'Twig/lib/Twig/Autoloader.php';
+require_once '../Twig/lib/Twig/Autoloader.php';
 // Inicializamos Twig
 Twig_Autoloader::register();
 $loader = new Twig_Loader_Filesystem(__DIR__.'/../../Views');

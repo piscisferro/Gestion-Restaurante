@@ -18,4 +18,8 @@ $data["target"] = "usuarios";
 $data["usuarios"] = Usuario::getAllUsuarios();
 
 
-echo $twig->render('Gestion/gestionApp.html.twig', $data);
+if (isset($_POST["ajax"])){
+    echo $twig->render('Gestion/listadousuarios.html.twig', $data);
+} else {
+    echo $twig->render('Gestion/gestionApp.html.twig', $data);
+}

@@ -1,67 +1,99 @@
 <ul>
     <li>
-        <div><img class="icon" src="../../Views/img/añadir.png"> Añadir Categoria</div>
-        <form>
-            <input type="text" name="newCatNombre" placeholder="Nombre" required autofocus>
-            <input type="file" name="newCatImg">
-            <input type="submit" name="newCategoria" value="Añadir">
-            <button>Cancelar</button>
-        </form>
+        <div class="toggle editar"><img class="icon" src="../../Views/img/añadir.png"> Añadir Categoria</div>
+        <div class="toggle hidden">
+            <form id="newCat" method="post" enctype="multipart/form-data"> 
+                <input type="text" name="newCatNombre" placeholder="Nombre" required autofocus>
+                <input type="file" name="newCatImg">
+                <input type="submit" name="newCategoria" value="Añadir">
+                <button class="cancelar">Cancelar</button>
+            </form>
+        </div>
     </li>
     
     {% for categoria in categorias %}
-    <li>
-       <div>
-           {{ categoria.nombre }} <img class="icon" src="../../Views/img/editar.png"><img class="icon" src="../../Views/img/borrar.ico">
+    <li id="{{ categoria.id }}">
+       <div class="toggle despliegaCat">
+           {{ categoria.nombre }} 
+           <img class="imgCategoria" src="{{ categoria.imgDir }}"> 
+           <img class="icon editar" src="../../Views/img/editar.png">
+           <img class="icon deletecat" src="../../Views/img/borrar.ico">
        </div>
-       <form>
-            <input type="text" name="editCatNombre" placeholder="Nombre" required autofocus>
-            <input type="file" name="editCatImg">
-            <input type="submit" name="newCategoria" value="Editar">
-            <button>Cancelar</button>
-        </form>
-        <ul>
+       <div class="toggle hidden">
+           <form class="editCat" method="post" enctype="multipart/form-data">
+                <input type="text" name="editCatNombre" placeholder="{{ categoria.nombre }}" value="{{ categoria.nombre }}" required autofocus>
+                <input type="file" name="editCatImg">
+                <input type="hidden" name="defaultCatImg" value="{{ categoria.imgDir }}">
+                <input type="hidden" name="editCatId" value="{{ categoria.id }}">
+                <input type="submit" name="editCategoria" value="Editar">
+                <button class="cancelar">Cancelar</button>
+            </form>
+        </div>
+        <ul class="hidden unhideCat">
             <li>
-                <img class="icon" src="../../Views/img/añadir.png"> Añadir Producto
-                <form>
-                    <input type="text" name="newProNombre" placeholder="Nombre" required autofocus>
-                    <input type="number" name="newProPrecio" placeholder="Precio" required>
-                    <input type="file" name="newProImg">
-                    <input type="textarea" name="newProDesc" placeholder="Descripcion">
-                    <input type="hidden" name="newProCat" value="{{categoria.id}}">
-                    Tipo: <select name="newProTipo">
-                        <option value="comida" selected>Comida</option>
-                        <option value="bebida">Bebida</option>
-                        <option value="postre">Postre</option>
-                    </select>
-                    <input type="submit" name="newProducto" value="añadir">
-                </form>
+                <div class="toggle editar"><img class="icon" src="../../Views/img/añadir.png"> Añadir Producto</div>
+                <div class="toggle hidden">
+                    <form class="addProducto" method="post" enctype="multipart/form-data">
+                        <div>
+                            <input type="text" name="newProNombre" placeholder="Nombre" required autofocus>
+                            <input type="number" name="newProPrecio" placeholder="Precio" required>
+                        </div>
+                        <div>
+                            <input type="file" name="newProImg">
+                            <input type="textarea" name="newProDesc" placeholder="Descripcion">
+                            <input type="hidden" name="newProCat" value="{{categoria.id}}">
+                            Tipo: <select name="newProTipo">
+                                <option value="1" selected>Comida</option>
+                                <option value="2">Bebida</option>
+                                <option value="3">Postre</option>
+                            </select>
+                            <input type="submit" name="newProducto" value="Añadir">
+                            <button class="cancelar">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
             </li>
             {% for producto in productos %}
             {% if producto.categoria == categoria.id %}
-            <li>
-                <div>{{producto.nombre}} {{producto.precio}}€</div>
-                <div>
-                    <img src="../../Views/img/{{producto.imgDir}}">
-                    Descripcion: {{producto.descripcion}}
+            <li id="{{ producto.id }}">
+                <div class="toggle despliegaPro">
+                    <div>
+                        <span>{{producto.nombre}}</span> <span>{{producto.precio}}€</span>
+                        <img class="icon editar" src="../../Views/img/editar.png">
+                        <img class="icon deletePro" src="../../Views/img/borrar.ico">
+                    </div>
+                    <div class="hidden unhidePro">
+                        <img class="imgProducto" src="{{producto.imgDir}}">
+                        Descripcion: {{producto.descripcion}}
+                        Tipo: {{ producto.tipo}}
+                    </div>
                 </div>
-                <form>
-                    <input type="text" name="editProNombre" placeholder="{{ producto.nombre}}" required autofocus>
-                    <input type="number" name="editProPrecio" placeholder="{{ producto.precio}}" required>
-                    <input type="file" name="editProImg">
-                    <input type="textarea" name="editProDesc" placeholder="{{producto.descripcion}}">
-                    Categoria: <select name="editProCat">
-                       {% for categoria in categorias %}
-                       <option value="categoria.id">{{ categoria.nombre}}</option>
-                       {% endfor %}
-                    </select>
-                    Tipo: <select name="editProTipo">
-                        <option value="comida" selected>Comida</option>
-                        <option value="bebida">Bebida</option>
-                        <option value="postre">Postre</option>
-                    </select>
-                    <input type="submit" name="newProducto" value="Editar">
-                </form>
+                <div class="toggle hidden">
+                    <form class="editPro" method="post" enctype="multipart/form-data">
+                        <div>
+                            <input type="text" name="editProNombre" placeholder="{{producto.nombre}}" value="{{producto.nombre}}" required autofocus>
+                            <input type="number" name="editProPrecio" placeholder="{{producto.precio}}" value="{{ producto.precio}}" required>
+                        </div>
+                        <div>
+                            <input type="file" name="editProImg">
+                            <input type="hidden" name="defaultProImg" value="{{ usuario.imgDir }}">
+                            <input type="textarea" name="editProDesc" placeholder="{{producto.descripcion}}" value="{{ producto.descripcion}}">
+                            Categoria: <select name="editProCat">
+                               {% for categoria in categorias %}
+                               <option value="{{categoria.id}}">{{ categoria.nombre}}</option>
+                               {% endfor %}
+                            </select>
+                            Tipo: <select name="editProTipo">
+                                <option value="1" selected>Comida</option>
+                                <option value="2">Bebida</option>
+                                <option value="3">Postre</option>
+                            </select>
+                            <input type="hidden" name="editProId" value="{{ producto.id }}">
+                            <input type="submit" name="editProducto" value="Editar">
+                            <button class="cancelar">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
             </li>   
             {% endif %}
             {% endfor %}

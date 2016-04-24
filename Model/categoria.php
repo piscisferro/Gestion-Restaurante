@@ -12,13 +12,19 @@ class Categoria {
     private $id;
     private $nombre;
     private $imgDir;
+    private $fecha;
     
     
     // Constructor donde se construye el objeto y se le asignan los atributos
-    public function __construct($nombre, $imgDir = false, $id=null) {
+    public function __construct($nombre, $imgDir = false, $id=null, $fecha = false) {
         $this->nombre = $nombre;
         $this->imgDir = $imgDir;
         $this->id = $id;
+        if (!$fecha) {
+            $this->fecha = date('d-m-Y');
+        } else {
+            $this->fecha = $fecha;
+        }
     }
     
     /////////////////////////////
@@ -36,7 +42,11 @@ class Categoria {
         return $this->imgDir;
     }
 
-            
+    public function getFecha() {
+        return $this->fecha;
+    }
+
+                
     /////////////////////////////
     // Métodos setter
     /////////////////////////////
@@ -52,7 +62,11 @@ class Categoria {
         $this->imgDir = $imgDir;
     }
 
-        
+    public function setFecha($fecha) {
+        $this->fecha = $fecha;
+    }
+
+            
     ///////////////////////////////////
     //    Método Insert 
     //////////////////////////////////
@@ -62,7 +76,7 @@ class Categoria {
         $conexion = restDB::connectDB();
         
         // Sentencia Insert
-        $insert = "INSERT INTO categoria (nombre_categoria, img_categoria) VALUES ('$this->nombre', '$this->imgDir')";
+        $insert = "INSERT INTO categoria (nombre_categoria, img_categoria, fecha_categoria) VALUES ('$this->nombre', '$this->imgDir', '$this->fecha')";
         
         // Ejecutamos la sentencia y guardamos la respuesta de la BD
         $resultado = $conexion->query($insert);
@@ -89,6 +103,23 @@ class Categoria {
         return $resultado;
     }
     
+    //////////////////////////////////
+    //  Método Update
+    /////////////////////////////////
+    public function update() {
+        // Establecemos conexion con la BD
+        $conexion = restDB::connectDB();
+        
+        // Sentencia para borrar el objeto
+        $update = "UPDATE categoria SET nombre_categoria='$this->nombre', img_categoria='$this->imgDir' WHERE id_categoria='$this->id'";
+        
+        // Ejecutamos la sentencia y guardamos la respuesta de la BD
+        $resultado = $conexion->query($update);
+        
+        // Devolvemos la respuesta de la BD
+        return $resultado;
+    }
+    
     ///////////////////////////////////////
     //    Método getById
     //////////////////////////////////////
@@ -101,9 +132,9 @@ class Categoria {
         $consulta = $conexion->query($seleccion);
         // Convertimos en objeto la fila recibida
         $registro = $consulta->fetchObject();
-        // Guardamos al objeto usuario en la variable
-        $resultado = new Categoria($registro->nombre_categoria, $registro->img_categoria, $registro->id_categoria);
-        // Devolvemos la variable usuario
+        // Guardamos al objeto categoria en la variable
+        $resultado = new Categoria($registro->nombre_categoria, $registro->img_categoria, $registro->id_categoria, $registro->fecha_categoria);
+        // Devolvemos la variable resultado
         return $resultado;   
     }
     
@@ -123,7 +154,7 @@ class Categoria {
         
         // Guardamos todos los resultados en el array resultado
         while ($registro = $consulta->fetchObject()) {
-            $resultado[] = new Categoria($registro->nombre_categoria, $registro->img_categoria, $registro->id_categoria);
+            $resultado[] = new Categoria($registro->nombre_categoria, $registro->img_categoria, $registro->id_categoria, $registro->fecha_categoria);
         }
         
         // Devolvemos resultado

@@ -17,7 +17,7 @@ if (isset($_POST["submitLogIn"])) {
     } else {
         $_SESSION["logado"] = true;
         $_SESSION["tipo_usuario"] = $usuario->getTipo(); 
-        header("Location: ../Controller/views.php");
+        header("Location: ../Controller/Views/views.php");
     }
  
 } 

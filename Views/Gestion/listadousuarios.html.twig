@@ -1,26 +1,32 @@
 <ul>
-   <li>
-        <div><img class="icon" src="../../Views/img/añadir.png"> Añadir</div>
-        <form>
-            <input type="text" name="newusuario" placeholder="usuario" required autofocus>
-            <input type="password" name="newpassword" required>
-            <select name="newtipo">
-                <option value="usuario" selected>Usuario</option>
-                <option value="cocina">Cocina</option>
-                <option value="administrador">Administrador</option>
-            </select>
-            <input type="submit" name="newusuario" value="Añadir">
-            <button>Cancelar</button>
-        </form>
+    <li>
+        <div class="toggle editar"><img class="icon" src="../../Views/img/añadir.png"> Añadir</div>
+        <div class="toggle hidden">
+            <form id="usuarioadd" method="post">
+                <input type="text" name="newusuario" placeholder="usuario" required autofocus>
+                <input type="password" name="newpassword" required>
+                <select name="newtipo">
+                    <option value="usuario" selected>Usuario</option>
+                    <option value="cocina">Cocina</option>
+                    <option value="administrador">Administrador</option>
+                </select>
+                <input type="submit" name="addusuario" value="Añadir">
+                <button class="cancelar">Cancelar</button>
+            </form>
+        </div>
    </li>
     {% for usuario in usuarios %}
-    <li id="usuario{{usuario.id}}">
-        <div>
-            <span>{{usuario.nombre}}</span> <span><a href="">edit password</a></span> <span>{{usuario.tipo}}</span> <img class="icon" src="../../Views/img/editar.png"><img class="icon" src="../../Views/img/borrar.ico">
+    <li id="{{usuario.id}}">
+        <div class="toggle usuario">
+            <span>{{usuario.nombre}}</span>
+            <span><a class="passwordEditAnchor">edit password</a></span>
+            <span>{{usuario.tipo}}</span> 
+            <img class="icon editar" src="../../Views/img/editar.png">
+            <img class="icon deleteusuario" src="../../Views/img/borrar.ico">
         </div>
-        <div>
-            <form>
-                <input type="text" name="usuarioEdit" placeholder="{{ usuario.nombre }}" autofocus>
+        <div class="toggle hidden">
+            <form class="usuarioedit" method="post">
+                <input type="text" name="usuarioEdit" placeholder="{{ usuario.nombre }}" value="{{ usuario.nombre }}" autofocus>
                 <select name="tipoEdit">
                     <option value="usuario" selected>Usuario</option>
                     <option value="cocina">Cocina</option>
@@ -28,16 +34,17 @@
                 </select>
                 <input type="submit" name="editusuario" value="Editar">
                 <input type="hidden" name="idEdit" value="{{usuario.id}}">
-                <button>Cancelar</button>
+                <button class="cancelar">Cancelar</button>
             </form>
         </div>
-        <div>
-            <form>
+        <div class="passwordToggle hidden">
+            <form class="passwordedit toggle" method="post">
                 {{ usuario.nombre}}
                 <input type="text" name="passwordEdit" placeholder="Nueva Contraseña" autofocus>
-                <input type="text" name="passwordConfirm" placeholder="Repetir Contraseña" autofocus>
-                <input type="submit" name="editusuario" value="Editar">
-                <button>Cancelar</button>
+                <input type="text" name="passwordConfirm" placeholder="Repetir Contraseña">
+                <input type="hidden" name="idEdit" value="{{usuario.id}}">
+                <input type="submit" name="editpassword" value="Editar">
+                <button class="passwordCancelar">Cancelar</button>
             </form>
         </div>
     </li>

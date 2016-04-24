@@ -15,8 +15,15 @@ if(!$_SESSION["logado"] || !$_SESSION["tipo_usuario"] == "administrador") {
    header("Location: logout.php");
 }
 
+
+
 $data["target"] = "productos";
 $data["categorias"] = Categoria::getAllCategorias();
 $data["productos"] = Producto::getAllProductos();
 
-echo $twig->render('Gestion/gestionApp.html.twig', $data);
+
+if (isset($_POST["ajax"])){
+    echo $twig->render('Gestion/listadoproductos.html.twig', $data);
+} else {
+    echo $twig->render('Gestion/gestionApp.html.twig', $data);
+}
