@@ -1,0 +1,5 @@
+<ul id="listaPedido" data-idpedido="{% if not pedidos %}false{% else %}{{ pedidos.id }} {% endif %}">
+    {% for producto in pedidos.productos %}
+    <li>{{producto.nombre}} {{producto.precio}}</li>
+    {% endfor %}
+</ul>

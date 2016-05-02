@@ -31,7 +31,6 @@ require_once "Model/usuario.php";
         <meta name="Author" content="Juan Jose Fernandez Romero"/>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="Views/css/style.css">
-        <script type="text/javascript" src="Views/js/javscript.js"></script>
     </head>
     <body>
         <div class="container">

@@ -186,7 +186,7 @@ class Usuario {
         // Si la consulta llega informacion
         if ($resultado) {
             // Creamos un objeto usuario con el resultado de la consulta
-            $usuario = new Usuario($resultado->nombre_usuario, $resultado->password_usuario, $resultado->tipo_usuario, $registro->fecha_usuario);
+            $usuario = new Usuario($resultado->nombre_usuario, null, $resultado->tipo_usuario, $resultado->id_usuario, $resultado->fecha_usuario);
             return $usuario; 
         } else {
             return false;

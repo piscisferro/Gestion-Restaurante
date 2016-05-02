@@ -8,9 +8,6 @@ function iniciarUsuarios(){
     $(".usuarioedit").submit(updateUsuario);
     $(".passwordedit").submit(updatePassword);
     $(".deleteusuario").click(deleteusuario); 
-    
-    
-    
     $(".passwordEditAnchor").click(togglePassword);
     $(".passwordCancelar").click(togglePassword);
  }

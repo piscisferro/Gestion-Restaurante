@@ -1,5 +1,5 @@
 <?php
-// Importamos las clase y Autoloader de Twig
+// Importamos las clase necesarias
 require_once '../../Model/usuario.php';
 
 if (isset($_POST["addusuario"])) {

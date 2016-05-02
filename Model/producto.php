@@ -20,7 +20,7 @@ class Producto {
     
     
     // Constructor donde se construye el objeto y se le asignan los atributos
-    public function __construct($nombre, $tipo, $descripcion, $precio, $imgDir = false, $categoria=1, $fecha=false, $id=null) {
+    public function __construct($nombre=null, $tipo=null, $descripcion=null, $precio=0, $imgDir = false, $categoria=1, $fecha=false, $id=null) {
         $this->nombre = $nombre;
         $this->tipo = $tipo;
         $this->descripcion = $descripcion;
@@ -34,6 +34,13 @@ class Producto {
         } else {
             $this->fecha = $fecha;
         }
+    }
+    
+    // Funcion para construir usando solo el id
+    public static function contructOnlyId ($id) {
+        $producto = new self();
+        $producto->id = $id;
+        return $producto;
     }
     
     /////////////////////////////
