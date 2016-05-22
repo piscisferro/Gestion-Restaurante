@@ -32,17 +32,25 @@ function iniciar(){
     $("#error1").hide();
     $("#error2").hide();
     
-    $(".hidden").hide();
     
+    
+    $(".appCat").click(muestraCatPro);
     $(".editar").click(toggleEdit);
     $(".cancelar").click(toggleCancelar);
     $(".despliegaCat").click(toggleDesplegarCategoria);
     $(".despliegaPro").click(toggleDesplegarProducto);
     
-    iniciarUsuarios();
-    iniciarCategorias();
-    iniciarProductos();
-    iniciarApp();
+    hideAll();
+}
+
+
+///////////////////////////////////////////////////////////////////////
+//////  Funcion hideAll para esconder todas las clases hidden
+///////////////////////////////////////////////////////////////////////
+function hideAll() {
+    
+    $(".hidden").hide();
+    
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -81,5 +89,18 @@ function toggleDesplegarCategoria() {
 ///////////////////////////////////////////////////////////////////////
 function toggleDesplegarProducto() {
     $(this).closest("li").find(".unhidePro").toggle(200);
+    
+}
+
+//////////////////////////////////////////////////////////////////////
+//////
+//////  Funcion mostrar los productos de la categoria seleccionada
+//////
+//////////////////////////////////////////////////////////////////////
+function muestraCatPro() {
+    
+    var idCat = $(this).attr("id");
+    hideAll();
+    $("." + idCat).show();
     
 }

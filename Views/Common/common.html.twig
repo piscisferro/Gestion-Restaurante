@@ -8,24 +8,22 @@
         <script type="text/javascript" src="../../Views/js/jquery.js"></script>
         <script type="text/javascript" src="../../Views/js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="../../Views/js/jquery.validate.min.js"></script>
-        <script type="text/javascript" src="../../Views/js/usuario.js"></script>
-        <script type="text/javascript" src="../../Views/js/categoria.js"></script>
-        <script type="text/javascript" src="../../Views/js/producto.js"></script>
-        <script type="text/javascript" src="../../Views/js/app.js"></script>
+        {% block header %}
+        {% endblock %}
         <script type="text/javascript" src="../../Views/js/javascript.js"></script>
     </head>
     <body>
         <div class="container">
             <header>
-                <h2 class="tituloHeader">Gestion Restaurante</h2>
-                <div><a href="../../Controller/logout.php">Log-out</a></div>
+                <h2 class="tituloHeader">Mi Restaurante</h2>
+                <div class="logout"><a href="../../Controller/logout.php">Log-out</a></div>
             </header>
-            
+            <section class="contenido">
             {% block contenido %}
             {% endblock %}
-                
+            </section>
             <footer>
-                <p class="autor">Pagina creada por: <em>Juan Jose Fernandez Romero</em></p>    
+                <p class="autor">Aplicación creada por: <em>Juan Jose Fernandez Romero</em></p>    
             </footer>
         </div>
     </body>

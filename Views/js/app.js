@@ -1,38 +1,20 @@
+$(document).ready(iniciarApp);
+
 /////////////////////////////////////////////////////////////
 //////
 //////  Funcion para inicializar las funcionalidades.
 //////
 ////////////////////////////////////////////////////////////
 function iniciarApp() {
-    $(".appCat").click(muestraCatPro);
     $(".añadirCarrito").click(añadirCarrito);
     $("#botonPedir").attr("disabled", true);
     $("#botonPagar").hide();
     $("#botonPagar").click(hacerPago);
     $("#botonPedir").click(hacerPedido);
-    hideAll();
     getPedido();
 }
 
-///////////////////////////////////////////////////////////////////////
-//////  Funcion para dejar de mostrar los elementos con clase hidden
-///////////////////////////////////////////////////////////////////////
-function hideAll() {
-    $(".hidden").hide();
-}
 
-//////////////////////////////////////////////////////////////////////
-//////
-//////  Funcion mostrar los productos de la categoria seleccionada
-//////
-//////////////////////////////////////////////////////////////////////
-function muestraCatPro() {
-    
-    var idCat = $(this).attr("id");
-    hideAll();
-    $("." + idCat).show();
-    
-}
 
 //////////////////////////////////////////////////////////////////////
 //////
@@ -41,15 +23,22 @@ function muestraCatPro() {
 //////////////////////////////////////////////////////////////////////
 function añadirCarrito() {
     // Variable con el contenido del li que crearemos
-    var contenido = $(this).closest("li").find("p").html();
+    var contenido = $(this).closest("li").find(".contenidoProducto").html();
     // Variable con el id del producto para el li que crearemos
     var id = $(this).closest("li").attr("id");
+    // Variable con el contenido del li que crearemos
+    var precio = $(this).closest("li").find(".precioProducto").html();
     // Variable con el icono de borrar
     var imgdel = '<img class="icon borrarCarrito" src="../../Views/img/borrar.ico">';
     // Variable con el elemento para crear
     var li = $("<li data-id='" + id + "'>" + contenido + imgdel + "</li>");
     // Añadimos el elemento al carrito
     $("#listaCarrito").append(li);
+    
+    // Recogemos el precio total actual del carrito
+    var total = $("#totalCarrito").text();
+    // Actualizamos el precio total del carrito
+    $("#totalCarrito").text(parseInt(total) + parseInt(precio));
     // Activamos el boton pedir
     $("#botonPedir").attr("disabled", false);
     // Le damos a las imagenes de clase borrarCarrito la funcion click.
@@ -125,6 +114,11 @@ function hacerPedido() {
     $("#listaCarrito").empty();
 }
 
+//////////////////////////////////////////////////////////////////////
+//////
+//////  Consulta Ajax para pedir el pago
+//////
+//////////////////////////////////////////////////////////////////////
 function hacerPago() {
     
     $.post("../../Controller/App/hacerPago.php", { hacerpago : true }, function(data) {

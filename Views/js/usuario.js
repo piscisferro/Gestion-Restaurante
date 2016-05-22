@@ -1,3 +1,5 @@
+$(document).ready(iniciarUsuarios);
+
 /////////////////////////////////////////////////////////////
 //////
 //////  Funcion para inicializar las funcionalidades.

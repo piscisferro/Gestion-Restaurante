@@ -1,4 +1,20 @@
 <?php
+session_start();
+
+require_once '../../Model/pedido.php';
+require_once '../Twig/lib/Twig/Autoloader.php';
+
+// Inicializamos Twig
+Twig_Autoloader::register();
+$loader = new Twig_Loader_Filesystem(__DIR__.'/../../Views');
+$twig = new Twig_Environment($loader); 
+
+if ($_SESSION["logado"] != true) {
+    header("Location: logout.php");
+}
+
+$data["datos"] = Pedido::getProductosPorServir();
+
+echo $twig->render('Cocina/Cocina.html.twig', $data);
 
 ?>
-<a href="../logout.php">Log out</a>

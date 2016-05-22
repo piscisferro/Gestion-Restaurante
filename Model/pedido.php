@@ -83,7 +83,7 @@ class Pedido {
         $conexion = restDB::connectDB();
         
         // Sentencia Insert
-        $insert = "INSERT INTO pedido (fecha_pedido, id_usuario, abierto_pedido) VALUES (STR_TO_DATE(\"$this->fecha\", '%d-%m-%Y'), '$this->usuario', '$this->abierto')";
+        $insert = "INSERT INTO pedido (fecha_pedido, usuario_pedido, abierto_pedido) VALUES (STR_TO_DATE(\"$this->fecha\", '%d-%m-%Y'), '$this->usuario', '$this->abierto')";
         
         // Ejecutamos la sentencia y guardamos la respuesta de la BD
         $resultado = $conexion->query($insert);
@@ -140,6 +140,25 @@ class Pedido {
         return $resultado;
     }
     
+    ///////////////////////////////////
+    //    Método cerrarPedido
+    //////////////////////////////////
+    public static function cerrarPedido($id) {
+        
+        // Establecemos conexion con la BD
+        $conexion = restDB::connectDB();
+        
+        // Sentencia para hacer el update en la base de datos
+        $update = "UPDATE pedido SET abierto_pedido='C' WHERE id_pedido = $id";
+        
+        // Ejecutamos la sentencia y guardamos la respuesta de la BD
+        $resultado = $conexion->query($update);
+        
+        // Devolvemos la respuesta de la BD
+        return $resultado;
+        
+    }
+    
     
     ///////////////////////////////////
     //    Método getUltimoPedido 
@@ -150,7 +169,7 @@ class Pedido {
         $conexion = restDB::connectDB();
         
         // Sentencia Select
-        $select = "SELECT * FROM pedido WHERE id_usuario = $usuario AND abierto_pedido = 'A'";
+        $select = "SELECT * FROM pedido WHERE usuario_pedido = $usuario AND abierto_pedido = 'A'";
         
         // Ejecutamos la sentencia
         $consulta = $conexion->query($select);
@@ -163,7 +182,7 @@ class Pedido {
         }
         
         // Craemos un nuevo objeto y lo guardamos en la variable resultado
-        $resultado = new Pedido($registro->id_pedido, $registro->id_usuario, $registro->abierto_pedido);
+        $resultado = new Pedido($registro->id_pedido, $registro->usuario_pedido, $registro->abierto_pedido);
         
         // Devolvemos resultado
         return $resultado;
@@ -196,9 +215,92 @@ class Pedido {
         $this->productos = $productos;
     }
     
+    ///////////////////////////////////
+    //    Método getProductosPorServir 
+    //////////////////////////////////
+    public static function getProductosPorServir() {
+        
+        // Establecemos conexion con la BD
+        $conexion = restDB::connectDB();
+        
+        // Sentencia Select
+        $select = "SELECT * FROM pedido JOIN detpedido ON id_pedido = pedido_detpedido JOIN producto ON id_producto = producto_detpedido JOIN usuario ON usuario_pedido = id_usuario WHERE servido_detpedido = 0 ORDER BY fecha_detpedido DESC";
+        
+        // Ejecutamos la sentencia
+        $consulta = $conexion->query($select);
+        
+        $data = [];
+        $resultado = [];
+        
+        // Recorremos todas las filas devueltas por la consulta
+        while ($registro = $consulta->fetchObject()) {
+            // Guardamos los productos en un array
+            $data["detpedido"] = $registro->id_detpedido;
+            $data["producto"] = $registro->nombre_producto;
+            $data["usuario"] = $registro->nombre_usuario;
+            $resultado[] = $data;
+        }
+        
+        return $resultado;
+        
+    }
+    
+    ///////////////////////////////////
+    //    Método setServidoDetPedido
+    //////////////////////////////////
+    public static function setServidoDetPedido($id) {
+        
+        // Establecemos conexion con la BD
+        $conexion = restDB::connectDB();
+        
+        // Sentencia para hacer el update en la base de datos
+        $update = "UPDATE detpedido SET servido_detpedido=1 WHERE id_detpedido = $id";
+        
+        // Ejecutamos la sentencia y guardamos la respuesta de la BD
+        $resultado = $conexion->query($update);
+        
+        // Devolvemos la respuesta de la BD
+        return $resultado;
+        
+    }
     
     
-    
+    ///////////////////////////////////
+    //    Método getPedidosAbiertos 
+    //////////////////////////////////
+    public static function getPedidosAbiertos() {
+        
+        // Establecemos conexion con la BD
+        $conexion = restDB::connectDB();
+        
+        // Sentencia Select
+        $select = "SELECT * FROM pedido JOIN detpedido ON id_pedido = pedido_detpedido JOIN usuario ON usuario_pedido = id_usuario JOIN producto ON producto_detpedido = id_producto WHERE abierto_pedido = 'A' OR abierto_pedido = 'P' ORDER BY id_usuario";
+        
+        $select = "SELECT * FROM pedido LEFT JOIN detpedido ON id_pedido = pedido_detpedido LEFT JOIN usuario ON usuario_pedido = id_usuario LEFT JOIN producto ON producto_detpedido = id_producto WHERE abierto_pedido = 'A' OR abierto_pedido = 'P' UNION SELECT * from pedido JOIN detpedido ON id_pedido = pedido_detpedido JOIN usuario ON usuario_pedido = id_usuario JOIN producto ON producto_detpedido = id_producto WHERE abierto_pedido = 'A' OR abierto_pedido = 'P' ORDER BY id_usuario";
+        // Ejecutamos la sentencia
+        $consulta = $conexion->query($select);
+        
+        $data = [];
+        $resultado = [];
+        
+        // Recorremos todas las filas devueltas por la consulta
+        while ($registro = $consulta->fetchObject()) {
+            // Guardamos los productos en un array
+            $data["pedido"] = $registro->id_pedido;
+            $data["iddetpedido"] = $registro->id_detpedido;
+            $data["producto"] = $registro->nombre_producto;
+            $data["precio"] = $registro->precio_producto;
+            $data["idusuario"] = $registro->id_usuario;
+            $data["usuario"] = $registro->nombre_usuario;
+            $data["tipousuario"] = $registro->tipo_usuario;
+            
+            $resultado[] = $data;
+        }
+        
+        // Devolvemos resultado
+        return $resultado;
+        
+    }
     
     
 }

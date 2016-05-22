@@ -1,4 +1,12 @@
 {% extends "Common/common.html.twig" %}
+
+
+{% block header %}
+<script type="text/javascript" src="../../Views/js/app.js"></script>
+{% endblock %}
+
+
+
 {% block contenido %}
 <navbar>
     <ul>
@@ -17,7 +25,7 @@
     {% if producto.categoria == categoria.id %}
     <li id="{{ producto.id }}">
         <div><img class="imgProducto"  src="{{ producto.imgDir}}"></div>
-        <div><p>{{ producto.nombre }} {{producto.precio}}€</p></div>
+        <div class="contenidoProducto"><span class="nombreProducto">{{ producto.nombre }}</span><span><span class="precioProducto">{{producto.precio}}</span>€</span></div>
         <button class="añadirCarrito">Añadir</button>
     </li>
     {% endif %}
@@ -32,9 +40,9 @@
     
 
     </ul>
+    <div>Total: <span id="totalCarrito">0</span>€</div>
     <button id="botonPedir">Pedir</button>
 </div>
-
 <!-- Aqui va el pedido -->
 <div id="pedido">
 

@@ -1,3 +1,5 @@
+$(document).ready(iniciarCategorias);
+
 /////////////////////////////////////////////////////////////
 //////
 //////  Funcion para inicializar las funcionalidades.

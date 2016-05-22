@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // Importamos Autoloader de Twig
 require_once '../Twig/lib/Twig/Autoloader.php';
 // Inicializamos Twig

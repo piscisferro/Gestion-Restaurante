@@ -16,6 +16,7 @@
         </div>
    </li>
     {% for usuario in usuarios %}
+    {% if usuario.tipo != "barra" %}
     <li id="{{usuario.id}}">
         <div class="toggle usuario">
             <span>{{usuario.nombre}}</span>
@@ -48,5 +49,6 @@
             </form>
         </div>
     </li>
+    {% endif %}
     {% endfor %}
 </ul>

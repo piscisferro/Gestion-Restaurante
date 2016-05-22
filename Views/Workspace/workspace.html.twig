@@ -1,0 +1,42 @@
+{% extends "Common/common.html.twig" %}
+
+{% block header %}
+<script type="text/javascript" src="../../Views/js/workspace.js"></script>
+{% endblock %}
+
+{% block contenido %}
+<navbar>
+    <div>
+        <ul>
+            {% for usuariobarra in usuarios %}
+            <li data-id="{{ usuariobarra.id }}" class="muestraPedido">{{ usuariobarra.nombre }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <ul>
+            {% set usuarioNombre = "" %}
+            {% for dato in datos %}
+            {% if dato.tipousuario != "barra" %}
+            {% if usuarioNombre != dato.usuario %}
+            {% set usuarioNombre = dato.usuario %}
+            <li data-id="{{ dato.idusuario }}" class="muestraPedido">{{ dato.usuario }}</li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</navbar>
+
+<div id="pedidos">
+{% include 'Workspace/pedidoWS.html.twig' %}
+</div>
+
+<div id="modal" class="hiddenWS">
+<div class="backModal"></div>
+<div>
+{% include 'Workspace/modalProductos.html.twig' %}
+</div>
+</div>
+
+{% endblock %}

@@ -215,5 +215,30 @@ class Usuario {
         // Devolvemos resultado
         return $resultado;
     } 
+    
+    ///////////////////////////////////////
+    //    Método Consulta Usuarios Barra
+    //////////////////////////////////////
+    public static function getUsuariosBarra() {
+        // Conectamos a la BD
+        $conexion = restDB::connectDB();
+        // Sentencia SELECT
+        $seleccion = "SELECT * FROM usuario WHERE tipo_usuario LIKE '%barra%'";
+        // Ejecutamos la consulta
+        $consulta = $conexion->query($seleccion);
+        
+        // Inicializamos el array que contendra el resultado de la consulta
+        $resultado = [];
+        
+        // Guardamos todos los resultados en el array resultado
+        while ($registro = $consulta->fetchObject()) {
+            $resultado[] = new Usuario($registro->nombre_usuario, null, $registro->tipo_usuario, $registro->id_usuario, $registro->fecha_usuario);
+        }
+        
+        // Devolvemos resultado
+        return $resultado;
+    } 
+    
+    
 }
     

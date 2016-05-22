@@ -1,0 +1,99 @@
+.container {
+
+    position: relative !important;
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    margin-top: 100px !important;
+    
+}
+
+.divvideo {
+
+    z-index: -1;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    top: 0px;
+    max-height: 720px;
+    
+}
+
+#filtro {
+    
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(100, 100, 100);
+    opacity: 0.75;
+}
+
+
+#video {
+    
+    width: 100%;
+    
+}
+
+video {
+    
+    width: 100%;
+    
+}
+
+.login {
+    
+    display: inline-block; 
+    margin: 10% auto;
+    text-align: center;
+    align-self: center;
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 20%;
+    min-width: 250px;
+    border: 10px solid black;
+    border-radius: 40px;
+    
+}
+
+h2 {
+    
+    text-align: center;
+    margin: 10px 0;
+    
+}
+
+form {
+    
+    margin: 15px auto 50px auto;
+    
+}
+
+input {
+    
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 4px;
+    text-align: center;
+}
+
+input[type=submit] {
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+@media (max-width: 900px) {
+    
+    .divvideo {
+        display: none;
+    }
+    
+    .login {
+        margin-top: 0%;
+    }
+    
+}

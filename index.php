@@ -1,11 +1,3 @@
-<!-- Aqui estara la pantalla de login, dependiendo quien se 
-loguee se redirigira a un sitio u otro. Si es cocinero se
-redireccionara a cocina, si es usuario se redireccionara a 
-users.php, si es admin a views.php 
-
-Tambien se incluira un video de comida en el fondo mientras se loguea-->
-
-
 <?php 
 // Empezamos la sesion
 session_start();
@@ -24,19 +16,28 @@ if ($_SESSION['logado'] == true) {
 require_once "Model/usuario.php";
 
 ?>
-<!DOCTYPE html>
-<html lang="">
+<html lang="es">
     <head>
         <title>Log-In</title>
         <meta name="Author" content="Juan Jose Fernandez Romero"/>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="Views/css/style.css">
+        <link rel="stylesheet" type="text/css" href="Views/css/login.css">
     </head>
     <body>
         <div class="container">
-            <div class="video"></div>
+            <div class="divvideo">
+                <div id="filtro"></div>
+                <div id="video">
+                    <video loop muted autoplay> 
+                        <source src="Views/img/VideoRestaurante.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+                        <source src="Views/img/VideoRestaurante.mp4" type='video/ogg; codecs="theora, vorbis"'>
+                        <source src="Views/img/VideoRestaurante.mp4" type='video/webm; codecs="vp8, vorbis"'>
+                    </video>
+                </div>
+            </div>
             <div class="login">
-                <h3>Log In</h3>
+                <h2>Log In</h2>
                 <form action="Controller/logueo.php" method="post">
                     <p>Usuario:</p> 
                     <input type="text" name="usuario" placeholder="usuario" autofocus required>

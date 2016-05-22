@@ -1,0 +1,31 @@
+{% set usuarioNombre = "" %}
+{% for dato in datos %}
+{% if usuarioNombre != dato.usuario %}
+{% set usuarioNombre = dato.usuario %}
+<div id="{{ dato.idusuario }}" class="hiddenWS" data-idusuario="{{ dato.idusuario }}" data-idpedido="{{ dato.pedido }}">
+   <h2>{{ dato.usuario }}</h2>
+      <ul>
+         <li class="abrirModal">
+             <button>Añadir Producto</button>
+          </li>
+         {% set total = 0 %}
+         {% for producto in datos %}
+         {% if producto.usuario == dato.usuario %}
+         <li data-iddetpedido="{{ dato.iddetpedido }}">
+             <span>{{ producto.producto }}</span>
+             <span>{{ producto.precio }}</span>  
+         </li>
+         {% set total = total + producto.precio %}
+         {% endif %}
+         {% endfor %}
+         <li>
+            <span>Total</span>
+            <span>{{ total }}€</span>
+         </li>
+         <li>
+            <button class="cerrarPedido">Cerra Pedido</button>
+         </li>
+      </ul>
+</div>
+{% endif %}
+{% endfor %}
