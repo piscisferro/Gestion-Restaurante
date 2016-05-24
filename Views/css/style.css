@@ -21,13 +21,17 @@ h1, h2, h3, h4, h5 {
 .container {
     padding: 0;
     width: 90%;
+    height: 100%;
     margin: 0 auto;
+    border: 1px solid black;
 }
 
 header {
     
+    display: flex;
+    align-items: center;
     height: 100px;
-    background: white;
+    background: linear-gradient(to bottom, #292929 0%, #efefef 30%, #efefef 60%, #292929 100%);
     width: 100%;
     margin: 25px auto;
     border-top: 5px solid black;
@@ -36,16 +40,45 @@ header {
     
 }
 
+footer {
+    
+    height: 50px;
+    border: 1px solid black;
+    background: linear-gradient(to bottom, #292929 0%, #efefef 30%, #efefef 60%, #292929 100%);
+    
+}
+
+ul {
+    
+    list-style: none;
+    margin: 0;
+}
+
+.autor {
+    float: right;
+    margin-right: 10px;
+}
+
 .contenido {
     
-    margin: 25px auto;
+    margin: 25px auto 0 auto;
+    
+}
+
+.tituloHeader {
+    
+    width: 100%;
     
 }
 
 .logout {
     
-    float: right;
+    display: flex;
+    width: 100%;
+    align-self: flex-end;
+    justify-content: flex-end;
     margin-right: 50px;
+    margin-bottom: 10px;
 }
 
 

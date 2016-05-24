@@ -1,5 +1,5 @@
-<ul>
-    <li>
+<ul class="categorias">
+    <li class="categoria addCategoria">
         <div class="toggle editar"><img class="icon" src="../../Views/img/añadir.png"> Añadir Categoria</div>
         <div class="toggle hidden">
             <form id="newCat" method="post" enctype="multipart/form-data"> 
@@ -12,8 +12,8 @@
     </li>
     
     {% for categoria in categorias %}
-    <li id="{{ categoria.id }}">
-       <div class="toggle despliegaCat">
+    <li class="categoria" id="{{ categoria.id }}">
+       <div class="toggle despliegaCat headerCategoria">
            {{ categoria.nombre }} 
            <img class="imgCategoria" src="{{ categoria.imgDir }}"> 
            <img class="icon editar" src="../../Views/img/editar.png">
@@ -29,8 +29,8 @@
                 <button class="cancelar">Cancelar</button>
             </form>
         </div>
-        <ul class="hidden unhideCat">
-            <li>
+        <ul class="hidden unhideCat productos">
+            <li class="producto">
                 <div class="toggle editar"><img class="icon" src="../../Views/img/añadir.png"> Añadir Producto</div>
                 <div class="toggle hidden">
                     <form class="addProducto" method="post" enctype="multipart/form-data">
@@ -55,7 +55,7 @@
             </li>
             {% for producto in productos %}
             {% if producto.categoria == categoria.id %}
-            <li id="{{ producto.id }}">
+            <li class="producto" id="{{ producto.id }}">
                 <div class="toggle despliegaPro">
                     <div>
                         <span>{{producto.nombre}}</span> <span>{{producto.precio}}€</span>
@@ -99,13 +99,5 @@
             {% endfor %}
         </ul>
     </li> 
-    {% endfor %}
-    
-    
-    
-    
-    
-    
-    
-    
+    {% endfor %} 
 </ul>

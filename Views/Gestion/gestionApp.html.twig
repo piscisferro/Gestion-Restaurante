@@ -3,6 +3,7 @@
 <script type="text/javascript" src="../../Views/js/usuario.js"></script>
 <script type="text/javascript" src="../../Views/js/producto.js"></script>
 <script type="text/javascript" src="../../Views/js/categoria.js"></script>
+<link rel="stylesheet" type="text/css" href="../../Views/css/gestionApp.css">
 {% endblock %}
 {% block contenido %}
 <navbar>
@@ -12,10 +13,10 @@
     </ul>
 </navbar>
 
-<div id="success">La consulta ha sido un éxito.</div>
-<div id="error">Error al insertar en base de datos.</div>
-<div id="error1">Error al enviar el formulario.</div>
-<div id="error2">Error desconocido.</div>
+<div class="success" id="success">La consulta ha sido un éxito.</div>
+<div class="error" id="error">Error al insertar en base de datos.</div>
+<div class="error" id="error1">Error al enviar el formulario.</div>
+<div class="error" id="error2">Error desconocido.</div>
 
 <!-- Tools, en esta seccion mostrara las herramientas para ordenar y buscar  -->
 <section>

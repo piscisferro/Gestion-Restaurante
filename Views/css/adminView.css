@@ -1,34 +1,70 @@
 .contenido {
     display: flex;
     padding: 0 10% 0 10%;
-    justify-content: space-around;
-    
+    min-height: 500px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#wrapper {
+    display: flex;
+    width: 100%;
+    border: 1px solid blue;
+    flex-wrap: wrap;
+    flex-grow: 0;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
 }
 
 .modulo {
     
-    width: 150px;
+    width: 140px;
     height: 175px;
-    margin: 0 50px;
+    margin: 25px 50px;
     border: 2px solid black;
     border-radius: 25px;
     box-shadow: 0px 0px 15px 2px black;
     overflow: hidden;
-    padding: 0 5px;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+    transition: all 0.01s;
 }
 
-#primero {
+.underConstruction {
     
-    margin-left: 0;
+    width: 140px;
+    height: 175px;
+    margin: 25px 50px;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+    background-color: grey;
+    opacity: 0.7;
+    
     
 }
 
-#ultimo {
-    margin-right: 0;
+#wrapper>a {
+    
+    text-decoration: none;
+    color: black;
 }
 
 img {
-    display: block;
     width: 140px;
     height: 140px;
+}
+
+.modulo:hover {
+	box-shadow: 0px 0px 15px 2px #ba0000;
+}
+
+.modulo:active {
+    box-shadow: 0px 0px 5px 2px black inset;
+    height: 173px;
+    width: 138px;
+    margin: 26px 51px;
+    
 }

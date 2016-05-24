@@ -1,10 +1,13 @@
 {% extends "Common/common.html.twig" %}
 {% block header %}
 <link rel="stylesheet" type="text/css" href="../../Views/css/adminView.css">
+<script type="text/javascript" src="../../Views/js/adminView.js"></script>
 {% endblock %}
 {% block contenido %}
-<div id="primero" class="modulo"><a href="../../Controller/Gestion/gestionApp.php"><img>Gestion Restaurante</a></div>
-<div class="modulo"><a href="../../Controller/Gestion/gestionFacturas.php"><img>Gestion Facturas</a></div>
-<div class="modulo"><a href="../../Controller/Cocina/cocina.php"><img>Cocina</a></div>
-<div id="primero" class="modulo"><a href="../../Controller/Workspace/workspace.php"><img>Workspace</a></div>
+<div id="wrapper">
+    <a href="../../Controller/Gestion/gestionApp.php"><div class="modulo"><img>Gestion Restaurante</div></a>
+    <div class="underConstruction"><!--<a href="../../Controller/Gestion/gestionFacturas.php">--><img>Gestion Facturas<!--</a>--></div>
+    <a href="../../Controller/Cocina/cocina.php"><div class="modulo"><img>Cocina</div></a>
+    <a href="../../Controller/Workspace/workspace.php"><div class="modulo"><img>Workspace</div></a>
+</div>
 {% endblock %}
