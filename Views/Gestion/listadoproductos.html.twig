@@ -5,7 +5,7 @@
             <form id="newCat" method="post" enctype="multipart/form-data"> 
                 <input type="text" name="newCatNombre" placeholder="Nombre" required autofocus>
                 <input type="file" name="newCatImg">
-                <input type="submit" name="newCategoria" value="Añadir">
+                <input class="aceptar" type="submit" name="newCategoria" value="Añadir">
                 <button class="cancelar">Cancelar</button>
             </form>
         </div>
@@ -13,19 +13,23 @@
     
     {% for categoria in categorias %}
     <li class="categoria" id="{{ categoria.id }}">
-       <div class="toggle despliegaCat headerCategoria">
-           {{ categoria.nombre }} 
-           <img class="imgCategoria" src="{{ categoria.imgDir }}"> 
-           <img class="icon editar" src="../../Views/img/editar.png">
-           <img class="icon deletecat" src="../../Views/img/borrar.ico">
+       <div class="toggle headerCategoria">
+           <div class="despliegaCat infoHeader">
+               <img class="imgCategoria" src="{{ categoria.imgDir }}"> 
+               <span>{{ categoria.nombre }}</span>
+           </div>
+           <div class="iconos">
+               <img class="icon editar" src="../../Views/img/editar.png">
+               <img class="icon deletecat" src="../../Views/img/borrar.ico">
+           </div>
        </div>
-       <div class="toggle hidden">
+       <div class="headerCategoria toggle hidden">
            <form class="editCat" method="post" enctype="multipart/form-data">
                 <input type="text" name="editCatNombre" placeholder="{{ categoria.nombre }}" value="{{ categoria.nombre }}" required autofocus>
                 <input type="file" name="editCatImg">
                 <input type="hidden" name="defaultCatImg" value="{{ categoria.imgDir }}">
                 <input type="hidden" name="editCatId" value="{{ categoria.id }}">
-                <input type="submit" name="editCategoria" value="Editar">
+                <input class="aceptar" type="submit" name="editCategoria" value="Editar">
                 <button class="cancelar">Cancelar</button>
             </form>
         </div>
@@ -47,7 +51,7 @@
                                 <option value="2">Bebida</option>
                                 <option value="3">Postre</option>
                             </select>
-                            <input type="submit" name="newProducto" value="Añadir">
+                            <input class="aceptar" type="submit" name="newProducto" value="Añadir">
                             <button class="cancelar">Cancelar</button>
                         </div>
                     </form>
@@ -57,10 +61,14 @@
             {% if producto.categoria == categoria.id %}
             <li class="producto" id="{{ producto.id }}">
                 <div class="toggle despliegaPro">
-                    <div>
+                    <div class="headerProducto">
+                        <div class="infoHeader">
                         <span>{{producto.nombre}}</span> <span>{{producto.precio}}€</span>
-                        <img class="icon editar" src="../../Views/img/editar.png">
-                        <img class="icon deletePro" src="../../Views/img/borrar.ico">
+                        </div>
+                        <div class="iconosPro">
+                            <img class="icon editar" src="../../Views/img/editar.png">
+                            <img class="icon deletePro" src="../../Views/img/borrar.ico">
+                        </div>
                     </div>
                     <div class="hidden unhidePro">
                         <img class="imgProducto" src="{{producto.imgDir}}">
@@ -89,7 +97,7 @@
                                 <option value="3">Postre</option>
                             </select>
                             <input type="hidden" name="editProId" value="{{ producto.id }}">
-                            <input type="submit" name="editProducto" value="Editar">
+                            <input class="aceptar" type="submit" name="editProducto" value="Editar">
                             <button class="cancelar">Cancelar</button>
                         </div>
                     </form>

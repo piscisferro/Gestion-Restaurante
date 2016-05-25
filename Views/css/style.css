@@ -31,7 +31,7 @@ header {
     display: flex;
     align-items: center;
     height: 100px;
-    background: linear-gradient(to bottom, #292929 0%, #efefef 30%, #efefef 60%, #292929 100%);
+    background: linear-gradient(to bottom, #292929 0%, #efefef 40%, #efefef 65%, #292929 100%);
     width: 100%;
     margin: 25px auto;
     border-top: 5px solid black;
@@ -68,6 +68,7 @@ ul {
 .tituloHeader {
     
     width: 100%;
+    padding-left: 25px;
     
 }
 
@@ -81,12 +82,46 @@ ul {
     margin-bottom: 10px;
 }
 
+button {
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    overflow: hidden;
+    border: 0;
+    
+}
+
+button:active {
+    width: 98px;
+    height: 28px;
+    border: 2px solid grey;
+}
+
+.cancelar {
+    box-shadow: 0px 0px 20px 0px red inset;    
+}
+
+.aceptar {
+    box-shadow: 0px 0px 20px 0px green inset;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    overflow: hidden;
+    border: 0;
+}
+
+.aceptar:active {
+	width: 98px;
+    height: 28px;
+    border: 2px solid grey;
+}
 
 .icon {
     
     width: 20px;
     height: 20px;
     vertical-align: middle;
+    margin: 0 5px;
     
 }
 
