@@ -1,18 +1,15 @@
 .contenido {
     display: flex;
     padding: 0 10% 0 10%;
-    min-height: 500px;
     align-items: center;
     flex-wrap: wrap;
 }
 
+
 #wrapper {
     display: flex;
     width: 100%;
-    border: 1px solid blue;
     flex-wrap: wrap;
-    flex-grow: 0;
-    flex-shrink: 0;
     align-items: center;
     justify-content: center;
 }
@@ -22,13 +19,14 @@
     width: 140px;
     height: 175px;
     margin: 25px 50px;
-    border: 2px solid black;
+    border: 2px solid #212743;
     border-radius: 25px;
     box-shadow: 0px 0px 15px 2px black;
     overflow: hidden;
     padding: 10px 5px 10px 5px;
     text-align: center;
     transition: all 0.01s;
+    background-color: rgba(159, 193, 227, 0.44);
 }
 
 .underConstruction {
@@ -42,8 +40,6 @@
     text-align: center;
     background-color: grey;
     opacity: 0.7;
-    
-    
 }
 
 #wrapper>a {
@@ -58,11 +54,11 @@ img {
 }
 
 .modulo:hover {
-	box-shadow: 0px 0px 15px 2px #ba0000;
+	box-shadow: 0px 0px 15px 2px #4a578b;
 }
 
 .modulo:active {
-    box-shadow: 0px 0px 5px 2px black inset;
+    box-shadow: 0px 0px 5px 2px #4a578b inset;
     height: 173px;
     width: 138px;
     margin: 26px 51px;

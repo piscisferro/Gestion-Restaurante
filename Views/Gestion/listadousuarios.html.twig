@@ -1,51 +1,67 @@
-<ul>
-    <li>
-        <div class="toggle editar"><img class="icon" src="../../Views/img/añadir.png"> Añadir</div>
-        <div class="toggle hidden">
+<ul class="categorias">
+    <li class="categoria addCategoria">
+        <div class="toggle editar"><img class="icon" src="../../Views/img/añadir.png">Añadir Usuario</div>
+        <div class="toggle hidden formUser">
             <form id="usuarioadd" method="post">
-                <input type="text" name="newusuario" placeholder="usuario" required autofocus>
-                <input type="password" name="newpassword" required>
-                <select name="newtipo">
-                    <option value="usuario" selected>Usuario</option>
-                    <option value="cocina">Cocina</option>
-                    <option value="administrador">Administrador</option>
-                </select>
-                <input type="submit" name="addusuario" value="Añadir">
-                <button class="cancelar">Cancelar</button>
+               <div class="infoUserForm">
+                    <input type="text" name="newusuario" placeholder="Usuario" required autofocus>
+                    <input type="password" name="newpassword" placeholder="Contraseña" required>
+                    <select name="newtipo">
+                        <option value="usuario" selected>Usuario</option>
+                        <option value="cocina">Cocina</option>
+                        <option value="administrador">Administrador</option>
+                    </select>
+                </div>
+                <div class="botonesUser">
+                    <input class="aceptar" type="submit" name="addusuario" value="Añadir">
+                    <button class="cancelar">Cancelar</button>
+                </div>
             </form>
         </div>
    </li>
     {% for usuario in usuarios %}
     {% if usuario.tipo != "barra" %}
-    <li id="{{usuario.id}}">
-        <div class="toggle usuario">
-            <span>{{usuario.nombre}}</span>
-            <span><a class="passwordEditAnchor">edit password</a></span>
-            <span>{{usuario.tipo}}</span> 
-            <img class="icon editar" src="../../Views/img/editar.png">
-            <img class="icon deleteusuario" src="../../Views/img/borrar.ico">
+    <li class="categoria" id="{{usuario.id}}">
+        <div class="toggle usuario headerCategoria">
+            <div class="infoHeaderUsuario">
+                <span><strong>Usuario: </strong>{{usuario.nombre}}</span>
+                <span><strong>Contraseña: </strong>{{usuario.tipo}}</span> 
+            </div>
+            <div class="iconosUsuario">
+                <span><a class="passwordEditAnchor">edit password</a></span>
+                <img class="icon editar" src="../../Views/img/editar.png">
+                <img class="icon deleteusuario" src="../../Views/img/borrar.ico">
+            </div>
         </div>
-        <div class="toggle hidden">
+        <div class="toggle hidden headerCategoria">
             <form class="usuarioedit" method="post">
-                <input type="text" name="usuarioEdit" placeholder="{{ usuario.nombre }}" value="{{ usuario.nombre }}" autofocus>
-                <select name="tipoEdit">
+                <div class="infoUserForm">
+                    <input type="text" name="usuarioEdit" placeholder="{{ usuario.nombre }}" value="{{ usuario.nombre }}" autofocus>
+                <strong class="tipo">Tipo: </strong><select name="tipoEdit">
                     <option value="usuario" selected>Usuario</option>
                     <option value="cocina">Cocina</option>
                     <option value="administrador">Administrador</option>
                 </select>
-                <input type="submit" name="editusuario" value="Editar">
-                <input type="hidden" name="idEdit" value="{{usuario.id}}">
-                <button class="cancelar">Cancelar</button>
+                </div>
+                <div class="botonesUser">
+                    <input class="aceptar" type="submit" name="editusuario" value="Editar">
+                    <input type="hidden" name="idEdit" value="{{usuario.id}}">
+                    <button class="cancelar">Cancelar</button>
+                </div>
             </form>
         </div>
-        <div class="passwordToggle hidden">
+        <div class="passwordToggle hidden headerCategoria">
             <form class="passwordedit toggle" method="post">
-                {{ usuario.nombre}}
-                <input type="text" name="passwordEdit" placeholder="Nueva Contraseña" autofocus>
-                <input type="text" name="passwordConfirm" placeholder="Repetir Contraseña">
-                <input type="hidden" name="idEdit" value="{{usuario.id}}">
-                <input type="submit" name="editpassword" value="Editar">
-                <button class="passwordCancelar">Cancelar</button>
+                <div class="infoUserForm">
+                    <strong>{{ usuario.nombre}}</strong>
+                    <input type="text" name="passwordEdit" placeholder="Nueva Contraseña" autofocus>
+                    <input type="text" name="passwordConfirm" placeholder="Repetir Contraseña">
+                </div>
+                <div class="botonesUser">
+                    <input type="hidden" name="idEdit" value="{{usuario.id}}">
+                    <input class="aceptar" type="submit" name="editpassword" value="Editar">
+                    <button class="passwordCancelar">Cancelar</button>
+                </div>
             </form>
         </div>
     </li>

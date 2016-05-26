@@ -58,7 +58,7 @@ function hideAll() {
 ///////////////////////////////////////////////////////////////////////
 function toggleEdit() {
     
-    $(this).closest("li").children(".toggle").toggle(200);
+    $(this).closest("li").children(".toggle").slideToggle(100);
     
 }
 
@@ -69,7 +69,7 @@ function toggleEdit() {
 function toggleCancelar(e) {
     e.preventDefault();
     
-    $(this).closest("li").children(".toggle").toggle(200);
+    $(this).closest("li").children(".toggle").slideToggle(100);
     
 }
 

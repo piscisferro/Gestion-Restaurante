@@ -22,6 +22,7 @@ function getListadoProductos(resultado) {
         $("#listado").html(data);
         
         iniciar();
+        iniciarCategorias();
 
         if (resultado == "error") {
             $("#error").slideDown(200);

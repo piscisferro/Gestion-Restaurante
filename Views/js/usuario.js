@@ -37,6 +37,7 @@ function getListadoUsuarios(resultado) {
         $("#listado").html(data);
         
         iniciar();
+        iniciarUsuarios();
 
         if (resultado == "error") {
             $("#error").slideDown(200);

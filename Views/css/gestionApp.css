@@ -1,11 +1,43 @@
 .contenido {
     min-height: 500px;
     margin-top: 0;
+    background-color: rgb(199, 216, 234);
+}
+
+navbar a {
+    
+    text-decoration: none;
+    color: black;
 }
 
 navbar ul {
-    background-color: rgba(211, 211, 211, 0.75);
-    padding: 25px 0;
+    padding: 5px 0 5px 25px;
+    width: 50%;
+    height: 50px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+navbar ul li {
+    width: 25%;
+    height: 40px;
+    border-top: 2px solid #212743;
+    border-bottom: 2px solid #212743;
+    border-left: 1px solid #212743;
+    border-right: 1px solid #212743;
+    background: linear-gradient(to bottom, #4a578b 0%, #c8dfff 50%, #c8dfff 51%, #4a578b 100%);
+    box-shadow: 0px 0px 10px 0px #4a578b;
+    padding: 0;
+}
+
+navbar ul li a {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 header {
@@ -40,7 +72,6 @@ header {
 
 img {
     margin: 0 5px;
-    
 }
 
 .categorias {
@@ -52,33 +83,58 @@ img {
     display: flex;
     align-items: center;
     padding-left: 10px;
-    background: linear-gradient(to bottom, rgba(41, 41, 41, 0.8) 0%, rgba(211, 211, 211, 0.75) 40%, rgba(211, 211, 211, 0.75) 65%, rgba(42, 42, 42, 0.8) 100%);
+    background: linear-gradient(to bottom, #4a578b 0%, #eef5ff 35%, #eef5ff 60%, #4a578b 100%);
     border-top: 2px solid black;
     border-bottom: 2px solid black;
 }
 
+form {
+    width: 100%;
+}
+
+.formCat {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.infoCatForm {
+    display: inline-flex;
+    width: 75%;
+}
+
+.botonesCat {
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 20%;
+}
+
+.botonesCat input {
+    margin-right: 10px;
+}
+
 .categoria {
     min-height: 50px;
-    background-color: rgba(211, 211, 211, 0.75);
+    background-color: #9fc1e3;
 }
 
 .headerCategoria {
     padding-left: 10px;
     height: 50px;
-    background: linear-gradient(to bottom, rgba(41, 41, 41, 0.8) 0%, rgba(211, 211, 211, 0.75) 40%, rgba(211, 211, 211, 0.75) 65%, rgba(42, 42, 42, 0.8) 100%);
+    background: linear-gradient(to bottom, #4a578b 0%, #eef5ff 35%, #eef5ff 60%, #4a578b 100%);
     border-bottom: 2px solid black;
-    box-shadow: 0px 0px 15px 0px black;
+    box-shadow: 0px 0px 5px 0px #4a578b;
     display: flex;
     align-items: center;
 }
 
 .infoHeader {
-    width: 80%;
+    width: 95%;
 }
 
 .iconos {
     display: flex;
-    width: 20%;
+    width: 5%;
     align-items: center;
     align-self: flex-end;
     height: 50px;
@@ -89,19 +145,20 @@ img {
     padding: 0;
     list-style: circle;
     list-style-position: inside;
-    box-shadow: 0px 0px 15px 0px black inset;
+    box-shadow: 0px 0px 10px 0px #4a578b inset;
     
 }
 
 .producto {
     padding: 10px 0 10px 25px;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid rgba(74, 87, 139, 0.6);
     border-bottom-right-radius: 8px;
 }
 
 .headerProducto {
 	display: inline-flex;
-    min-height: 30px;
+    width: 95%;
+    height: 100%;
     align-items: center;
 }
 
@@ -112,4 +169,151 @@ img {
     align-self: flex-end;
     height: 30px;
     justify-content: flex-end;
+}
+
+.infoProducto {
+    padding-top: 15px; 
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.infoPro2 {
+    display: inline-block;
+    align-self: center;
+    width: 80%;
+    
+}
+
+.infoPro2 p {
+    width: 100%;
+}
+
+.infoForm {
+    display: flex;
+    align-items: center;
+    width: 60%;
+}
+
+
+.imgProDiv {
+    display: inline-flex;
+    margin-right: 25px;
+    align-items: center;
+    width: 20%;
+    
+}
+
+.imgForm {
+    display: inline-flex;
+    margin-right: 25px;
+    align-items: center;
+    width: 20%;
+}
+
+.descForm {
+    display: inline-flex;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.descForm p {
+    display: flex;
+    width: 100%;
+    margin: 0 0;
+    align-self: flex-end;
+}
+
+.descForm input {
+    display: block;
+    width: 100%;
+    height: 75px;
+	
+}
+
+.otrosForm {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 25px;
+}
+
+.otrosForm p {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.botones {
+    display: inline-flex;
+    width: 20%;
+    padding-right: 25px;
+    align-self: flex-end;
+    justify-content: flex-end;
+}
+
+.botones input {
+    margin-right: 10px;
+}
+
+/***********************************/
+/***********************************/
+/*********   Usuario   *************/
+/***********************************/
+/***********************************/
+
+.formUser {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.infoUserForm {
+    display: inline-flex;
+    align-items: center;
+    width: 75%;
+}
+
+.infoUserForm input {
+    margin-left: 5px;
+    margin-right: 20px;
+}
+
+.infoUserForm strong {
+    margin-left: 5px;
+    margin-right: 20px;
+}
+
+.botonesUser {
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 23%;
+}
+
+.botonesUser input {
+    margin-right: 10px;
+}
+
+
+.infoHeaderUsuario {
+    width: 85%;
+}
+
+.infoHeaderUsuario span{
+	margin-left: 5px;
+    margin-right: 20px;
+}
+
+.iconosUsuario {
+    display: flex;
+    width: 15%;
+    align-items: center;
+    align-self: flex-end;
+    height: 50px;
+    justify-content: flex-end;
+}
+
+.passwordCancelar {
+    box-shadow: 0px 0px 20px 0px red inset; 
 }
