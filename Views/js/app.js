@@ -11,6 +11,8 @@ function iniciarApp() {
     $("#botonPagar").hide();
     $("#botonPagar").click(hacerPago);
     $("#botonPedir").click(hacerPedido);
+
+    hideAll();
     getPedido();
 }
 
@@ -74,6 +76,7 @@ function getPedido() {
         
         // Borramos la lista que hubiera para actualizarla
         $("#pedido").find("ul").remove();
+        $("#pedido").find("#totalPedido").remove();
         
         // Insertamos la informacion (en html) al principio del div
         $("#pedido").prepend(data);
@@ -93,25 +96,51 @@ function getPedido() {
 //////////////////////////////////////////////////////////////////////
 function hacerPedido() {
     
-    var productos = [];
+    // Creamos el dialog
+    var dialog = $("<div>¿Quiere realizar el Pedido?</div>");
     
-    $("#listaCarrito").children().each(function() {
-        productos.push($(this).data("id"));
+    //////////////
+    // DIALOG
+    //////////////
+    $(dialog).dialog({
+        autoOpen: true,
+        resizable: false, 
+        height: 150, 
+        modal: true, 
+        buttons: {
+            "Confirmar": function () {
+                var productos = [];
+    
+                $("#listaCarrito").children().each(function() {
+                    productos.push($(this).data("id"));
+                });
+
+                var idpedido = $("#listaPedido").data("idpedido");
+
+                if (idpedido == false) {
+
+                    $.post("../../Controller/App/addPedido.php", { newpedido : true });
+                }
+
+                $.post("../../Controller/App/addDetPedido.php", { newdetpedido : true, productos : productos }, function(){
+                    getPedido();
+                });
+
+                // Borramos la lista que hubiera para actualizarla
+                $("#listaCarrito").empty();
+                $("#totalCarrito").text(0);
+                
+                $(this).dialog("close");
+            },
+            
+            "Cancelar": function () {
+                $(this).dialog("close");
+            }
+        }, 
+        close: function(){ 
+            $(dialog).remove();
+        }
     });
-    
-    var idpedido = $("#listaPedido").data("idpedido");
-    
-    if (idpedido == false) {
-        
-        $.post("../../Controller/App/addPedido.php", { newpedido : true });
-    }
-    
-    $.post("../../Controller/App/addDetPedido.php", { newdetpedido : true, productos : productos }, function(){
-        getPedido();
-    });
-    
-    // Borramos la lista que hubiera para actualizarla
-    $("#listaCarrito").empty();
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -121,11 +150,33 @@ function hacerPedido() {
 //////////////////////////////////////////////////////////////////////
 function hacerPago() {
     
-    $.post("../../Controller/App/hacerPago.php", { hacerpago : true }, function(data) {
-        if (data) {
-            window.location.href = "../../Views/App/acaja.html";
+    // Creamos el dialog
+    var dialog = $("<div>¿Quiere realizar el Pago?</div>");
+    
+    //////////////
+    // DIALOG
+    //////////////
+    $(dialog).dialog({
+        autoOpen: true,
+        resizable: false, 
+        height: 150, 
+        modal: true, 
+        buttons: {
+            "Confirmar": function () {
+                $.post("../../Controller/App/hacerPago.php", { hacerpago : true }, function(data) {
+                    if (data) {
+                        window.location.href = "../../Views/App/acaja.html";
+                    }
+                });
+                $(this).dialog("close");
+            },
+            
+            "Cancelar": function () {
+                $(this).dialog("close");
+            }
+        }, 
+        close: function(){ 
+            $(dialog).remove();
         }
     });
-    
-    
 }

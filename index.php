@@ -10,7 +10,7 @@ if (!isset($_SESSION['logado'])) {
 // Si entramos y ya estamos logueados nos redirigira al controlador logueo.php
 // Ahi determinaremos que tipo de logueo tiene el usuario.
 if ($_SESSION['logado'] == true) {
-    header("Location: Controller/Views/views.php");
+    header("Location: Controller/Views/views.php"); 
 }
 
 require_once "Model/usuario.php";

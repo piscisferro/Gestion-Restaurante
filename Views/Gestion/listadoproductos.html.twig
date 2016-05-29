@@ -1,6 +1,6 @@
 <ul class="categorias">
     <li class="categoria addCategoria">
-        <div class="toggle editar"><img class="icon" src="../../Views/img/añadir.png"> Añadir Categoria</div>
+        <div class="toggle editar"><div class="pointer"><img class="icon" src="../../Views/img/añadir.png"> Añadir Categoria</div></div>
         <div class="toggle hidden formCat">
             <form id="newCat" method="post" enctype="multipart/form-data"> 
                 <div class="infoCatForm">
@@ -43,7 +43,7 @@
         </div>
         <ul class="hidden unhideCat productos">
             <li class="producto">
-                <div class="toggle editar"><img class="icon" src="../../Views/img/añadir.png"> Añadir Producto</div>
+                <div class="toggle editar"><div class="pointer"><img class="icon" src="../../Views/img/añadir.png"> Añadir Producto</div></div>
                 <div class="toggle hidden">
                     <form class="addProducto" method="post" enctype="multipart/form-data">
                         <div class="headerProducto">
@@ -58,7 +58,7 @@
                                <div class="descForm">
                                    <p>Descripcion:</p>
                                    <p>
-                                        <input type="textarea" name="newProDesc" placeholder="Descripcion">
+                                       <textarea name="newProDesc" placeholder="Descripcion"></textarea>
                                    </p>
                                </div>
                                <div class="otrosForm">
@@ -86,7 +86,7 @@
                 <div class="toggle despliegaPro">
                     <div class="headerProducto">
                         <div class="infoHeader">
-                        <span>{{producto.nombre}}</span> <span>{{producto.precio}}€</span>
+                        <span>{{producto.nombre}}</span> <span class="precio">{{producto.precio}}€</span>
                         </div>
                         <div class="iconosPro">
                             <img class="icon editar" src="../../Views/img/editar.png">
@@ -116,22 +116,30 @@
                                <div class="descForm">
                                    <p>Descripcion:</p>
                                    <p>
-                                       <input type="textarea" name="editProDesc" rows="5" placeholder="{{producto.descripcion}}" value="{{ producto.descripcion}}">
+                                       <textarea name="editProDesc" placeholder="{{producto.descripcion}}" >{{ producto.descripcion}}</textarea>
                                    </p>
                                 </div>
                                 <div class="otrosForm">
                                     <p>
                                     Categoria: <select name="editProCat">
                                        {% for categoria in categorias %}
+                                       {% if categoria.id == producto.categoria %}
+                                       <option value="{{categoria.id}}" selected>{{ categoria.nombre}}</option>
+                                       {% else %}
                                        <option value="{{categoria.id}}">{{ categoria.nombre}}</option>
+                                       {% endif %}
                                        {% endfor %}
                                     </select>
                                     </p>
                                     <p>
                                     Tipo: <select name="editProTipo">
-                                        <option value="1" selected>Comida</option>
-                                        <option value="2">Bebida</option>
-                                        <option value="3">Postre</option>
+                                       {% for tipo in tiposProducto %}
+                                       {% if tipo.nombre == producto.tipo %}
+                                        <option value="{{tipo.id}}" selected>{{tipo.nombre}}</option>
+                                       {% else %}
+                                        <option value="{{tipo.id}}">{{tipo.nombre}}</option>
+                                        {% endif %}
+                                        {% endfor %}
                                     </select>
                                     </p>
                                 </div>

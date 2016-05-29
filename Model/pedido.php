@@ -224,7 +224,7 @@ class Pedido {
         $conexion = restDB::connectDB();
         
         // Sentencia Select
-        $select = "SELECT * FROM pedido JOIN detpedido ON id_pedido = pedido_detpedido JOIN producto ON id_producto = producto_detpedido JOIN usuario ON usuario_pedido = id_usuario WHERE servido_detpedido = 0 ORDER BY fecha_detpedido DESC";
+        $select = "SELECT * FROM pedido JOIN detpedido ON id_pedido = pedido_detpedido JOIN producto ON id_producto = producto_detpedido JOIN usuario ON usuario_pedido = id_usuario WHERE servido_detpedido = 0 ORDER BY fecha_detpedido ASC";
         
         // Ejecutamos la sentencia
         $consulta = $conexion->query($select);

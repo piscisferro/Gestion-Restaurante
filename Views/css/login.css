@@ -5,6 +5,7 @@
     width: 100% !important;
     justify-content: center !important;
     align-items: center;
+    padding: 10% 0;
     
 }
 
@@ -12,10 +13,10 @@
 
     z-index: -1;
     position: absolute;
+    align-self: center;
     overflow: hidden;
     width: 100%;
-    margin-top: 100px;
-    top: 0px;
+    top: 10%;
     max-height: 600px;
     
 }
@@ -46,12 +47,14 @@ video {
 
 .login {
     
-    display: inline-block; 
+    display: inline-block;
+    align-self: center;
     margin: 0 auto;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.95);
     width: 20%;
     min-width: 250px;
+    max-width: 300px;
     height: 350px;
     border: 10px solid black;
     border-radius: 40px;

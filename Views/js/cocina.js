@@ -7,6 +7,19 @@ $(document).ready(iniciarCocina);
 ////////////////////////////////////////////////////////////
 function iniciarCocina() {
     $(".servirPedido").click(servirPedido);
+    
+    checkForOrders();
+}
+
+function checkForOrders() {
+    
+    $.post("../../Controller/Cocina/cocina.php", { ajax: true }, function(data) {
+        
+        $("#listado").html(data);
+        $(".servirPedido").click(servirPedido);
+    });
+    setTimeout(checkForOrders, 5000);
+    
 }
 
 

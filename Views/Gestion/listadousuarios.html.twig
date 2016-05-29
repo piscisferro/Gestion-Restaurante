@@ -1,6 +1,6 @@
 <ul class="categorias">
     <li class="categoria addCategoria">
-        <div class="toggle editar"><img class="icon" src="../../Views/img/añadir.png">Añadir Usuario</div>
+        <div class="toggle editar"><div class="pointer"><img class="icon" src="../../Views/img/añadir.png">Añadir Usuario</div></div>
         <div class="toggle hidden formUser">
             <form id="usuarioadd" method="post">
                <div class="infoUserForm">
@@ -25,7 +25,7 @@
         <div class="toggle usuario headerCategoria">
             <div class="infoHeaderUsuario">
                 <span><strong>Usuario: </strong>{{usuario.nombre}}</span>
-                <span><strong>Contraseña: </strong>{{usuario.tipo}}</span> 
+                <span><strong>Tipo: </strong>{{usuario.tipo}}</span> 
             </div>
             <div class="iconosUsuario">
                 <span><a class="passwordEditAnchor">edit password</a></span>

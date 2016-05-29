@@ -1,73 +1,44 @@
 .contenido {
     min-height: 500px;
-    margin-top: 0;
-    background-color: rgb(199, 216, 234);
+    margin-top: 0
 }
 
 navbar a {
-    
     text-decoration: none;
     color: black;
 }
 
 navbar ul {
-    padding: 5px 0 5px 25px;
     width: 50%;
-    height: 50px;
-    padding: 0;
+    height: 60px;
     display: flex;
     align-items: center;
+    padding: 0;
 }
 
 navbar ul li {
-    width: 25%;
-    height: 40px;
-    border-top: 2px solid #212743;
-    border-bottom: 2px solid #212743;
-    border-left: 1px solid #212743;
-    border-right: 1px solid #212743;
-    background: linear-gradient(to bottom, #4a578b 0%, #c8dfff 50%, #c8dfff 51%, #4a578b 100%);
-    box-shadow: 0px 0px 10px 0px #4a578b;
-    padding: 0;
-}
-
-navbar ul li a {
     display: flex;
-    flex-grow: 1;
-    flex-shrink: 1;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    width: 25%;
+    height: 40px;
+    border-top: 2px solid #2a0303;
+    border-bottom: 2px solid #2a0303;
+    border-left: 1px solid #2a0303;
+    border-right: 1px solid #2a0303;
+    background: linear-gradient(to bottom, #845129 0%, #d6baa3 50%, #d6baa3 51%, #845129 100%);
+    box-shadow: 0px 0px 10px 0px #3e0404;
+    padding: 0;
+    cursor: pointer;
+}
+
+.activated {
+    background-color: #845129;
+    box-shadow: 0px 0px 15px 0px black inset;
 }
 
 header {
     margin-bottom: 0;
-}
-
-.success {
-    
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 40px;
-    background: linear-gradient(to bottom, #01ad29, #71a86c, #71a86c, #01ad29);
-    border-radius: 5px;
-    opacity: 0.95;
-    color: #002f00;
-    padding-left: 10px;
-}
-
-.error {
-    
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 40px;
-    background: linear-gradient(to bottom, #cc0000, #d94141, #d94141, #cc0000);
-    border-radius: 5px;
-    opacity: 0.95;
-    color: #3c0000;
-    padding-left: 10px;
 }
 
 img {
@@ -83,9 +54,9 @@ img {
     display: flex;
     align-items: center;
     padding-left: 10px;
-    background: linear-gradient(to bottom, #4a578b 0%, #eef5ff 35%, #eef5ff 60%, #4a578b 100%);
+    background: linear-gradient(to bottom, #845129 0%, #e8d7c9 35%, #e8d7c9 60%, #845129 100%);
     border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
 }
 
 form {
@@ -115,15 +86,22 @@ form {
 
 .categoria {
     min-height: 50px;
-    background-color: #9fc1e3;
+    background-color: rgba(139, 114, 95, 0.6);
+}
+
+.categoria:last-child .headerCategoria {
+    
+    border-bottom: 2px solid black !important;
+    
 }
 
 .headerCategoria {
     padding-left: 10px;
-    height: 50px;
-    background: linear-gradient(to bottom, #4a578b 0%, #eef5ff 35%, #eef5ff 60%, #4a578b 100%);
-    border-bottom: 2px solid black;
-    box-shadow: 0px 0px 5px 0px #4a578b;
+    height: 55px;
+    background: linear-gradient(to bottom, #845129 0%, #e8d7c9 35%, #e8d7c9 60%, #845129 100%);
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    box-shadow: 0px 0px 5px 0px #845129;
     display: flex;
     align-items: center;
 }
@@ -145,13 +123,13 @@ form {
     padding: 0;
     list-style: circle;
     list-style-position: inside;
-    box-shadow: 0px 0px 10px 0px #4a578b inset;
+    box-shadow: 0px 0px 10px 0px #845129 inset;
     
 }
 
 .producto {
     padding: 10px 0 10px 25px;
-    border-bottom: 2px solid rgba(74, 87, 139, 0.6);
+    border-bottom: 2px solid rgba(132, 81, 41, 0.6);
     border-bottom-right-radius: 8px;
 }
 
@@ -176,6 +154,10 @@ form {
     width: 100%;
     display: flex;
     margin-bottom: 10px;
+}
+
+.precio {
+    margin-left: 10px;
 }
 
 .infoPro2 {
@@ -209,11 +191,11 @@ form {
     margin-right: 25px;
     align-items: center;
     width: 20%;
+    overflow: hidden;
 }
 
 .descForm {
     display: inline-flex;
-    text-align: center;
     flex-wrap: wrap;
 }
 
@@ -221,10 +203,12 @@ form {
     display: flex;
     width: 100%;
     margin: 0 0;
-    align-self: flex-end;
+    align-self: flex-start;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
-.descForm input {
+.descForm textarea {
     display: block;
     width: 100%;
     height: 75px;
@@ -317,3 +301,8 @@ form {
 .passwordCancelar {
     box-shadow: 0px 0px 20px 0px red inset; 
 }
+
+.passwordEditAnchor {
+    cursor: pointer;
+}
+

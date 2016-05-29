@@ -15,6 +15,10 @@ if ($_SESSION["logado"] != true) {
 
 $data["datos"] = Pedido::getProductosPorServir();
 
-echo $twig->render('Cocina/Cocina.html.twig', $data);
+if (isset($_POST["ajax"])){
+    echo $twig->render('Cocina/listadococina.html.twig', $data);
+} else {
+    echo $twig->render('Cocina/Cocina.html.twig', $data);
+}
 
 ?>

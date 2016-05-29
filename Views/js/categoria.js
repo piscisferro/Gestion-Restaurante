@@ -9,33 +9,9 @@ function iniciarCategorias(){
     $("#newCat").submit(addCategoria);
     $(".editCat").submit(updateCategoria);
     $(".deletecat").click(deleteCategoria); 
+    
+    hideAll();
  }
-
-/////////////////////////////////////////////////////////////
-//////
-//////  Ajax getListadoProductos
-//////
-////////////////////////////////////////////////////////////
-function getListadoProductos(resultado) {
-    $.post("../../Controller/Gestion/gestionApp.php", {ajax: true}, function (data) {
-        
-        $("#listado").html(data);
-        
-        iniciar();
-        iniciarCategorias();
-
-        if (resultado == "error") {
-            $("#error").slideDown(200);
-        } else if (resultado == "error1") {
-            $("#error1").slideDown(200);
-        } else if (resultado == "success") {
-            $("#success").slideDown(200);
-        } else {
-            $("#error2").slideDown(200);
-        }
-    });
-}
-
 
 /////////////////////////////////////////////////////////////
 //////
@@ -69,12 +45,37 @@ function deleteCategoria() {
     
     var id = $(this).closest("li").attr("id");
     
-    $.post("../../Controller/Gestion/deleteCategoria.php", {deleteId: id}, function(data) {
-        
-        var resultado = data;
-        
-        getListadoProductos(resultado);
-        
+    // Creamos el dialog
+    var dialog = $("<div>¿Esta seguro de que desea borrar esta Categoria?</div>");
+    
+    //////////////
+    // DIALOG
+    //////////////
+    $(dialog).dialog({
+        autoOpen: true,
+        resizable: false, 
+        height: 150, 
+        modal: true, 
+        buttons: {
+            "Borrar": function () { 
+                // Consulta Ajax post con el id a borrar
+                $.post("../../Controller/Gestion/deleteCategoria.php", {deleteId: id}, function(data) {
+                    // Guardamos la respuesta de la pagina
+                    var resultado = data;
+                    // Ejecutamos la funcion para obtener el listado
+                    getListadoProductos(resultado);
+                });
+                
+                $(this).dialog("close");
+            },
+            
+            "Cancelar": function () {
+                $(this).dialog("close");
+            }
+        }, 
+        close: function(){ 
+            $(dialog).remove();
+        }
     });
 }
  
@@ -89,16 +90,41 @@ function updateCategoria(e) {
     e.preventDefault();
     var datos = new FormData(this);
 
-    $.ajax({
-        url: "../../Controller/Gestion/updateCategoria.php",
-        data: datos, 
-        contentType: false, 
-        processData: false, 
-        type: 'POST'
-    }).done(function (data) {
-        var resultado = data;
+    // Creamos el dialog
+    var dialog = $("<div>¿Esta seguro de que desea modificar esta Categoria?</div>");
+    
+    //////////////
+    // DIALOG
+    //////////////
+    $(dialog).dialog({
+        autoOpen: true,
+        resizable: false, 
+        height: 150, 
+        modal: true, 
+        buttons: {
+            "Modificar": function () { 
+                $.ajax({
+                    url: "../../Controller/Gestion/updateCategoria.php",
+                    data: datos, 
+                    contentType: false, 
+                    processData: false, 
+                    type: 'POST'
+                }).done(function (data) {
+                    // Guardamos la respuesta de la pagina
+                    var resultado = data;
+                    // Ejecutamos la funcion para obtener el listado
+                    getListadoProductos(resultado);
 
-        getListadoProductos(resultado);
-        
+                });
+                $(this).dialog("close");
+            },
+            
+            "Cancelar": function () {
+                $(this).dialog("close");
+            }
+        }, 
+        close: function(){ 
+            $(dialog).remove();
+        }
     });
 }

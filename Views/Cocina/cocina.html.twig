@@ -1,20 +1,11 @@
 {% extends "Common/common.html.twig" %}
-{% block styles %}
+{% block header %}
 <script type="text/javascript" src="../../Views/js/cocina.js"></script>
 {% endblock %}
 
 
 {% block contenido %}
-<ul>
-    {% for dato in datos %}
-      
-    <li data-id = "{{ dato.detpedido }}">
-        <h2>{{ dato.producto }}</h2>
-        <div>
-            <p>{{ dato.usuario }}</p>
-            <img class="icon servirPedido" src="../../Views/img/enviar.png">
-        </div>
-    </li>
-    {% endfor %}
-</ul>
+<div id="listado">
+    {% include ('Cocina/listadococina.html.twig') %}
+</div>
 {% endblock %}

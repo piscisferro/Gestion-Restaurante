@@ -14,6 +14,7 @@ function iniciarWorkspace() {
     $("#cerrarModal").click(cerrarModal);
     $("#botonPedir").click(addProWS);
     
+    hideAll();
     hideAllWS();
     
 }

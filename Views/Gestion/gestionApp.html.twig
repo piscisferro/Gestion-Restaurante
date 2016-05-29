@@ -8,15 +8,15 @@
 {% block contenido %}
 <navbar>
     <ul>
-        <li><a href="../../Controller/Gestion/gestionApp.php">Productos</a></li>
-        <li><a href="../../Controller/Gestion/gestionUsuarios.php">Usuarios</a></li>
+        <li class="gestionProducto">Productos</li>
+        <li class="gestionUsuario">Usuarios</li>
     </ul>
 </navbar>
 
-<div class="success" id="success">La consulta ha sido un éxito.</div>
-<div class="error" id="error">Error al insertar en base de datos.</div>
-<div class="error" id="error1">Error al enviar el formulario.</div>
-<div class="error" id="error2">Error desconocido.</div>
+<div class="success hidden" id="success">La consulta ha sido un éxito.</div>
+<div class="error hidden" id="error">Error al insertar en base de datos.</div>
+<div class="error hidden" id="error1">Error al enviar el formulario.</div>
+<div class="error hidden" id="error2">Error desconocido.</div>
 
 <!-- Tools, en esta seccion mostrara las herramientas para ordenar y buscar  -->
 <section>
@@ -32,5 +32,4 @@
     {% include ('Gestion/listadoproductos.html.twig') %}
 {% endif %}
 </section>
-
 {% endblock %}

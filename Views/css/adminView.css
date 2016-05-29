@@ -26,7 +26,7 @@
     padding: 10px 5px 10px 5px;
     text-align: center;
     transition: all 0.01s;
-    background-color: rgba(159, 193, 227, 0.44);
+    background-color: rgba(176, 198, 221, 0.44);
 }
 
 .underConstruction {
@@ -54,11 +54,11 @@ img {
 }
 
 .modulo:hover {
-	box-shadow: 0px 0px 15px 2px #4a578b;
+	box-shadow: 0px 0px 15px 2px #3e0404;
 }
 
 .modulo:active {
-    box-shadow: 0px 0px 5px 2px #4a578b inset;
+    box-shadow: 0px 0px 5px 2px #3e0404 inset;
     height: 173px;
     width: 138px;
     margin: 26px 51px;

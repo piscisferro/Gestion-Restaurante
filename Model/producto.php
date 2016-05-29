@@ -210,4 +210,27 @@ class Producto {
         // Devolvemos resultado
         return $resultado;
     } 
+    
+    ///////////////////////////////////////
+    //    Método Consulta all Productos
+    //////////////////////////////////////
+    public static function getAllTipos() {
+        // Conectamos a la BD
+        $conexion = restDB::connectDB();
+        // Sentencia SELECT
+        $seleccion = "SELECT * FROM tipoproducto";
+        // Ejecutamos la consulta
+        $consulta = $conexion->query($seleccion);
+        
+        // Inicializamos el array que contendra el resultado de la consulta
+        $resultado = [];
+        
+        // Guardamos todos los resultados en el array resultado
+        while ($registro = $consulta->fetchObject()) {
+            $resultado[] = array("id" =>$registro->id_tipo, "nombre"=>$registro->nombre_tipo);
+        }
+        
+        // Devolvemos resultado
+        return $resultado;
+    } 
 }    

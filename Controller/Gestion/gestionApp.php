@@ -15,11 +15,10 @@ if(!$_SESSION["logado"] || !$_SESSION["tipo_usuario"] == "administrador") {
    header("Location: logout.php");
 }
 
-
-
 $data["target"] = "productos";
 $data["categorias"] = Categoria::getAllCategorias();
 $data["productos"] = Producto::getAllProductos();
+$data["tiposProducto"] = Producto::getAllTipos();
 
 
 if (isset($_POST["ajax"])){

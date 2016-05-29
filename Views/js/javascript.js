@@ -27,22 +27,24 @@ $(document).ready(iniciar);
 //////
 ////////////////////////////////////////////////////////////
 function iniciar(){
-    $("#success").hide();
-    $("#error").hide();
-    $("#error1").hide();
-    $("#error2").hide();
+    $(".gestionProducto").click(productButton);
+    $(".gestionUsuario").click(userButton);
     
-    
-    
+    iniciarGestionApp();
+}
+
+/////////////////////////////////////////////////////////////
+//////
+//////  Funcion para inicializar las funcionalidades de GestionApp.
+//////
+////////////////////////////////////////////////////////////
+function iniciarGestionApp() {
     $(".appCat").click(muestraCatPro);
     $(".editar").click(toggleEdit);
     $(".cancelar").click(toggleCancelar);
     $(".despliegaCat").click(toggleDesplegarCategoria);
     $(".despliegaPro").click(toggleDesplegarProducto);
-    
-    hideAll();
 }
-
 
 ///////////////////////////////////////////////////////////////////////
 //////  Funcion hideAll para esconder todas las clases hidden
@@ -102,5 +104,84 @@ function muestraCatPro() {
     var idCat = $(this).attr("id");
     hideAll();
     $("." + idCat).show();
+    
+}
+
+/////////////////////////////////////////////////////////////
+//////
+//////  Ajax getListadoUsuarios
+//////
+////////////////////////////////////////////////////////////
+function getListadoUsuarios(resultado) {
+    $.post("../../Controller/Gestion/gestionUsuarios.php", {ajax: true}, function (data) {
+        
+        $("#listado").html(data);
+        
+        iniciarUsuarios();
+        iniciarGestionApp();
+
+        if (resultado == "error") {
+            $("#error").slideDown(200);
+        } else if (resultado == "error1") {
+            $("#error1").slideDown(200);
+        } else if (resultado == "success") {
+            $("#success").slideDown(200);
+        } else if (resultado == false) {
+            
+        } else {
+            $("#error2").slideDown(200);
+        }
+    });
+}
+
+/////////////////////////////////////////////////////////////
+//////
+//////  Ajax getListadoProductos
+//////
+////////////////////////////////////////////////////////////
+function getListadoProductos(resultado) {
+    $.post("../../Controller/Gestion/gestionApp.php", {ajax: true}, function (data) {
+        
+        $("#listado").html(data);
+        
+        iniciarCategorias();
+        iniciarGestionApp();
+        iniciarProductos();
+
+        if (resultado == "error") {
+            $("#error").slideDown(200);
+        } else if (resultado == "error1") {
+            $("#error1").slideDown(200);
+        } else if (resultado == "success") {
+            $("#success").slideDown(200);
+        } else if (resultado == false) {
+            
+        } else {
+            $("#error2").slideDown(200);
+        }
+    });
+}
+
+///////////////////////////////////////////////////////////////////////
+//////  Funcion para cargar listado de productos
+///////////////////////////////////////////////////////////////////////
+function productButton() {
+    getListadoProductos(false);
+    $(this).addClass("activated");
+    $(".gestionUsuario").removeClass("activated");
+    
+}
+
+
+
+///////////////////////////////////////////////////////////////////////
+//////  Funcion para cargar listado de usuarios
+///////////////////////////////////////////////////////////////////////
+function userButton() {
+    
+    getListadoUsuarios(false);
+    $(this).addClass("activated");
+    $(".gestionProducto").removeClass("activated");
+    
     
 }

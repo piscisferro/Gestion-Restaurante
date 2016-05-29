@@ -1,11 +1,12 @@
 * {
-    font-family: "Georgia", Times, serif;
-    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
 }
 
 body {
      
-    /*background: linear-gradient(to right, #d1bb80 0%, #efefef 30%, #efefef 70%, #d1bb80 100%);*/
+    background-image: url(../img/fondo/fondo1.jpg);
+    background-size: cover;
     background-color: white;
     font-size: 1.2em;
     margin: 0;
@@ -22,7 +23,6 @@ h1, h2, h3, h4, h5 {
 .container {
     padding: 0;
     width: 90%;
-    height: 100%;
     margin: 0 auto;
 }
 
@@ -31,14 +31,14 @@ header {
     display: flex;
     align-items: center;
     height: 100px;
-    background: linear-gradient(to bottom, #4a578b 0%, #eef5ff 40%, #eef5ff 65%, #4a578b 100%);
+    background: linear-gradient(to bottom, #3e0404 0%, #cebfb3 40%, #cebfb3 65%, #3e0404 100%);
     width: 100%;
     margin: 25px auto 0 auto;
-    border-left: 1px solid #212743;
-    border-right: 1px solid #212743;
-    border-top: 5px solid #212743;
-    border-bottom: 5px solid #212743;
-    box-shadow: 0px 0px 20px 2px #4a578b;
+    border-left: 1px solid #2a0303;
+    border-right: 1px solid #2a0303;
+    border-top: 5px solid #2a0303;
+    border-bottom: 5px solid #2a0303;
+    box-shadow: 0px 0px 20px 2px #3e0404;
     
 }
 
@@ -46,8 +46,8 @@ footer {
     
     height: 50px;
     border: 1px solid black;
-    background: linear-gradient(to bottom, #4a578b 0%, #eef5ff 40%, #eef5ff 60%, #4a578b 100%);
-    box-shadow: 0px 0px 20px 1px #4a578b;
+    background: linear-gradient(to bottom, #3e0404 0%, #cebfb3 40%, #cebfb3 65%, #3e0404 100%);
+    box-shadow: 0px 0px 20px 1px #3e0404;
     
 }
 
@@ -68,9 +68,9 @@ ul {
     border-left: 1px solid black;
     border-right: 1px solid black;
     min-height: 550px;
-    box-shadow: 0px 0px 10px 1px #4a578b;
-    
-    
+    box-shadow: 0px 0px 10px 1px #3e0404;
+    background-color: rgba(173, 161, 150, 0.75);
+    padding-bottom: 50px;
 }
 
 .tituloHeader {
@@ -88,6 +88,31 @@ ul {
     justify-content: flex-end;
     margin-right: 50px;
     margin-bottom: 10px;
+}
+
+.success {
+    
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background: linear-gradient(to bottom, #348b47, #c5efc1, #c5efc1, #348b47);
+    border-radius: 5px;
+    opacity: 0.95;
+    color: #002f00;
+    padding-left: 10px;
+    margin: 5px 0;
+}
+
+.error {
+    
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background: linear-gradient(to bottom, #ac4747, #ffc2c2, #ffc2c2, #ac4747);
+    border-radius: 5px;
+    opacity: 0.95;
+    color: #3c0000;
+    padding-left: 10px;
 }
 
 button {
@@ -147,4 +172,12 @@ button:active {
     height: 100px;
     vertical-align: middle;
     
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+input[type="file"] {
+    font-size: 14px;
 }
