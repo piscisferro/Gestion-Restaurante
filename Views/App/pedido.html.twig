@@ -1,7 +1,7 @@
 <ul id="listaPedido" data-idpedido="{% if not pedidos %}false{% else %}{{ pedidos.id }} {% endif %}">
     {% set total = 0 %}
     {% for producto in pedidos.productos %}
-    <li>{{producto.nombre}} {{producto.precio}}</li>
+    <li><span class="nombre">{{producto.nombre}}</span> <span class="precio">{{producto.precio}}€</span></li>
     {% set total = total + producto.precio %}
     {% endfor %}
 </ul>

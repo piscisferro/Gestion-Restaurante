@@ -2,22 +2,29 @@
 
 
 {% block header %}
+<link rel="stylesheet" type="text/css" href="../../Views/css/app.css">
 <script type="text/javascript" src="../../Views/js/app.js"></script>
 {% endblock %}
 
 
 
 {% block contenido %}
-<navbar>
+<navbar class="navCat">
     <ul>
         {% for categoria in categorias %}
         {% if categoria.id != 1 %}
-        <li id="categoria{{ categoria.id }}" class="appCat">{{ categoria.nombre }}</li>
+        <li id="categoria{{ categoria.id }}" class="appCat pointer">
+            <img class="imgCategoria" src="{{ categoria.imgDir }}">
+            <div class="nombreCat">
+            {{ categoria.nombre }}
+            </div>
+        </li>
         {% endif %}
         {% endfor %}
     </ul>
 </navbar>
 
+<div class="navPro">
 {% for categoria in categorias %} 
 {% if categoria.id != 1 %}
 <ul class="categoria{{ categoria.id }} hidden">
@@ -25,7 +32,7 @@
     {% if producto.categoria == categoria.id %}
     <li id="{{ producto.id }}">
         <div><img class="imgProducto"  src="{{ producto.imgDir}}"></div>
-        <div class="contenidoProducto"><span class="nombreProducto">{{ producto.nombre }}</span><span><span class="precioProducto">{{producto.precio}}</span>€</span></div>
+        <div class="contenidoProducto"><span class="nombreProducto">{{ producto.nombre }}</span><span class="precio"><span class="precioProducto">{{producto.precio}}</span>€</span></div>
         <button class="añadirCarrito">Añadir</button>
     </li>
     {% endif %}
@@ -33,20 +40,31 @@
 </ul>
 {% endif %}
 {% endfor %}
-
-<!-- El carrito va aqui  -->
-<div id="carrito">
-    <ul id="listaCarrito">
-    
-
-    </ul>
-    <div>Total: <span id="totalCarrito">0</span>€</div>
-    <button id="botonPedir">Pedir</button>
 </div>
-<!-- Aqui va el pedido -->
-<div id="pedido">
 
-<button id="botonPagar">Pagar</button>
+<div class="navTools">
+    <!-- El carrito va aqui  -->
+    <div class="carritoP">
+        <h3>Consumiciones</h3>
+        <div id="carrito">
+            <ul id="listaCarrito">
+
+
+            </ul>
+        </div>
+        <div>Total: <span id="totalCarrito">0</span>€</div>
+        <button id="botonPedir">Pedir</button>
+    </div>
+    <!-- Aqui va el pedido -->
+    <div class="pedidoP">
+        <h3>Pedido</h3>
+        <div id="pedido">
+
+
+            
+        </div>
+        <button id="botonPagar">Pagar</button>
+    </div>
 </div>
 {% endblock %}
 

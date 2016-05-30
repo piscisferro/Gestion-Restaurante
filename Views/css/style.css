@@ -1,13 +1,9 @@
-* {
-    font-family: "Times New Roman", Times, serif;
-    font-size: 18px;
-}
-
 body {
      
     background-image: url(../img/fondo/fondo1.jpg);
     background-size: cover;
     background-color: white;
+    font-family: "Times New Roman", Times, serif;
     font-size: 1.2em;
     margin: 0;
     padding: 0;
@@ -16,7 +12,6 @@ body {
 
 h1, h2, h3, h4, h5 {
     font-family: "Segoe UI",Arial,sans-serif;
-    font-size: 1.6em;
     font-weight: 600;
 }
 
@@ -113,6 +108,7 @@ ul {
     opacity: 0.95;
     color: #3c0000;
     padding-left: 10px;
+    margin: 5px 0;
 }
 
 button {

@@ -34,6 +34,8 @@ function añadirCarrito() {
     var imgdel = '<img class="icon borrarCarrito" src="../../Views/img/borrar.ico">';
     // Variable con el elemento para crear
     var li = $("<li data-id='" + id + "'>" + contenido + imgdel + "</li>");
+    // Le damos la propiedad click a la imagen de borrar carrito
+    li.find(".borrarCarrito").click(borrarCarrito);
     // Añadimos el elemento al carrito
     $("#listaCarrito").append(li);
     
@@ -43,9 +45,6 @@ function añadirCarrito() {
     $("#totalCarrito").text(parseInt(total) + parseInt(precio));
     // Activamos el boton pedir
     $("#botonPedir").attr("disabled", false);
-    // Le damos a las imagenes de clase borrarCarrito la funcion click.
-    $(".borrarCarrito").click(borrarCarrito);
-    
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -55,14 +54,27 @@ function añadirCarrito() {
 //////////////////////////////////////////////////////////////////////
 function borrarCarrito() {
     
+    // Recogemos el precio actual del producto    
+    var precio = $(this).closest("li").find(".precioProducto").text();
+    
+    console.log(precio);
+    
+    // Recogemos el precio total actual del carrito
+    var total = $("#totalCarrito").text();
+    
+     console.log(total);
+    
+    // Actualizamos el precio total del carrito
+    $("#totalCarrito").text(parseInt(total) - parseInt(precio));
+    
     $(this).closest("li").remove();
+    
     
     // Si el listado que hemos recuperado tiene 1 producto o mas
     if ($("#listaCarrito").children().length < 1) {
         // Mostramos el boton para pagar
         $("#botonPedir").attr("disabled", "true");
     }
-    
 }
 
 //////////////////////////////////////////////////////////////////////
