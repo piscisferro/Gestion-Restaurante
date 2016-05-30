@@ -30,10 +30,9 @@
 <ul class="categoria{{ categoria.id }} hidden">
     {% for producto in productos %}
     {% if producto.categoria == categoria.id %}
-    <li id="{{ producto.id }}">
+    <li id="{{ producto.id }}" class="añadirCarrito pointer">
         <div><img class="imgProducto"  src="{{ producto.imgDir}}"></div>
         <div class="contenidoProducto"><span class="nombreProducto">{{ producto.nombre }}</span><span class="precio"><span class="precioProducto">{{producto.precio}}</span>€</span></div>
-        <button class="añadirCarrito">Añadir</button>
     </li>
     {% endif %}
     {% endfor %}
@@ -43,7 +42,6 @@
 </div>
 
 <div class="navTools">
-    <!-- El carrito va aqui  -->
     <div class="carritoP">
         <h3>Consumiciones</h3>
         <div id="carrito">
@@ -55,13 +53,11 @@
         <div>Total: <span id="totalCarrito">0</span>€</div>
         <button id="botonPedir">Pedir</button>
     </div>
-    <!-- Aqui va el pedido -->
     <div class="pedidoP">
         <h3>Pedido</h3>
         <div id="pedido">
-
-
-            
+        
+        
         </div>
         <button id="botonPagar">Pagar</button>
     </div>

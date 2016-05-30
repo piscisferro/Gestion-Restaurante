@@ -19,14 +19,14 @@
     width: 140px;
     height: 175px;
     margin: 25px 50px;
-    border: 2px solid #212743;
+    border: 2px solid #3e0404;
     border-radius: 25px;
     box-shadow: 0px 0px 15px 2px black;
     overflow: hidden;
     padding: 10px 5px 10px 5px;
     text-align: center;
     transition: all 0.01s;
-    background-color: rgba(176, 198, 221, 0.44);
+    background-color: rgba(219, 204, 184, 0.44);
 }
 
 .underConstruction {
@@ -49,8 +49,8 @@
 }
 
 img {
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
 }
 
 .modulo:hover {

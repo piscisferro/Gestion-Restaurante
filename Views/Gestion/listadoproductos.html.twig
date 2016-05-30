@@ -48,7 +48,7 @@
                     <form class="addProducto" method="post" enctype="multipart/form-data">
                         <div class="headerProducto">
                             <input type="text" name="newProNombre" placeholder="Nombre" required autofocus>
-                            <input type="number" name="newProPrecio" placeholder="Precio" required>€
+                            <input type="number" name="newProPrecio" placeholder="Precio" step="0.05" required>€
                         </div>
                         <div class="infoProducto">
                            <div class="imgForm">
@@ -105,7 +105,7 @@
                     <form class="editPro" method="post" enctype="multipart/form-data">
                         <div class="headerProducto">
                             <input type="text" name="editProNombre" placeholder="{{producto.nombre}}" value="{{producto.nombre}}" required autofocus>
-                            <input type="number" name="editProPrecio" placeholder="{{producto.precio}}" value="{{ producto.precio}}" required>€
+                            <input type="number" name="editProPrecio" placeholder="{{producto.precio}}" value="{{ producto.precio}}" step="0.05" required>€
                         </div>
                         <div class="infoProducto">
                             <div class="imgForm">
