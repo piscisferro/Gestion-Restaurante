@@ -21,10 +21,10 @@
    </li>
     {% for usuario in usuarios %}
     {% if usuario.tipo != "barra" %}
-    <li class="categoria" id="{{usuario.id}}">
+    <li class="categoria ordenar" id="{{usuario.id}}">
         <div class="toggle usuario headerCategoria">
             <div class="infoHeaderUsuario">
-                <span><strong>Usuario: </strong>{{usuario.nombre}}</span>
+                <span><strong>Usuario: </strong><span class="nombreOrdenar">{{usuario.nombre}}</span></span>
                 <span><strong>Tipo: </strong>{{usuario.tipo}}</span> 
             </div>
             <div class="iconosUsuario">

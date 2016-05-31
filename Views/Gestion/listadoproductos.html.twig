@@ -1,5 +1,5 @@
 <ul class="categorias">
-    <li class="categoria addCategoria">
+    <li class="categoria addCategoria ordenarPadre">
         <div class="toggle editar"><div class="pointer"><img class="icon" src="../../Views/img/añadir.png"> Añadir Categoria</div></div>
         <div class="toggle hidden formCat">
             <form id="newCat" method="post" enctype="multipart/form-data"> 
@@ -16,7 +16,7 @@
     </li>
     
     {% for categoria in categorias %}
-    <li class="categoria" id="{{ categoria.id }}">
+    <li class="categoria ordenarPadre" id="{{ categoria.id }}">
        <div class="toggle headerCategoria">
            <div class="despliegaCat infoHeader">
                <img class="imgCategoria" src="{{ categoria.imgDir }}"> 
@@ -42,8 +42,8 @@
             </form>
         </div>
         <ul class="hidden unhideCat productos">
-            <li class="producto">
-                <div class="toggle editar"><div class="pointer"><img class="icon" src="../../Views/img/añadir.png"> Añadir Producto</div></div>
+            <li class="producto ordenar">
+                <div class="toggle editar"><div class="pointer"><img class="icon" src="../../Views/img/añadir.png"><span class="nombreOrdenar">Añadir Producto</span></div></div>
                 <div class="toggle hidden">
                     <form class="addProducto" method="post" enctype="multipart/form-data">
                         <div class="headerProducto">
@@ -82,11 +82,11 @@
             </li>
             {% for producto in productos %}
             {% if producto.categoria == categoria.id %}
-            <li class="producto" id="{{ producto.id }}">
+            <li class="producto ordenar" id="{{ producto.id }}">
                 <div class="toggle despliegaPro">
                     <div class="headerProducto">
                         <div class="infoHeader">
-                        <span>{{producto.nombre}}</span> <span class="precio">{{producto.precio}}€</span>
+                        <span class="nombreOrdenar">{{producto.nombre}}</span> <span class="precio">{{producto.precio}}€</span>
                         </div>
                         <div class="iconosPro">
                             <img class="icon editar" src="../../Views/img/editar.png">

@@ -3,9 +3,9 @@
     margin-top: 0
 }
 
-navbar a {
-    text-decoration: none;
-    color: black;
+navbar {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 navbar ul {
@@ -30,6 +30,24 @@ navbar ul li {
     box-shadow: 0px 0px 10px 0px #3e0404;
     padding: 0;
     cursor: pointer;
+}
+
+navbar div {
+    display: flex;
+    width: 50%;
+    align-self: center;
+    justify-content: flex-end;
+}
+
+navbar div input {
+    padding: 0;
+    margin: 0;
+}
+
+navbar div .icon {
+    padding: 0;
+    margin: 0;
+    margin-right: 25px;
 }
 
 .activated {

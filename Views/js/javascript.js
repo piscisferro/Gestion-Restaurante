@@ -1,23 +1,39 @@
 // Buscador Javascript
 // Funciona bajo el resultado de indexOf. Para realizar la busqueda comparamos lo introducido y le hacemos un indexOf a todos los elementos con cada pulsacion de tecla, asi, si los elementos devuelven numero positivo significa que lo que estamos escribiendo en el buscador coincide dado que indexOf nos da la posicion en la que esta los caracteres que estamos escribiendo.
 
-$("#search-criteria").on("keyup", function() {
-    
+ 
+function buscar() {    
     var textoABuscar = $(this).val().toLowerCase();
     
-    $(".fbbox .fix label").each(function() {
+    $(".categorias").find(".nombreOrdenar").each(function() {
         
         var contenidoEtiqueta = $(this).text().toLowerCase();
         
-        if (contenidoEtiqueta.indexOf(textoABuscar) !== -1) {
+        console.log(textoABuscar);
+        
+        if (contenidoEtiqueta.indexOf(textoABuscar) !== -1 && textoABuscar != "") {
             
-            $(this).closest('.fbbox').show();
+            console.log(contenidoEtiqueta.indexOf(textoABuscar));
             
+            $(this).closest('.ordenarPadre').show();
+            $(this).closest(".ordenar").show();
+            
+            if ($(this).closest(".ordenarPadre").find(".unhideCat").css('display') == "none") {
+                    $(this).closest(".categoria").find(".unhideCat").show();
+            }
+            
+            
+        } else if(textoABuscar == "") { 
+            $(".categorias").find(".ordenarPadre").show();
+            $(".categorias").find(".ordenar").show();
+            $(".categorias").find(".ordenarPadre").find(".unhideCat").hide();
+        
+        
         } else {
-            $(this).closest('.fbbox').hide();
+            $(this).closest(".ordenar").hide();
         }
     });
-});
+}
 
 $(document).ready(iniciar);
 
@@ -29,6 +45,10 @@ $(document).ready(iniciar);
 function iniciar(){
     $(".gestionProducto").click(productButton);
     $(".gestionUsuario").click(userButton);
+    
+    $("#buscador").on("keyup", buscar);
+    $(".categorias").sortable();
+    $(".productos").sortable();
     
     iniciarGestionApp();
 }

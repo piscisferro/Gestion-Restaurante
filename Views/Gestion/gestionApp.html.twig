@@ -8,21 +8,18 @@
 {% block contenido %}
 <navbar>
     <ul>
-        <li class="gestionProducto">Productos</li>
+        <li class="gestionProducto activated">Productos</li>
         <li class="gestionUsuario">Usuarios</li>
     </ul>
+    <div>
+        <input id="buscador" type="text"><img class="icon" src="../../Views/img/lupa.jpg">
+    </div>
 </navbar>
 
 <div class="success hidden" id="success">La consulta ha sido un éxito.</div>
 <div class="error hidden" id="error">Error al insertar en base de datos.</div>
 <div class="error hidden" id="error1">Error al enviar el formulario.</div>
 <div class="error hidden" id="error2">Error desconocido.</div>
-
-<!-- Tools, en esta seccion mostrara las herramientas para ordenar y buscar  -->
-<section>
-    <div></div>
-</section>
-
 
 <!-- -->
 <section id="listado">
