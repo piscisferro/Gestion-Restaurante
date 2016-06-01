@@ -4,7 +4,9 @@
         <div class="toggle hidden formCat">
             <form id="newCat" method="post" enctype="multipart/form-data"> 
                 <div class="infoCatForm">
+                    <div class="relative">
                     <input type="text" name="newCatNombre" placeholder="Nombre" required autofocus>
+                    </div>
                     <input type="file" name="newCatImg">
                 </div>
                 <div class="botonesCat">
@@ -30,7 +32,9 @@
        <div class="headerCategoria toggle hidden">
            <form class="editCat" method="post" enctype="multipart/form-data">
                <div class="infoCatForm">
-                    <input type="text" name="editCatNombre" placeholder="{{ categoria.nombre }}" value="{{ categoria.nombre }}" required autofocus>
+                    <div class="relative">
+                        <input type="text" name="editCatNombre" placeholder="{{ categoria.nombre }}" value="{{ categoria.nombre }}" required autofocus>
+                    </div>
                     <input type="file" name="editCatImg">
                     <input type="hidden" name="defaultCatImg" value="{{ categoria.imgDir }}">
                     <input type="hidden" name="editCatId" value="{{ categoria.id }}">
@@ -47,8 +51,12 @@
                 <div class="toggle hidden">
                     <form class="addProducto" method="post" enctype="multipart/form-data">
                         <div class="headerProducto">
-                            <input type="text" name="newProNombre" placeholder="Nombre" required autofocus>
-                            <input type="number" name="newProPrecio" placeholder="Precio" step="0.05" required>€
+                            <div class="relative">
+                                <input type="text" name="newProNombre" placeholder="Nombre" required autofocus>
+                            </div>
+                            <div class="relative">
+                                <input type="number" name="newProPrecio" placeholder="Precio" step="0.05" required>€
+                            </div>
                         </div>
                         <div class="infoProducto">
                            <div class="imgForm">
@@ -57,9 +65,11 @@
                            <div class="infoForm">
                                <div class="descForm">
                                    <p>Descripcion:</p>
-                                   <p>
-                                       <textarea name="newProDesc" placeholder="Descripcion"></textarea>
-                                   </p>
+                                   <div class="relative">
+                                       <p>
+                                           <textarea name="newProDesc" placeholder="Descripcion"></textarea>
+                                       </p>
+                                   </div>
                                </div>
                                <div class="otrosForm">
                                    <input type="hidden" name="newProCat" value="{{categoria.id}}">
@@ -104,8 +114,12 @@
                 <div class="toggle hidden">
                     <form class="editPro" method="post" enctype="multipart/form-data">
                         <div class="headerProducto">
-                            <input type="text" name="editProNombre" placeholder="{{producto.nombre}}" value="{{producto.nombre}}" required autofocus>
-                            <input type="number" name="editProPrecio" placeholder="{{producto.precio}}" value="{{ producto.precio}}" step="0.05" required>€
+                            <div class="relative">
+                                <input type="text" name="editProNombre" placeholder="{{producto.nombre}}" value="{{producto.nombre}}" required autofocus>
+                            </div>
+                            <div class="relative">
+                                <input type="number" name="editProPrecio" placeholder="{{producto.precio}}" value="{{ producto.precio}}" step="0.05" required>€
+                            </div>
                         </div>
                         <div class="infoProducto">
                             <div class="imgForm">
@@ -115,9 +129,11 @@
                             <div class="infoForm">
                                <div class="descForm">
                                    <p>Descripcion:</p>
-                                   <p>
-                                       <textarea name="editProDesc" placeholder="{{producto.descripcion}}" >{{ producto.descripcion}}</textarea>
-                                   </p>
+                                   <div class="relative">
+                                       <p>
+                                           <textarea name="editProDesc" placeholder="{{producto.descripcion}}" >{{ producto.descripcion}}</textarea>
+                                       </p>
+                                   </div>
                                 </div>
                                 <div class="otrosForm">
                                     <p>

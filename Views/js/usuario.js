@@ -1,5 +1,35 @@
 $(document).ready(iniciarUsuarios);
 
+
+$(document).ready(function(){
+    jQuery.validator.addMethod("notEqualToGroup", function(value, element, options) {
+        // get all the elements passed here with the same class
+        var elems = $(element).parents('form').find(options[0]);
+        // the value of the current element
+        var valueToCompare = value;
+        // count
+        var matchesFound = 0;
+        // loop each element and compare its value with the current value
+        // and increase the count every time we find one
+        jQuery.each(elems, function(){
+            thisVal = $(this).val();
+            if(thisVal == valueToCompare){
+                matchesFound++;
+            }
+        });
+        // count should be either 0 or 1 max
+        if(this.optional(element) || matchesFound <= 1) {
+                elems.removeClass('errorForm');
+                return true;
+            } else {
+                elems.addClass('errorForm');
+            }
+    });
+    
+});
+
+
+
 /////////////////////////////////////////////////////////////
 //////
 //////  Funcion para inicializar las funcionalidades.
@@ -12,6 +42,49 @@ function iniciarUsuarios(){
     $(".deleteusuario").click(deleteusuario); 
     $(".passwordEditAnchor").click(togglePassword);
     $(".passwordCancelar").click(togglePassword);
+    
+    $("#usuarioadd").validate({
+        rules: {
+                newusuario: {
+                    required: true,
+                    minlength: 3
+                },
+                newpassword: {
+                    required: true,
+                    minlength: 6
+                }
+            },
+            errorClass: "errorForm"
+    });
+    
+    $(".usuarioedit").each(function() {
+        $(this).validate({
+            rules: {
+                usuarioEdit: {
+                    required: true,
+                    minlength: 3
+                }
+            },
+            errorClass: "errorForm"
+        });
+        
+    });
+    
+    $(".passwordedit").each(function() {
+        $(this).validate({
+            rules: {
+                passwordEdit: {
+                    required: true,
+                    minlength: 6
+                }, 
+                passwordConfirm: {
+                    notEqualToGroup: [".password"]
+                }
+            },
+            errorClass: "errorForm"
+        });
+        
+    });
     
     hideAll();
  }
@@ -36,6 +109,12 @@ function togglePassword(e) {
 ////////////////////////////////////////////////////////////
 function addUsuario(e) {
     e.preventDefault();
+    
+    // Pasamos el validador
+    if (!$(this).valid()) {
+        return;
+    }
+    
     var datos = new FormData(this);
 
     $.ajax({
@@ -107,6 +186,11 @@ function updateUsuario(e) {
     e.preventDefault();
     var datos = new FormData(this);
     
+    // Pasamos el validador
+    if (!$(this).valid()) {
+        return;
+    }
+    
     // Creamos el dialog
     var dialog = $("<div>¿Esta seguro de que desea Modificar este Usuario?</div>");
     
@@ -119,7 +203,7 @@ function updateUsuario(e) {
         height: 150, 
         modal: true, 
         buttons: {
-            "Borrar": function () {
+            "Modificar": function () {
                 $.ajax({
                 url: "../../Controller/Gestion/updateUsuario.php",
                 data: datos, 
@@ -155,6 +239,11 @@ function updatePassword(e) {
     e.preventDefault();
     var datos = new FormData(this);
 
+    // Pasamos el validador
+    if (!$(this).valid()) {
+        return;
+    }
+    
     // Creamos el dialog
     var dialog = $("<div>¿Esta seguro de que desea Modificar este Usuario?</div>");
     
@@ -167,7 +256,7 @@ function updatePassword(e) {
         height: 150, 
         modal: true, 
         buttons: {
-            "Borrar": function () {
+            "Modificar": function () {
                     $.ajax({
                     url: "../../Controller/Gestion/updatePassword.php",
                     data: datos, 

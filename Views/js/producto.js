@@ -9,6 +9,49 @@ function iniciarProductos() {
     $(".addProducto").submit(addProducto);
     $(".editPro").submit(updateProducto);
     $(".deletePro").click(deleteProducto); 
+    
+    $(".addProducto").each(function(){
+        $(this).validate({
+            rules: {
+                newProNombre: {
+                    required: true,
+                    minlength: 3
+                },
+                newProPrecio: {
+                    required: true,
+                    min: 0,
+                    max: 9999
+                },
+                newProDesc: {
+                    minlength: 5,
+                    maxlength: 75
+                }
+            },
+            errorClass: "errorForm"
+        });
+    });
+    
+    $(".editPro").each(function(){
+        $(this).validate({
+            rules: {
+                newProNombre: {
+                    required: true,
+                    minlength: 3
+                },
+                newProPrecio: {
+                    required: true,
+                    min: 0,
+                    max: 9999
+                },
+                newProDesc: {
+                    minlength: 5,
+                    maxlength: 75
+                }
+            },
+            errorClass: "errorForm"
+        });
+    });
+    
  }
 
 
@@ -20,6 +63,11 @@ function iniciarProductos() {
 function addProducto(e) {
     // Evitamos que al enviar el formulario recargue la pagina
     e.preventDefault();
+    
+    // Pasamos el validador
+    if (!$(this).valid()){
+        return;
+    } 
     
     // Guardamos en datos los datos del formulario
     var datos = new FormData(this);
@@ -95,6 +143,11 @@ function deleteProducto() {
 function updateProducto(e) {
     // Evitamos que al enviar el formulario recargue la pagina
     e.preventDefault();
+    
+    // Pasamos el validador
+    if (!$(this).valid()){
+        return;
+    } 
     
     // Guardamos en datos los datos del formulario
     var datos = new FormData(this);

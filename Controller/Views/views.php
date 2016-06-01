@@ -8,11 +8,16 @@ $loader = new Twig_Loader_Filesystem(__DIR__.'/../../Views');
 $twig = new Twig_Environment($loader); 
 
 // Si no esta logueado volvera a la pantalla de logueo
-if(!$_SESSION["logado"]) {
-    header("Location: ../../index.php");
+if (isset($_SESSION["logado"])) {
+    if(!$_SESSION["logado"] || !$_SESSION["tipo_usuario"] == "administrador") {
+    header("Location: ../logout.php");
+    }
+} else {
+    header("Location: ../logout.php");
 }
 
 $data["datos"] = 0;
+$data["admin"] = true;
 
 // Dependiendo del tipo de usuario ira a una pagina u otar
 switch ($_SESSION["tipo_usuario"]){

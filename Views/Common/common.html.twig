@@ -5,14 +5,14 @@
         <meta name="Author" content="Juan Jose Fernandez Romero"/>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="../../Views/css/style.css">
-        <link rel="stylesheet" type="text/css" href="../../Views/css/jquery-ui.min.css">
-        <link rel="stylesheet" type="text/css" href="../../Views/css/jquery-ui.theme.min.css">
         <script type="text/javascript" src="../../Views/js/jquery.js"></script>
         <script type="text/javascript" src="../../Views/js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="../../Views/js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="../../Views/js/messages_es.min.js"></script>
         {% block header %}
         {% endblock %}
         <link rel="stylesheet" type="text/css" href="../../Views/css/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="../../Views/css/jquery-ui.structure.min.css">
         <link rel="stylesheet" type="text/css" href="../../Views/css/jquery-ui.theme.min.css">
         <script type="text/javascript" src="../../Views/js/javascript.js"></script>
     </head>
@@ -20,7 +20,7 @@
         <div class="container">
             <header>
                 <h2 class="tituloHeader">Mi Restaurante</h2>
-                <div class="logout"><a href="../../Controller/logout.php">Log-out</a></div>
+                <div class="logout">{% if admin == true %}<a href="../../Controller/Views/views.php">Home</a>{% endif %}<a href="../../Controller/logout.php">Log-out</a></div>
             </header>
             <section class="contenido">
             {% block contenido %}

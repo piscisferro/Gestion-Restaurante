@@ -10,6 +10,28 @@ function iniciarCategorias(){
     $(".editCat").submit(updateCategoria);
     $(".deletecat").click(deleteCategoria); 
     
+    $("#newCat").validate({
+        rules: {
+            newCatNombre: {
+                required: true,
+                minlength: 3
+            }
+        },
+        errorClass: "errorForm"
+    });
+    
+    $(".editCat").each(function() {
+        $(this).validate({
+            rules: {
+                editCatNombre: {
+                    required: true,
+                    minlength: 3
+                }
+            },
+            errorClass: "errorForm"
+        });
+    });
+    
     hideAll();
  }
 
@@ -20,6 +42,12 @@ function iniciarCategorias(){
 ////////////////////////////////////////////////////////////
 function addCategoria(e) {
     e.preventDefault();
+    
+    // Pasamos el validador
+    if (!$(this).valid()) {
+        return;
+    }
+    
     var datos = new FormData(this);
 
     $.ajax({
@@ -88,6 +116,12 @@ function deleteCategoria() {
 ////////////////////////////////////////////////////////////
 function updateCategoria(e) {
     e.preventDefault();
+    
+    // Pasamos el validador
+    if (!$(this).valid()) {
+        return;
+    }
+    
     var datos = new FormData(this);
 
     // Creamos el dialog

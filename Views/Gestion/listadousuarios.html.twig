@@ -4,8 +4,12 @@
         <div class="toggle hidden formUser">
             <form id="usuarioadd" method="post">
                <div class="infoUserForm">
-                    <input type="text" name="newusuario" placeholder="Usuario" required autofocus>
-                    <input type="password" name="newpassword" placeholder="Contraseña" required>
+                    <div class="relative">
+                        <input type="text" name="newusuario" placeholder="Usuario" required autofocus>
+                    </div>
+                    <div class="relative">
+                        <input type="password" name="newpassword" placeholder="Contraseña" required>
+                    </div>
                     <select name="newtipo">
                         <option value="usuario" selected>Usuario</option>
                         <option value="cocina">Cocina</option>
@@ -36,7 +40,9 @@
         <div class="toggle hidden headerCategoria">
             <form class="usuarioedit" method="post">
                 <div class="infoUserForm">
-                    <input type="text" name="usuarioEdit" placeholder="{{ usuario.nombre }}" value="{{ usuario.nombre }}" autofocus>
+                    <div class="relative">
+                        <input type="text" name="usuarioEdit" placeholder="{{ usuario.nombre }}" value="{{ usuario.nombre }}" autofocus>
+                    </div>
                 <strong class="tipo">Tipo: </strong><select name="tipoEdit">
                     <option value="usuario" selected>Usuario</option>
                     <option value="cocina">Cocina</option>
@@ -54,8 +60,12 @@
             <form class="passwordedit toggle" method="post">
                 <div class="infoUserForm">
                     <strong>{{ usuario.nombre}}</strong>
-                    <input type="text" name="passwordEdit" placeholder="Nueva Contraseña" autofocus>
-                    <input type="text" name="passwordConfirm" placeholder="Repetir Contraseña">
+                    <div class="relative">
+                        <input class="password" type="text" name="passwordEdit" placeholder="Nueva Contraseña" autofocus>
+                    </div>
+                    <div class="relative">
+                        <input type="text" name="passwordConfirm" placeholder="Repetir Contraseña">
+                    </div>
                 </div>
                 <div class="botonesUser">
                     <input type="hidden" name="idEdit" value="{{usuario.id}}">

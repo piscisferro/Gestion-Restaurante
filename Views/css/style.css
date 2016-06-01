@@ -85,7 +85,43 @@ ul {
     margin-bottom: 10px;
 }
 
-.success {
+.logout a {
+    margin-left: 15px;
+}
+
+input.errorForm {
+    border: 2px solid red;
+}
+
+input.valid {
+    border: 2px solid green;
+}
+
+label.errorForm {
+    position:absolute;
+    padding: 5px 5px;
+    top: -40px;
+    left: 0px;
+    color:#000;
+    background:#f3961c; 
+    background:linear-gradient(#f9d835, #f3961c);
+    border-radius:10px;
+    
+}
+
+label.errorForm:after {
+    content:"";
+    position:absolute;
+    bottom:-15px;
+    left:50px; 
+    border-width:15px 15px 0; 
+    border-style:solid;
+    border-color:#f3961c transparent;
+    display:block;
+    width:0;
+}
+
+.successRespuesta {
     
     display: flex;
     align-items: center;
@@ -98,7 +134,7 @@ ul {
     margin: 5px 0;
 }
 
-.error {
+.errorRespuesta {
     
     display: flex;
     align-items: center;
@@ -176,4 +212,10 @@ button:active {
 
 input[type="file"] {
     font-size: 14px;
+}
+
+.relative {
+    position: relative;
+    display: inline-block;
+    white-space:nowrap
 }

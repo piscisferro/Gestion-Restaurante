@@ -16,12 +16,15 @@ $twig = new Twig_Environment($loader);
 
 
 if (isset($_SESSION["logado"])) {
-    if(!$_SESSION["logado"]) {
+    if(!$_SESSION["logado"] || !$_SESSION["tipo_usuario"] == "administrador") {
     header("Location: ../logout.php");
     }
 } else {
     header("Location: ../logout.php");
 }
+
+
+$data["admin"] = true;
 
 $data["usuarios"] = Usuario::getUsuariosBarra();
 $data["datos"] = Pedido::getPedidosAbiertos();
