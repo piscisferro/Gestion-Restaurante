@@ -4,6 +4,8 @@
         <title>Restaurant App</title>
         <meta name="Author" content="Juan Jose Fernandez Romero"/>
         <meta charset="UTF-8">
+        <link rel="icon" type="image/svg+xml" href="../../Views/img/burguer.svg">
+        <link rel=icon href="../../Views/img/icon.png" type="image/png">
         <link rel="stylesheet" type="text/css" href="../../Views/css/style.css">
         <script type="text/javascript" src="../../Views/js/jquery.js"></script>
         <script type="text/javascript" src="../../Views/js/jquery-ui.min.js"></script>
@@ -19,6 +21,7 @@
     <body>
         <div class="container">
             <header>
+                <img class="banner" src="../../Views/img/burguer.svg">
                 <h2 class="tituloHeader">Mi Restaurante</h2>
                 <div class="logout">{% if admin == true %}<a href="../../Controller/Views/views.php">Home</a>{% endif %}<a href="../../Controller/logout.php">Log-out</a></div>
             </header>

@@ -1,7 +1,7 @@
 body {
      
-    background-image: url(../img/fondo/fondo1.jpg);
-    background-size: cover;
+    background-image: url(../img/fondo/fondo.jpg);
+    background-size: auto;
     background-color: white;
     font-family: "Times New Roman", Times, serif;
     font-size: 1.2em;
@@ -35,6 +35,13 @@ header {
     border-bottom: 5px solid #2a0303;
     box-shadow: 0px 0px 20px 2px #3e0404;
     
+}
+
+.banner {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    margin-left: 15px;
 }
 
 footer {
@@ -71,18 +78,21 @@ ul {
 .tituloHeader {
     
     width: 100%;
-    padding-left: 25px;
+    padding-left: 10px;
+    white-space: nowrap;
     
 }
 
 .logout {
     
-    display: flex;
+    display: inline-flex;
     width: 100%;
     align-self: flex-end;
     justify-content: flex-end;
-    margin-right: 50px;
+    white-space: nowrap;
+    margin-right: 30px;
     margin-bottom: 10px;
+    flex-shrink: 2;
 }
 
 .logout a {

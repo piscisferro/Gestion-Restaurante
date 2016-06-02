@@ -13,6 +13,10 @@ if ($_SESSION["logado"] != true) {
     header("Location: logout.php");
 }
 
+if ($_SESSION["tipo_usuario"] == "administrador") {
+    $data["admin"] = true;
+}
+
 $data["datos"] = Pedido::getProductosPorServir();
 
 if (isset($_POST["ajax"])){
