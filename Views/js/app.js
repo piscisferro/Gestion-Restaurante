@@ -1,5 +1,13 @@
 $(document).ready(iniciarApp);
 
+$(window).resize(function() {
+    
+    if ($(window).width() > 950) {
+        $(".carritoP").show();
+        $(".pedidoP").show();
+    }
+});
+
 /////////////////////////////////////////////////////////////
 //////
 //////  Funcion para inicializar las funcionalidades.
@@ -11,6 +19,7 @@ function iniciarApp() {
     $("#botonPagar").hide();
     $("#botonPagar").click(hacerPago);
     $("#botonPedir").click(hacerPedido);
+    $(".hamburguesa").click(mostrarCarrito);
 
     hideAll();
     getPedido();
@@ -25,19 +34,38 @@ function iniciarApp() {
 //////////////////////////////////////////////////////////////////////
 function añadirCarrito() {
     // Variable con el contenido del li que crearemos
-    var contenido = $(this).closest("li").find(".contenidoProducto").html();
+    var contenido = $(this).closest("li").find(".nombreProducto").html();
     // Variable con el id del producto para el li que crearemos
     var id = $(this).closest("li").attr("id");
+    
     // Variable con el contenido del li que crearemos
     var precio = $(this).closest("li").find(".precioProducto").html();
-    // Variable con el icono de borrar
-    var imgdel = '<img class="icon borrarCarrito" src="../../Views/img/borrar.ico">';
-    // Variable con el elemento para crear
-    var li = $("<li data-id='" + id + "'>" + contenido + imgdel + "</li>");
-    // Le damos la propiedad click a la imagen de borrar carrito
-    li.find(".borrarCarrito").click(borrarCarrito);
-    // Añadimos el elemento al carrito
-    $("#listaCarrito").append(li);
+    
+    var nuevo = true;
+    
+    $("#listaCarrito").children().each(function(){
+       
+        if($(this).data("id") == id) {
+            nuevo = false;
+            
+            var cantidad = $(this).find(".cantidad").text();
+            $(this).find(".cantidad").text(parseInt(cantidad) + 1);
+            var precioActual = $(this).find(".precio").text();
+            $(this).find(".precio").text(parseInt(precioActual) + parseInt(precio));
+            $(this).find(".moneda").text("€");
+        } 
+    });
+    
+    if (nuevo) {
+        // Variable con el icono de borrar
+        var imgdel = '<img class="icon" src="../../Views/img/borrar.ico">';
+        // Variable con el elemento para crear
+        var li = $("<li data-id='" + id + "'>" + "<span class='cantidad'>1</span><span class='nombreProducto'>" + contenido + "</span><div class='borrarCarrito'><span class='precio'>" + precio + "</span>" + "<span class='moneda'>€</span>" + imgdel + "</div></li>");
+        // Le damos la propiedad click a la imagen de borrar carrito
+        li.find(".borrarCarrito").click(borrarCarrito);
+        // Añadimos el elemento al carrito
+        $("#listaCarrito").append(li);
+    }
     
     // Recogemos el precio total actual del carrito
     var total = $("#totalCarrito").text();
@@ -45,6 +73,9 @@ function añadirCarrito() {
     $("#totalCarrito").text(parseInt(total) + parseInt(precio));
     // Activamos el boton pedir
     $("#botonPedir").attr("disabled", false);
+    
+    
+    
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -93,6 +124,8 @@ function getPedido() {
         // Insertamos la informacion (en html) al principio del div
         $("#pedido").prepend(data);
         
+        unificarCantidades();
+        
         // Si el listado que hemos recuperado tiene 1 producto o mas
         if ($("#listaPedido").children().length > 0) {
             // Mostramos el boton para pagar
@@ -122,9 +155,13 @@ function hacerPedido() {
         buttons: {
             "Confirmar": function () {
                 var productos = [];
-    
+                
                 $("#listaCarrito").children().each(function() {
-                    productos.push($(this).data("id"));
+                    var cantidad = parseInt($(this).find(".cantidad").text());
+                    
+                    for (var i = 0; i < cantidad; i++) {
+                        productos.push($(this).data("id"));
+                    }
                 });
 
                 var idpedido = $("#listaPedido").data("idpedido");
@@ -191,4 +228,55 @@ function hacerPago() {
             $(dialog).remove();
         }
     });
+}
+
+
+function mostrarCarrito() {
+    
+    $(".carritoP").fadeToggle(200);
+    $(".pedidoP").fadeToggle(200);
+    
+}
+
+
+function unificarCantidades() {
+    
+    var productos = [];
+    var cantidad = [];
+    
+    $("#listaPedido").children().each(function(){
+       
+        var id = $(this).data("id");
+        productos[id]= 0; 
+        cantidad[id] = 0;
+    });
+    
+    $("#listaPedido").children().each(function(){
+       
+        var id = $(this).data("id");
+        productos[id]+= 1; 
+        cantidad[id]+= 1; 
+        
+    });
+    
+    console.log(productos);
+    $("#listaPedido").children().each(function(){
+       
+        var id = $(this).data("id");
+        
+        if (productos[id] > 1) {
+            $(this).remove();
+            productos[id]--;
+        }
+    });
+    
+    $("#listaPedido").children().each(function(){
+        var id = $(this).data("id");
+        $(this).find(".cantidad").text(cantidad[id]);
+        var precio = parseInt($(this).find(".precio").text());
+        $(this).find(".precio").text(precio * cantidad[id]);
+        
+    });
+    
+    console.log(productos);
 }

@@ -1,0 +1,26 @@
+<li>
+    <div class="pointer editar toggle">
+        <img class="icon" src="../../Views/img/añadir.png">Añadir Usuario
+    </div>
+    <div class="toggle hidden">
+        <form id="newUserWS" method="post" enctype="multipart/form-data">
+            <input type="text" name="userWS" placeholder="Barra" required>
+            <input class="aceptar" type="submit" name="userWS" value="Añadir">
+            <button class="cancelar">Cancelar</button>
+        </form>
+    </div>
+</li>
+
+{% for usuariobarra in usuarios %}
+<li data-id="{{ usuariobarra.id }}" class="muestraPedido pointer">{{ usuariobarra.nombre }}</li>
+{% endfor %}
+<div class="division">--------------------------</div>
+{% set usuarioNombre = "" %}
+{% for dato in datos %}
+{% if dato.tipousuario != "barra" %}
+{% if usuarioNombre != dato.usuario %}
+{% set usuarioNombre = dato.usuario %}
+<li data-id="{{ dato.idusuario }}" class="muestraPedido">{{ dato.usuario }}</li>
+{% endif %}
+{% endif %}
+{% endfor %}

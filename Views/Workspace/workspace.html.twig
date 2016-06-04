@@ -8,24 +8,8 @@
 <navbar>
     <div>
         <ul>
-            {% for usuariobarra in usuarios %}
-            <li data-id="{{ usuariobarra.id }}" class="muestraPedido">{{ usuariobarra.nombre }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div>
-        <ul>
-            {% set usuarioNombre = "" %}
-            {% for dato in datos %}
-            {% if dato.tipousuario != "barra" %}
-            {% if usuarioNombre != dato.usuario %}
-            {% set usuarioNombre = dato.usuario %}
-            <li data-id="{{ dato.idusuario }}" class="muestraPedido">{{ dato.usuario }}</li>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
+            {% include 'Workspace/listadoUsuarios.html.twig' %}
+        </ul> 
 </navbar>
 
 <div id="pedidos">
@@ -33,10 +17,10 @@
 </div>
 
 <div id="modal" class="hiddenWS">
-<div class="backModal"></div>
-<div>
-{% include 'Workspace/modalProductos.html.twig' %}
-</div>
+    <div class="backModal"></div>
+    <div>
+    {% include 'Workspace/modalProductos.html.twig' %}
+    </div>
 </div>
 
 {% endblock %}

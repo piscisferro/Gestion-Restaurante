@@ -31,6 +31,5 @@ $data["datos"] = Pedido::getPedidosAbiertos();
 $data["categorias"] = Categoria::getAllCategorias();
 $data["productos"] = Producto::getAllProductos();
 
-var_dump($data["datos"]);
 
 echo $twig->render('Workspace/workspace.html.twig', $data);
