@@ -2,19 +2,25 @@
 {% for dato in datos %}
 {% if usuarioNombre != dato.usuario %}
 {% set usuarioNombre = dato.usuario %}
-<div id="{{ dato.idusuario }}" class="hiddenWS" data-idusuario="{{ dato.idusuario }}" data-idpedido="{{ dato.pedido }}">
+<div id="pedido{{ dato.idusuario }}" class="hiddenWS" data-idusuario="{{ dato.idusuario }}" data-idpedido="{{ dato.pedido }}">
    <h2>{{ dato.usuario }}</h2>
-      <ul>
-         <li class="abrirModal">
-             <button>Añadir Producto</button>
+      <ul class="listaPedidoWS">
+         <li class="abrirModal pointer">
+             <img class="icon" src="../../Views/img/añadir.png"><span>Añadir Producto</span>
           </li>
          {% set total = 0 %}
          {% for producto in datos %}
          {% if producto.usuario == dato.usuario %}
-         <li data-iddetpedido="{{ dato.iddetpedido }}">
-             <span>{{ producto.producto }}</span>
-             <span>{{ producto.precio }}</span>  
+         {% if producto.precio > 0 %}
+         <li class="productoWS" data-id="{{producto.idproducto}}" data-iddetpedido="{{ producto.iddetpedido }}">
+            <span class='nombreProducto'>{{ producto.producto }}</span>
+            <div class='borrarCarrito'>
+                <span class='precio'>{{ producto.precio }}</span>
+                <span class='moneda'>€</span>
+                <img class="icon borrarProducto" src="../../Views/img/borrar.ico">
+            </div>
          </li>
+         {% endif %}
          {% set total = total + producto.precio %}
          {% endif %}
          {% endfor %}

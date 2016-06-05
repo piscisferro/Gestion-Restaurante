@@ -7,17 +7,20 @@ require_once '../../Model/pedido.php';
 if (isset($_POST["hacerpago"])) {
     
     // Recuperamos el ultimo pedido abierto
-    $pedido = Pedido::getUltimoPedidoAbierto($_SESSION["id_usuario"]);
+    $pedido = Pedido::getUltimoPedido($_SESSION["id_usuario"]);
+    $resultado=false;
     
-    // Insertamos el pedido en la base de datos
-    $resultado = $pedido->hacerPago();
-    
-    // Si el resultado es false significara que ha fallado sino, habra sido un exito
-    if ($resultado == false) {
-        echo "error";   
-    } else {
+    if (!$pedido) {
         echo "success";
-    }
+        return;
+    } else {
+        
+       $abierto = $pedido->getAbierto();
+        if ($abierto == "A") {
+            // Insertamos el pedido en la base de datos
+            $resultado = $pedido->hacerPago();
+        }
+    } 
 } else { // Si no hemos enviado el ID simplemente aparecera error
     echo "error1";  
 }

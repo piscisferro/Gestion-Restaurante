@@ -5,14 +5,22 @@
         <meta name="Author" content="Juan Jose Fernandez Romero"/>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="../../Views/css/style.css">
+        <script type="text/javascript" src="../../Views/js/jquery.js"></script>
         <script>
-        window.onload = function() {
+        $(document).ready(function() {
+            waitForIt();
             
-            // TimeOut para redirigir tras 5 segundos
-            window.setTimeout(function(){ 
-                window.location.href = "../../Controller/App/app.php";
-            }, 5000);
-        };
+        });
+            
+         function waitForIt() {
+             $.post("../../Controller/App/hacerPago.php", { hacerpago : true }, function(data) {
+                 if(data == "success") {
+                     window.location.href = "../../Controller/App/app.php";
+                 } else {
+                    setTimeout(waitForIt, 3000);
+                 }
+             });
+        }
         </script>
     </head>
     <body>

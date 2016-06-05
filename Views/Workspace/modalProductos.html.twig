@@ -3,7 +3,12 @@
     <ul>
         {% for categoria in categorias %}
         {% if categoria.id != 1 %}
-        <li id="categoria{{ categoria.id }}" class="appCat">{{ categoria.nombre }}</li>
+        <li id="categoria{{ categoria.id }}" class="appCat pointer">
+            <img class="imgCategoriaBig" src="{{ categoria.imgDir }}">
+            <div class="nombreCat">
+            {{ categoria.nombre }}
+            </div>
+        </li>
         {% endif %}
         {% endfor %}
     </ul>
@@ -14,10 +19,9 @@
 <ul class="categoria{{ categoria.id }} hidden">
     {% for producto in productos %}
     {% if producto.categoria == categoria.id %}
-    <li id="{{ producto.id }}">
+    <li id="{{ producto.id }}" class="añadirCarrito pointer">
         <div><img class="imgProducto"  src="{{ producto.imgDir}}"></div>
-        <div><p>{{ producto.nombre }} {{producto.precio}}€</p></div>
-        <button class="añadirCarrito">Añadir</button>
+        <div class="contenidoProducto"><span class="nombreProducto">{{ producto.nombre }}</span><span class="precio"><span class="precioProducto">{{producto.precio}}</span>€</span></div>
     </li>
     {% endif %}
     {% endfor %}
@@ -27,10 +31,13 @@
 
 
 <!-- El carrito va aqui  -->
-<div id="carrito">
-    <ul id="listaCarrito">
-    
-
-    </ul>
+<div class="carrito">
+    <h3>Consumiciones</h3>
+    <div id="carrito">
+        <ul id="listaCarrito">
+        
+        </ul>
+    </div>
+    <div>Total: <span id="totalCarrito">0</span>€</div>
     <button id="botonPedir">Pedir</button>
 </div>

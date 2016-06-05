@@ -51,7 +51,7 @@ function añadirCarrito() {
             var cantidad = $(this).find(".cantidad").text();
             $(this).find(".cantidad").text(parseInt(cantidad) + 1);
             var precioActual = $(this).find(".precio").text();
-            $(this).find(".precio").text(parseInt(precioActual) + parseInt(precio));
+            $(this).find(".precio").text(Math.round((parseFloat(precioActual) + parseFloat(precio)) * 100)/100);
             $(this).find(".moneda").text("€");
         } 
     });
@@ -60,7 +60,7 @@ function añadirCarrito() {
         // Variable con el icono de borrar
         var imgdel = '<img class="icon" src="../../Views/img/borrar.ico">';
         // Variable con el elemento para crear
-        var li = $("<li data-id='" + id + "'>" + "<span class='cantidad'>1</span><span class='nombreProducto'>" + contenido + "</span><div class='borrarCarrito'><span class='precio'>" + precio + "</span>" + "<span class='moneda'>€</span>" + imgdel + "</div></li>");
+        var li = $("<li data-id='" + id + "' data-preciouni='"+ precio +"'>" + "<span class='cantidad'>1</span><span class='nombreProducto'>" + contenido + "</span><div class='borrarCarrito'><span class='precio'>" + precio + "</span>" + "<span class='moneda'>€</span>" + imgdel + "</div></li>");
         // Le damos la propiedad click a la imagen de borrar carrito
         li.find(".borrarCarrito").click(borrarCarrito);
         // Añadimos el elemento al carrito
@@ -70,11 +70,9 @@ function añadirCarrito() {
     // Recogemos el precio total actual del carrito
     var total = $("#totalCarrito").text();
     // Actualizamos el precio total del carrito
-    $("#totalCarrito").text(parseInt(total) + parseInt(precio));
+    $("#totalCarrito").text(Math.round((parseFloat(total) + parseFloat(precio)) * 100)/100);
     // Activamos el boton pedir
     $("#botonPedir").attr("disabled", false);
-    
-    
     
 }
 
@@ -86,20 +84,22 @@ function añadirCarrito() {
 function borrarCarrito() {
     
     // Recogemos el precio actual del producto    
-    var precio = $(this).closest("li").find(".precioProducto").text();
-    
-    console.log(precio);
+    var precio = $(this).closest("li").data("preciouni");
+    var precioTotal = $(this).closest("li").find(".precio").text();
+    var cantidad = $(this).closest("li").find(".cantidad").text();
     
     // Recogemos el precio total actual del carrito
     var total = $("#totalCarrito").text();
     
-     console.log(total);
-    
     // Actualizamos el precio total del carrito
-    $("#totalCarrito").text(parseInt(total) - parseInt(precio));
+    $("#totalCarrito").text(Math.round((parseFloat(total) - parseFloat(precio))*100)/100);
     
-    $(this).closest("li").remove();
-    
+    if (parseFloat(cantidad) > 1) {
+        $(this).closest("li").find(".cantidad").text(cantidad - 1);
+        $(this).closest("li").find(".precio").text(Math.round((parseFloat(precioTotal) - parseFloat(precio))*100)/100);
+    } else {
+        $(this).closest("li").remove();
+    }
     
     // Si el listado que hemos recuperado tiene 1 producto o mas
     if ($("#listaCarrito").children().length < 1) {
@@ -157,7 +157,7 @@ function hacerPedido() {
                 var productos = [];
                 
                 $("#listaCarrito").children().each(function() {
-                    var cantidad = parseInt($(this).find(".cantidad").text());
+                    var cantidad = parseFloat($(this).find(".cantidad").text());
                     
                     for (var i = 0; i < cantidad; i++) {
                         productos.push($(this).data("id"));
@@ -212,11 +212,7 @@ function hacerPago() {
         modal: true, 
         buttons: {
             "Confirmar": function () {
-                $.post("../../Controller/App/hacerPago.php", { hacerpago : true }, function(data) {
-                    if (data) {
-                        window.location.href = "../../Views/App/acaja.html";
-                    }
-                });
+                window.location.href = "../../Views/App/acaja.html";
                 $(this).dialog("close");
             },
             
@@ -273,7 +269,7 @@ function unificarCantidades() {
     $("#listaPedido").children().each(function(){
         var id = $(this).data("id");
         $(this).find(".cantidad").text(cantidad[id]);
-        var precio = parseInt($(this).find(".precio").text());
+        var precio = parseFloat($(this).find(".precio").text());
         $(this).find(".precio").text(precio * cantidad[id]);
         
     });

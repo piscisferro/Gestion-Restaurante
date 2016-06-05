@@ -192,7 +192,7 @@ form {
 .infoForm {
     display: flex;
     align-items: center;
-    width: 60%;
+    width: 50%;
 }
 
 
@@ -208,7 +208,7 @@ form {
     display: inline-flex;
     margin-right: 25px;
     align-items: center;
-    width: 20%;
+    width: 30%;
     overflow: hidden;
 }
 
@@ -228,7 +228,7 @@ form {
 
 .descForm textarea {
     display: block;
-    width: 100%;
+    width: 300px;
     height: 75px;
 	
 }

@@ -2,14 +2,33 @@
 
 {% block header %}
 <script type="text/javascript" src="../../Views/js/workspace.js"></script>
+<link rel="stylesheet" type="text/css" href="../../Views/css/workspace.css">
 {% endblock %}
 
 {% block contenido %}
 <navbar>
-    <div>
-        <ul>
-            {% include 'Workspace/listadoUsuarios.html.twig' %}
-        </ul> 
+    <ul class="listadoUsuarios">
+        <li id="newBarraUser">
+            <div class="pointer editar toggle">
+                <img class="icon" src="../../Views/img/añadir.png">Añadir Usuario
+            </div>
+            <div class="toggle hidden">
+                <form id="newUserWS" method="post" enctype="multipart/form-data">
+                    <div class="relative">
+                        <input id="userWS" type="text" name="userWS" placeholder="Barra" required>
+                    </div>
+                    <div class="botones">
+                    <input class="aceptar" type="submit" name="userWS" value="Añadir">
+                    <button class="cancelar">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </li>
+        {% include 'Workspace/listadoUsuariosBarra.html.twig' %}
+    </ul>
+    <ul class="listadoUsuarios usuarios">
+        {% include 'Workspace/listadoUsuarios.html.twig' %}
+    </ul>
 </navbar>
 
 <div id="pedidos">

@@ -31,5 +31,14 @@ $data["datos"] = Pedido::getPedidosAbiertos();
 $data["categorias"] = Categoria::getAllCategorias();
 $data["productos"] = Producto::getAllProductos();
 
-
-echo $twig->render('Workspace/workspace.html.twig', $data);
+if (isset($_POST["usuario"]) || isset($_POST["pedido"])) {
+    if ($_POST["usuario"]) {
+        echo $twig->render('Workspace/listadoUsuarios.html.twig', $data);
+    } else {
+        echo $twig->render('Workspace/pedidoWS.html.twig', $data);
+    }
+    
+    
+} else {
+    echo $twig->render('Workspace/workspace.html.twig', $data);
+}

@@ -1,0 +1,10 @@
+{% for usuariobarra in usuarios %}
+<li id="barra{{ usuariobarra.id }}" data-id="{{ usuariobarra.id }}" class="pointer">
+<div class="nombreUsuarioBarra muestraPedido">
+    {{ usuariobarra.nombre }}
+</div>
+<div class="botonesBarra pointer">
+    <img class="icon botonBorrar"  src="../../Views/img/borrar.ico">
+</div>
+</li>
+{% endfor %}
