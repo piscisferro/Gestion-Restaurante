@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block contenido %}
-<navbar>
+<navbar class="navbarUsuarios">
     <ul class="listadoUsuarios">
         <li id="newBarraUser">
             <div class="pointer editar toggle">
@@ -26,6 +26,7 @@
         </li>
         {% include 'Workspace/listadoUsuariosBarra.html.twig' %}
     </ul>
+    <div class="division"></div>
     <ul class="listadoUsuarios usuarios">
         {% include 'Workspace/listadoUsuarios.html.twig' %}
     </ul>

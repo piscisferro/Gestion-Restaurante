@@ -233,9 +233,9 @@ function addProWS() {
 //////////////////////////////////////////////////////////////////////
 function cerrarPedido() {
     
-    var div = $(this).closest("div");
-    var idusuario = $(this).closest("div").data("idusuario");
-    var idpedido = $(this).closest("div").data("idpedido");
+    var div = $(this).closest(".pedidoUsuario");
+    var idusuario = $(this).closest(".pedidoUsuario").data("idusuario");
+    var idpedido = $(this).closest(".pedidoUsuario").data("idpedido");
     
     
     // Creamos el dialog 

@@ -2,7 +2,7 @@
 {% for dato in datos %}
 {% if usuarioNombre != dato.usuario %}
 {% set usuarioNombre = dato.usuario %}
-<div id="pedido{{ dato.idusuario }}" class="hiddenWS" data-idusuario="{{ dato.idusuario }}" data-idpedido="{{ dato.pedido }}">
+<div id="pedido{{ dato.idusuario }}" class="hiddenWS pedidoUsuario" data-idusuario="{{ dato.idusuario }}" data-idpedido="{{ dato.pedido }}">
    <h2>{{ dato.usuario }}</h2>
       <ul class="listaPedidoWS">
          <li class="abrirModal pointer">
@@ -13,7 +13,9 @@
          {% if producto.usuario == dato.usuario %}
          {% if producto.precio > 0 %}
          <li class="productoWS" data-id="{{producto.idproducto}}" data-iddetpedido="{{ producto.iddetpedido }}">
-            <span class='nombreProducto'>{{ producto.producto }}</span>
+            <div class="nombreProductoPedido">
+                <span class='nombreProducto'>{{ producto.producto }}</span>
+            </div>
             <div class='borrarCarrito'>
                 <span class='precio'>{{ producto.precio }}</span>
                 <span class='moneda'>€</span>
@@ -24,14 +26,16 @@
          {% set total = total + producto.precio %}
          {% endif %}
          {% endfor %}
-         <li>
+      </ul>
+    <div class="pedidoFooter">
+        <div class="pedidoTotal">
             <span>Total</span>
             <span>{{ total }}€</span>
-         </li>
-         <li>
-            <button class="cerrarPedido">Cerra Pedido</button>
-         </li>
-      </ul>
+        </div>
+        <div class="pedidoCerrarPedido">
+            <button class="cerrarPedido">Cerrar Pedido</button>
+        </div>
+    </div>
 </div>
 {% endif %}
 {% endfor %}

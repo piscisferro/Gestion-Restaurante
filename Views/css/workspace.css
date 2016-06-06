@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     padding-top: 25px;
+    position: relative;
 }
 
 button, input[type="submit"] {
@@ -37,7 +38,7 @@ ul {
     margin: 0;
 }
 
-navbar {
+.navbarUsuarios {
     width: 20%;
 }
 
@@ -46,25 +47,38 @@ navbar {
     width: 80%;
 }
 
-navbar ul {
+.navbarUsuarios .listadoUsuarios {
     display: flex;
     flex-direction: column;
+    max-height: 350px;
+    overflow-y: auto;
 }
 
-navbar ul li {
+.navbarUsuarios .listadoUsuarios::-webkit-scrollbar-thumb {
+	border-radius: 3px;
+    background-color: #5d0606;
+}
+
+.navbarUsuarios .listadoUsuarios::-webkit-scrollbar {
+    width: 8px;
+	background-color: #ffffff;
+}
+
+.navbarUsuarios .listadoUsuarios li {
     display: flex;
     justify-content: center;
     flex-direction: row;
     width: 75%;
     margin: 0 auto;
     margin-bottom: 5px;
-    padding: 10px 0;
+    padding: 8px 0;
     border-top: 2px solid #2a0303;
     border-bottom: 2px solid #2a0303;
     border-left: 1px solid #2a0303;
     border-right: 1px solid #2a0303;
     background: linear-gradient(to bottom, #845129 0%, #d6baa3 50%, #d6baa3 51%, #845129 100%);
     box-shadow: 0px 0px 5px 0px #3e0404;
+    flex-shrink: 0;
 }
 
 .activated {
@@ -80,3 +94,85 @@ navbar ul li {
 .botonBorrar {
     vertical-align: middle;
 }
+
+.division {
+    width: 80%;
+    height: 5px;
+    margin: 5px auto;
+    border-bottom: 3px double #6c2b0e;
+    border-top: 3px double #6c2b0e;
+}
+
+#pedidos {
+    display: flex;
+    padding-left: 25px;
+    padding-right: 25px;
+    box-sizing: border-box;
+}
+
+#pedidos h2 {
+    margin: 0;
+    border-bottom: 4px double #6c2b0e;
+}
+
+.pedidoUsuario {
+    width: 100%;
+}
+
+#pedidos ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 300px;
+    background-color: rgba(255, 255, 255, 0.15);
+    
+}
+
+#pedidos ul li {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 10px;
+    max-height: 40px;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+#pedidos ul .productoWS .nombreProductoPedido {
+    width: 50%;
+}
+
+#pedidos ul .productoWS .borrarCarrito {
+    width: 50%;
+    display: flex;
+    align-self: flex-end;
+    justify-content: flex-end;
+    vertical-align: middle;
+}
+
+#pedidos .pedidoFooter {
+    border-top: 4px double #6c2b0e;
+}
+
+.cerrarPedido {
+    width: 100px;
+}
+
+#modal {
+    width: 80%;
+    height: 500px;
+    top: 20%;
+    left: 15%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
