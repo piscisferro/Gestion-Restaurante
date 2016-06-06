@@ -157,7 +157,7 @@ function hacerPedido() {
                 var productos = [];
                 
                 $("#listaCarrito").children().each(function() {
-                    var cantidad = parseFloat($(this).find(".cantidad").text());
+                    var cantidad = parseInt($(this).find(".cantidad").text());
                     
                     for (var i = 0; i < cantidad; i++) {
                         productos.push($(this).data("id"));

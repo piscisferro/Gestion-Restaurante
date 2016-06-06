@@ -4,6 +4,9 @@
 <script type="text/javascript" src="../../Views/js/adminView.js"></script>
 {% endblock %}
 {% block contenido %}
+<div class="cheat" ng-controller="Controller">
+    <canvas id="lienzo" ng-show="konamiCodeYeah" width="480" height="50">
+</div>
 <audio id="audio" src="../../Views/img/clicksound.mp3" type="audio/mpeg"></audio>
 <div id="wrapper">
     <a href="../../Controller/Gestion/gestionApp.php"><div class="modulo"><img src="../../Views/img/engranajes.svg">Gestion Restaurante</div></a>

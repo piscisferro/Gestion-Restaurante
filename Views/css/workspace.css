@@ -79,6 +79,7 @@ ul {
     background: linear-gradient(to bottom, #845129 0%, #d6baa3 50%, #d6baa3 51%, #845129 100%);
     box-shadow: 0px 0px 5px 0px #3e0404;
     flex-shrink: 0;
+    
 }
 
 .activated {
@@ -122,28 +123,29 @@ ul {
 #pedidos ul {
     width: 100%;
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-    max-height: 300px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-height: 450px;
     background-color: rgba(255, 255, 255, 0.15);
+    overflow-y: auto;
     
 }
 
 #pedidos ul li {
     display: flex;
+    width: 310px;
     flex-direction: row;
     padding: 8px 10px;
-    max-height: 40px;
     box-sizing: border-box;
-    align-items: center;
 }
 
 #pedidos ul .productoWS .nombreProductoPedido {
-    width: 50%;
+    width: 70%;
 }
 
 #pedidos ul .productoWS .borrarCarrito {
-    width: 50%;
+    width: 30%;
     display: flex;
     align-self: flex-end;
     justify-content: flex-end;
@@ -158,21 +160,179 @@ ul {
     width: 100px;
 }
 
+.cerrarPedido:active {
+    width: 98px;
+}
+
 #modal {
+    position: fixed;
     width: 80%;
     height: 500px;
-    top: 20%;
-    left: 15%;
+    top: 15%;
+    left: 10%;
+    padding: 10px;
+    border: 5px double #3e0404;
+    background: rgba(165, 122, 88, 0.95);
+}
+
+.contenidoModal {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap; 
 }
 
 
+.navCatModal {
+    display: flex;
+    width: 15%;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.navCatModal ul li {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.imgProducto, .imgCategoria {
+	box-shadow: 0px 0px 15px 0px #3e0404;
+    border: 1px solid black;
+}
 
 
+.navProModal {
+    width: 55%;
+}
+
+.navProModal ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.navProModal ul li {
+    
+    width: 150px;
+    height: 200px;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.contenidoProducto {
+    display: flex;
+    padding: 5px 0;
+    height: 60px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contenidoProducto .nombreProducto {
+    display: block;
+	width: 100%;
+}
+
+.nombreProducto::first-letter {
+    text-transform: uppercase;
+}
+
+.navToolsModal {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+    width: 30%;
+}
 
 
+.carrito {
+    width: 100%;
+    height: 250px;
+    text-align: center;
+}
+
+.carrito h3 {
+    margin: 0;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    border-bottom: 3px double #6c2b0e;
+}
 
 
+#listaCarrito li {
+    display: flex;
+    width: 100%;
+    padding: 3px;
+    padding-left: 15px;
+    padding-right: 5px;
+    box-sizing: border-box;
+    flex-flow: row;
+}
+
+#listaCarrito li .nombreProducto {
+    
+    display: inline-block;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 60%;
+    
+}
+
+.borrarCarrito {
+    display: inline-flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+    width: 30%;
+}
+
+.precio {
+	margin-left: 5px;
+}
+
+.cantidad {
+    display: inline-block;
+    margin-right: 5px;
+    width: 10%;
+}
 
 
+#carrito {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 400px;
+    margin-bottom: 5px;
+}
+
+#carrito::-webkit-scrollbar {
+	width: 8px;
+	background-color: #ffffff;
+}
+
+#carrito::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: #5d0606;
+}
+
+.botonCerrarDiv {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-top: -20px;
+    margin-right: -20px;
+}
+
+.botonCerrarDiv button {
+    width: auto;
+    padding: 0 10px;
+    border: 2px solid #3e0404;
+}
+
+.botonCerrarDiv button:active {
+    width: auto;
+    padding: 0 10px;
+}
 
 

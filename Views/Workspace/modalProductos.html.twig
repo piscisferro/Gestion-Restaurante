@@ -1,5 +1,4 @@
-<button id="cerrarModal">Cerrar</button>
-<navbar>
+<navbar class="navCatModal">
     <ul>
         {% for categoria in categorias %}
         {% if categoria.id != 1 %}
@@ -14,6 +13,7 @@
     </ul>
 </navbar>
 
+<div class="navProModal">
 {% for categoria in categorias %} 
 {% if categoria.id != 1 %}
 <ul class="categoria{{ categoria.id }} hidden">
@@ -28,16 +28,21 @@
 </ul>
 {% endif %}
 {% endfor %}
+</div>
 
 
-<!-- El carrito va aqui  -->
-<div class="carrito">
-    <h3>Consumiciones</h3>
-    <div id="carrito">
-        <ul id="listaCarrito">
-        
-        </ul>
+<div class="navToolsModal">
+    <div class="botonCerrarDiv">
+        <button id="cerrarModal">X</button>
     </div>
-    <div>Total: <span id="totalCarrito">0</span>€</div>
-    <button id="botonPedir">Pedir</button>
+    <div class="carrito">
+        <h3>Consumiciones</h3>
+        <div id="carrito">
+            <ul id="listaCarrito">
+
+            </ul>
+        </div>
+        <div>Total: <span id="totalCarrito">0</span>€</div>
+        <button id="botonPedir">Pedir</button>
+    </div>
 </div>

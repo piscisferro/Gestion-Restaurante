@@ -205,7 +205,11 @@ function addProWS() {
     var productos = [];
     
     $("#listaCarrito").children().each(function() {
-        productos.push($(this).data("id"));
+        var cantidad = parseInt($(this).find(".cantidad").text());
+                    
+                    for (var i = 0; i < cantidad; i++) {
+                        productos.push($(this).data("id"));
+                    }
     });
     
     var idusuario = $("#modal").data("idusuario");
@@ -213,10 +217,14 @@ function addProWS() {
     $.post("../../Controller/Workspace/addDetPedidoWS.php", { newdetpedido: true, productos: productos, idusuario: idusuario }, function(data){
         
         $("#pedidos").html(data);
-        cerrarModal();
         hideAll();
         hideAllWS();
+        cerrarModal();
+        $(".abrirModal").click(abrirModal);
+        $(".cerrarPedido").click(cerrarPedido);
+        $(".borrarProducto").click(borrarProducto);
         $("#pedido" + idusuario).show();
+        $("#listaCarrito").empty();
         
     });
     
@@ -255,6 +263,7 @@ function cerrarPedido() {
     
                 div.remove();
                 $("#usuario" + idusuario).remove();
+                $(this).dialog("close");
             },
             
             "Cancelar": function () {
@@ -336,7 +345,8 @@ function borrarUsuarioBarra() {
 
 function borrarProducto() {
     
-    var id = $(this).closest("li").data("iddetpedido");
+    var li = $(this).closest(".productoWS");
+    var id = $(this).closest(".productoWS").data("iddetpedido");
     
     // Creamos el dialog 
     var dialog = $("<div>¿Esta seguro de que desea borrar este registro?</div>");
