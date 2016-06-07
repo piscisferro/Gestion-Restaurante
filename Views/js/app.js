@@ -70,7 +70,7 @@ function añadirCarrito() {
     // Recogemos el precio total actual del carrito
     var total = $("#totalCarrito").text();
     // Actualizamos el precio total del carrito
-    $("#totalCarrito").text(Math.round((parseFloat(total) + parseFloat(precio)) * 100)/100);
+    $("#totalCarrito").text((Math.round((parseFloat(total) + parseFloat(precio)) * 100)/100));
     // Activamos el boton pedir
     $("#botonPedir").attr("disabled", false);
     
@@ -94,7 +94,7 @@ function borrarCarrito() {
     // Actualizamos el precio total del carrito
     $("#totalCarrito").text(Math.round((parseFloat(total) - parseFloat(precio))*100)/100);
     
-    if (parseFloat(cantidad) > 1) {
+    if (parseInt(cantidad) > 1) {
         $(this).closest("li").find(".cantidad").text(cantidad - 1);
         $(this).closest("li").find(".precio").text(Math.round((parseFloat(precioTotal) - parseFloat(precio))*100)/100);
     } else {
@@ -255,7 +255,6 @@ function unificarCantidades() {
         
     });
     
-    console.log(productos);
     $("#listaPedido").children().each(function(){
        
         var id = $(this).data("id");
@@ -269,10 +268,9 @@ function unificarCantidades() {
     $("#listaPedido").children().each(function(){
         var id = $(this).data("id");
         $(this).find(".cantidad").text(cantidad[id]);
-        var precio = parseFloat($(this).find(".precio").text());
-        $(this).find(".precio").text(precio * cantidad[id]);
+        var precio = $(this).find(".precio").text();
+        $(this).find(".precio").text((Math.round((parseFloat(precio) * cantidad[id])*100)/100));
         
     });
     
-    console.log(productos);
 }
