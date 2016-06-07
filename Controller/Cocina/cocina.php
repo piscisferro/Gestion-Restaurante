@@ -22,7 +22,7 @@ $data["datos"] = Pedido::getProductosPorServir();
 if (isset($_POST["ajax"])){
     echo $twig->render('Cocina/listadococina.html.twig', $data);
 } else {
-    echo $twig->render('Cocina/Cocina.html.twig', $data);
+    echo $twig->render('Cocina/cocina.html.twig', $data);
 }
 
 ?>

@@ -36,12 +36,12 @@ if (isset($_POST["recpedido"])) {
             $datos["tipousuario"] = false;
 
             $data["datos"][1] = $datos;
-            echo $twig->render('workspace/pedidoWS.html.twig', $data);
+            echo $twig->render('Workspace/pedidoWS.html.twig', $data);
         }
     } else {
 
         $data["datos"] = $pedido;
-        echo $twig->render('workspace/pedidoWS.html.twig', $data);
+        echo $twig->render('"orkspace/pedidoWS.html.twig', $data);
     }
 } else { // Si no hemos enviado el ID simplemente aparecera error
     echo "error1";  

@@ -22,7 +22,7 @@ if (isset($_POST["newUser"])) {
     } else {
         
         $data["usuarios"][0] = Usuario::getUsuario($_POST["usuario"], "usuario");
-        echo $twig->render('workspace/listadoUsuariosBarra.html.twig', $data);
+        echo $twig->render('Workspace/listadoUsuariosBarra.html.twig', $data);
     }
 } else { // Si no hemos enviado el ID simplemente aparecera error
     echo "error1";  

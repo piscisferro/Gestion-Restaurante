@@ -40,7 +40,7 @@ if (isset($_POST["newdetpedido"])) {
         $data["categorias"] = Categoria::getAllCategorias();
         $data["productos"] = Producto::getAllProductos();
 
-        echo $twig->render('workspace/pedidoWS.html.twig', $data);
+        echo $twig->render('Workspace/pedidoWS.html.twig', $data);
         
         
     }

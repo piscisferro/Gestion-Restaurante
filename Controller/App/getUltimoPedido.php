@@ -20,5 +20,5 @@ if ($pedido) {
 } 
 $data["pedidos"] = $pedido;
 
-echo $twig->render('app/pedido.html.twig', $data);
+echo $twig->render('App/pedido.html.twig', $data);
 

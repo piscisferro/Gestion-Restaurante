@@ -1,10 +1,3 @@
-$(document).ready(function() {
-    
-    $(".modulo").mouseenter(reproducir);
-    
-});
-
-
 function reproducir() {
     
     var player = document.getElementById("audio");
@@ -16,7 +9,7 @@ function reproducir() {
 
 var lienzo;
 var konami;
-var colores = ["#000000", "#008000", "#ff0000", "#ffff00", "#ffa500", "#0000ff", "#800080"];
+var colores = ["#0aff00", "#00ffff", "#ff0000", "#ffff00", "#ffa500", "#0000ff", "#ff00ff", "#8000ff"];
 
 function canvas () {
     // Seleccionamos el elemento lienzo
@@ -38,7 +31,7 @@ function texto() {
     var lienzo = elemento.getContext('2d'); 
     
     // Definimos la fuente y el tamaño como en CSS
-    lienzo.font="bold 64px Arial, sans-serif"; 
+    lienzo.font="bold 120px Arial, sans-serif"; 
     
     lienzo.fillStyle= "rgb(255, 255, 255)";
     
@@ -47,7 +40,7 @@ function texto() {
     lienzo.textAlign="start"; 
     
     // Pintamos el mensaje en x=0 y=50
-    lienzo.fillText("KONAMI CODE", 0, 50);
+    lienzo.fillText("MI RESTAURANTE", 0, 100);
     
     // Cerramos el trazado
     lienzo.closePath();
@@ -68,7 +61,7 @@ function pixelado() {
     lienzo.globalCompositeOperation="source-atop";
     
     // Color del relleno
-    lienzo.fillStyle=colores[randomRange(0, 6)]; 
+    lienzo.fillStyle=colores[randomRange(0, 7)]; 
     
     // Posicion Aleatoria
     var posX = randomRange(5, konami.width);
@@ -76,7 +69,7 @@ function pixelado() {
     
     // 360º
         // Dibuja un rectangulo solido posicion x = 110, posicion y = 110. 100px alto x 100 ancho.
-    lienzo.fillRect(posX,posY,3,3); 
+    lienzo.fillRect(posX,posY,5,30); 
     
     // Terminamos el trazado
     lienzo.closePath();
@@ -129,6 +122,7 @@ function randomRange(min, max) {
             $scope.konamiCodeYeah = true;
             $scope.$apply();
             canvas();
+            reproducir();
         });
     });
 })();
