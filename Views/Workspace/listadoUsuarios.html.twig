@@ -5,7 +5,7 @@
 {% set usuarioNombre = dato.usuario %}
 <li id="usuario{{ dato.idusuario }}" data-id="{{ dato.idusuario }}" class="usuario">
 <div class="nombreUsuarioBarra muestraPedido pointer">
-{{ dato.usuario }}
+{{ dato.usuario }}{%if dato.abiertopedido == "P"%}<img class="icon" src="../../Views/img/pagar.png">{%endif%}
 </div>
 </li>
 {% endif %}

@@ -65,26 +65,24 @@ function muestraPedido() {
         hideAllWS();
         
         // Mostramos el pedido del usuario
-        $("#pedido" + idusuario).show();
-        
-    } else { // En caso de que el pedido no exista
-        
-        // Mandamos un post para crear un nuevo pedido para el usuario
-        $.post("../../Controller/Workspace/recuperarPedidoWS.php", { idusuario : idusuario, recpedido : true, usuario:usuario }, function(data) {
-            
-            // Nos devuelve un pedido en blanco, lo atamos al HTML
-            $("#pedidos").append(data);
-            
-            // reiniciamos el js
-            hideAllWS();
-            
-            // Mostramos el pedido del usuario
-            $("#pedido" + idusuario).show();
-            $("#pedido" + idusuario).find(".abrirModal").click(abrirModal);
-            $("#pedido" + idusuario).find(".cerrarPedido").click(cerrarPedido);
-        });
+        $("#pedido" + idusuario).remove();
     }
-    
+
+        
+      // Mandamos un post para crear un nuevo pedido para el usuario
+      $.post("../../Controller/Workspace/recuperarPedidoWS.php", { idusuario : idusuario, recpedido : true, usuario:usuario }, function(data) {
+            
+        // Nos devuelve un pedido en blanco, lo atamos al HTML
+        $("#pedidos").append(data);
+        
+        // reiniciamos el js
+        hideAllWS();
+        
+        // Mostramos el pedido del usuario
+        $("#pedido" + idusuario).show();
+        $("#pedido" + idusuario).find(".abrirModal").click(abrirModal);
+        $("#pedido" + idusuario).find(".cerrarPedido").click(cerrarPedido);
+    });    
 }
 
 //////////////////////////////////////////////////////////////////////
