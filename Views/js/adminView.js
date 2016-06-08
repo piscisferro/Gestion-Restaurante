@@ -40,7 +40,7 @@ function texto() {
     lienzo.textAlign="start"; 
     
     // Pintamos el mensaje en x=0 y=50
-    lienzo.fillText("MI RESTAURANTE", 0, 100);
+    lienzo.fillText("NYANCAT", 0, 100);
     
     // Cerramos el trazado
     lienzo.closePath();
