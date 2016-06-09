@@ -3,3 +3,6 @@ Proyecto Integrado Gestión restaurante, este proyecto ha sido creado para la as
 
 Link a la aplicación:
 http://www.gestionrestaurante.esy.es
+
+Link a la presentación:
+https://github.com/piscisferro/Gestion-Restaurante/blob/master/documentacion/presentacion%20PI.pdf
