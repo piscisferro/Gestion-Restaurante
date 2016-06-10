@@ -7,7 +7,7 @@ http://www.gestionrestaurante.esy.es
 Usuarios:
 Usuario: usuario 
 Password: usuario
-..
+  
 Admin:
 usuario: administrador
 password: administrador
