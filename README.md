@@ -5,9 +5,9 @@ Link a la aplicación:
 http://www.gestionrestaurante.esy.es
 
 Usuarios:
-Usuario: usuario
+Usuario: usuario 
 Password: usuario
-
+-------
 Admin:
 usuario: administrador
 password: administrador
