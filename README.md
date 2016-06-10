@@ -4,11 +4,11 @@ Proyecto Integrado Gestión restaurante, este proyecto ha sido creado para la as
 Link a la aplicación:
 http://www.gestionrestaurante.esy.es
 
-Usuarios:
+Usuarios: 
 Usuario: usuario 
 Password: usuario
   
-Admin:
+Admin:  
 usuario: administrador
 password: administrador
 
